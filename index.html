@@ -1,0 +1,3419 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="googlebot" content="noindex, nofollow">
+
+<title>쿰척이들 단톡방 4년 리포트</title>
+<style>
+:root{
+  color-scheme: light;
+  --bg:#f6f5f2; --surface:#fcfcfb; --line:#e4e2dc; --grid:#ecebe6;
+  --t1:#1b1b1a; --t2:#52514e; --t3:#8a8984;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100;
+  --accent:#2a78d6; --hl:#fff3d6;
+  --seq0:#eef4fc; --seq1:#cde2fb; --seq2:#9ec5f4; --seq3:#6da7ec; --seq4:#3987e5; --seq5:#256abf; --seq6:#184f95; --seq7:#0d366b;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    color-scheme: dark;
+    --bg:#121211; --surface:#1a1a19; --line:#2e2d2b; --grid:#262624;
+    --t1:#f0efec; --t2:#c3c2b7; --t3:#8f8e87;
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500;
+    --accent:#5598e7; --hl:#3a3220;
+    --seq0:#1e2633; --seq1:#14325a; --seq2:#184f95; --seq3:#1c5cab; --seq4:#2a78d6; --seq5:#5598e7; --seq6:#86b6ef; --seq7:#cde2fb;
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--t1);font-family:"Pretendard","Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1000px;margin:0 auto;padding:40px 20px 80px}
+header .eyebrow{font-size:13px;color:var(--t3);letter-spacing:.04em}
+h1{font-size:clamp(28px,5vw,44px);margin:6px 0 10px;line-height:1.2;letter-spacing:-.02em}
+header p{color:var(--t2);margin:0;max-width:680px}
+nav.toc{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px}
+nav.toc a{font-size:13px;color:var(--t2);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:3px 11px;background:var(--surface)}
+nav.toc a:hover{color:var(--t1);border-color:var(--t3)}
+h2{font-size:24px;margin:0 0 4px;letter-spacing:-.01em}
+h2 .no{color:var(--t3);font-weight:500;margin-right:8px}
+h3.sec{font-size:16px;margin:26px 0 8px}
+.sub{color:var(--t2);font-size:14px;margin:0 0 18px;max-width:760px}
+section{margin-top:64px;scroll-margin-top:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px}
+.grid{display:grid;gap:12px}
+.hero{grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin-top:28px}
+.hero .card{padding:14px 16px}
+.lab{font-size:13px;color:var(--t2)}
+.num{font-size:28px;font-weight:700;letter-spacing:-.02em;line-height:1.25;margin-top:2px;font-variant-numeric:tabular-nums}
+.note{font-size:12px;color:var(--t3)}
+.chart{position:relative;width:100%}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.lbl{fill:var(--t3);font-size:11px}
+.gridline{stroke:var(--grid);stroke-width:1}
+.tip{position:absolute;pointer-events:none;background:var(--t1);color:var(--surface);font-size:12px;padding:7px 10px;border-radius:8px;white-space:nowrap;opacity:0;transition:opacity .08s;z-index:5;line-height:1.45}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;color:var(--t2);margin-bottom:10px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.chapters{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.chapter .yr{font-size:13px;color:var(--accent);font-weight:700}
+.chapter h4{margin:2px 0 6px;font-size:18px}
+.chapter .meta{font-size:12px;color:var(--t3);margin-bottom:8px}
+.chapter p{margin:0 0 10px;font-size:14px;color:var(--t2)}
+.awards{grid-template-columns:repeat(auto-fit,minmax(215px,1fr))}
+.award .t{font-size:13px;color:var(--t2)}
+.award .w{font-size:20px;font-weight:700;margin:2px 0}
+.award .d{font-size:13px;color:var(--t2)}
+.members{grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
+.member h3{margin:0;font-size:19px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.member h3 small{font-size:12px;color:var(--t3);font-weight:400}
+.member .role{font-size:13px;color:var(--accent);font-weight:600;margin:2px 0 10px}
+.member p{margin:0 0 10px;font-size:14px;color:var(--t2)}
+.member .row{font-size:12px;color:var(--t3);margin:6px 0 4px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:12px;padding:2px 9px;border-radius:999px;border:1px solid var(--line);color:var(--t2)}
+.chip.t{background:var(--grid);border-color:transparent}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin:0 0 10px}
+.stats div{font-size:11px;color:var(--t3)}
+.stats b{display:block;font-size:15px;color:var(--t1);font-variant-numeric:tabular-nums}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line)}
+th{font-size:12px;color:var(--t3);font-weight:600}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+.scroll{overflow-x:auto}
+table.heat{border-collapse:separate;border-spacing:2px;font-size:12px}
+table.heat th,table.heat td{border:none;padding:6px 4px;text-align:center}
+table.heat th.rh{text-align:right;padding-right:8px;font-size:13px;color:var(--t2);font-weight:500;white-space:nowrap}
+table.heat td{border-radius:4px;font-variant-numeric:tabular-nums;min-width:38px;cursor:default}
+table.heat.compact{table-layout:fixed;width:100%;min-width:420px}table.heat.compact th.rh{width:40px}table.heat.compact td{min-width:0;padding:7px 0}table.heat.compact th{padding:4px 0;font-size:11px}table.heat td.self{background:transparent;color:var(--t3)}
+.scale{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--t3);margin-top:10px}
+.scale{flex-wrap:wrap}.scale span.bar{display:inline-block;width:120px;height:8px;border-radius:4px;background:linear-gradient(90deg,var(--surface),var(--s1))}
+.tl{list-style:none;margin:0;padding:0;border-left:2px solid var(--line)}
+.tl li{position:relative;padding:0 0 22px 22px}
+.tl li::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--surface);border:2px solid var(--accent)}
+.tl .date{font-size:12px;color:var(--t3)}
+.tl .ev{font-weight:600}
+.tl p{margin:2px 0 0;color:var(--t2);font-size:14px}
+.scenes{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.scene .top{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.scene .date{font-size:12px;color:var(--t3)}
+.scene .kk{font-size:12px;color:var(--accent);font-weight:700;white-space:nowrap}
+.scene h4{margin:4px 0 6px;font-size:17px}
+.scene p{margin:0 0 8px;font-size:14px;color:var(--t2)}
+.scene blockquote{margin:0;padding:8px 12px;border-left:3px solid var(--line);font-size:14px;color:var(--t1);background:var(--bg);border-radius:0 8px 8px 0}
+.scene blockquote small{color:var(--t3)}
+.smalls{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.smalls .card{padding:14px 14px 8px}
+.smalls h4{margin:0;font-size:14px}
+.smalls .meta{font-size:12px;color:var(--t3)}
+.records{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.callout{background:var(--hl);border-radius:10px;padding:12px 14px;font-size:14px;color:var(--t1);margin-top:14px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:760px){.two{grid-template-columns:1fr}}
+.foot{margin-top:56px;font-size:12px;color:var(--t3)}
+.foot p{margin:0 0 6px}
+@media (max-width:560px){.wrap{padding:28px 14px 60px}.num{font-size:23px}.stats b{font-size:14px}}
+/* focus */
+.focusbar{position:sticky;top:0;z-index:20;margin:18px 0 0;padding:10px 0;background:color-mix(in oklab,var(--bg) 92%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.focusbar .row1{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.focusbar .hint{font-size:12px;color:var(--t3);margin-right:4px}
+.pbtn{font:inherit;font-size:13px;padding:4px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--t1);cursor:pointer}
+.pbtn:hover{border-color:var(--t3)}
+.pbtn.on{background:var(--s2);border-color:var(--s2);color:#fff}
+.pbtn.clear{color:var(--t3)}
+.panel{display:none;margin-top:8px;gap:8px;align-items:stretch;flex-wrap:wrap}
+.panel.open{display:flex}
+.panel .pc{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px 12px;font-size:12.5px;line-height:1.5;color:var(--t2);flex:1 1 170px;min-width:0}
+.panel .pc b{color:var(--t1)}
+.panel .pc .big{font-size:20px;font-weight:700;color:var(--t1);line-height:1.2}
+.panel .pc .k{font-size:11px;color:var(--t3)}
+.panel .spark{flex:1.6 1 220px}
+.panel .spark svg{display:block;width:100%;height:48px}
+[data-name]{cursor:pointer}
+@media (max-width:700px){.focusbar .row1{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}.focusbar .row1::-webkit-scrollbar{display:none}.focusbar .hint{display:none}.pbtn{flex:0 0 auto}}
+.member h3 .nm, .award .w, td.nm, th.rh{cursor:pointer}
+.focusing [data-p]{transition:opacity .15s}
+.focusing [data-p].dim{opacity:.18}
+.focusing .card[data-p].hit{border-color:var(--s2);box-shadow:0 0 0 1px var(--s2)}
+.focusing tr[data-p].hit > *:first-child{color:var(--s2);font-weight:700}
+.focusing td.hitcell{box-shadow:inset 0 0 0 2px var(--s2)}
+.chip.star{border-color:var(--s2);color:var(--t1)}
+/* scenes v3 */
+.scene .meters{display:grid;grid-template-columns:auto 1fr auto;gap:2px 8px;align-items:center;font-size:11px;color:var(--t3);margin:8px 0 10px}
+.scene .meters .bar{height:6px;border-radius:3px;background:var(--grid);overflow:hidden}
+.scene .meters .bar i{display:block;height:100%;background:var(--s1);border-radius:3px}
+.scene .meters b{color:var(--t1);font-weight:600;font-variant-numeric:tabular-nums;text-align:right}
+.scene .fire{font-size:22px;font-weight:700;color:var(--t1);line-height:1}
+.scene .fire small{font-size:11px;color:var(--t3);font-weight:500;margin-left:4px}
+.scene .rank{font-size:12px;color:var(--t3)}
+.scene .cast{margin-top:10px}
+/* long-form report */
+.report{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:28px clamp(18px,4vw,44px)}
+.report h3{font-size:19px;margin:34px 0 8px;letter-spacing:-.01em}
+.report h3:first-child{margin-top:0}
+.report h4{font-size:15px;margin:20px 0 6px}
+.report p,.report li{font-size:15px;color:var(--t2);line-height:1.8;max-width:760px}
+.report p b,.report li b{color:var(--t1)}
+.report ul{padding-left:20px;margin:6px 0 12px}
+.report .keys{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:12px 0 4px}
+.report .keys div{border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:14px;color:var(--t2)}
+.report .keys b{display:block;font-size:13px;color:var(--accent);margin-bottom:2px}
+.report table{font-size:13px;margin:10px 0 6px}
+.report table td,.report table th{padding:6px 6px}
+.report .diag li{margin-bottom:6px}
+/* excerpts */
+details.ex{margin-top:10px}
+details.ex > summary{cursor:pointer;font-size:12.5px;color:var(--accent);list-style:none;user-select:none;display:inline-block}
+details.ex > summary::-webkit-details-marker{display:none}
+details.ex > summary::before{content:'▸ ';}
+details.ex[open] > summary::before{content:'▾ ';}
+.chat{margin-top:8px;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:8px 10px;max-height:320px;overflow:auto;font-size:13px;line-height:1.5;text-align:left}
+.chat.tall{max-height:460px}
+.chat .day{font-size:11px;color:var(--t3);text-align:center;margin:2px 0 6px}
+.chat .cnote{font-size:11.5px;color:var(--t3);margin-bottom:6px}
+.msg{display:grid;grid-template-columns:34px auto 1fr;gap:6px;padding:1px 0;align-items:baseline}
+.msg .tm{color:var(--t3);font-size:10.5px;font-variant-numeric:tabular-nums}
+.msg .who{font-weight:600;color:var(--t1);white-space:nowrap;cursor:pointer}
+.msg .tx{color:var(--t2);word-break:break-word}
+.msg.sys{grid-template-columns:34px 1fr}
+.msg.sys .tx{color:var(--t3);font-size:12px}
+.focusing .msg.mine .who{color:var(--s2)}
+.focusing .msg.mine .tx{color:var(--t1)}
+/* collapsible report sections */
+details.rs{border-top:1px solid var(--line);padding:4px 0}
+details.rs:first-of-type{border-top:none}
+details.rs > summary{cursor:pointer;list-style:none;padding:10px 0}
+details.rs > summary::-webkit-details-marker{display:none}
+details.rs > summary h3{display:inline;margin:0}
+details.rs > summary::after{content:'펼치기';float:right;font-size:12px;color:var(--accent);margin-top:4px}
+details.rs[open] > summary::after{content:'접기'}
+.affex{margin-top:8px}
+
+
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="eyebrow">카카오톡 단톡방 분석 · ❤쿰척이들❤ · 10명</div>
+  <h1>쿰척이들 4년 4개월 결산</h1>
+  <p id="lede"></p>
+  <nav class="toc">
+    <a href="#era">연대기</a><a href="#who">점유율</a><a href="#awards">시상식</a><a href="#members">멤버 도감</a><a href="#tics">말버릇</a><a href="#rel">관계도</a><a href="#time">시간대</a><a href="#topics">주제</a><a href="#scenes">레전드 장면</a><a href="#records">기록실</a><a href="#table">전체 표</a><a href="#report">상세 리포트</a>
+  </nav>
+</header>
+<div class="focusbar" id="focusbar">
+  <div class="row1"><span class="hint">이름을 누르면 그 사람만 강조돼요</span><span id="pbtns" style="display:contents"></span></div>
+  <div class="panel" id="panel"></div>
+</div>
+
+<div class="grid hero" id="hero"></div>
+
+<section id="era">
+  <h2><span class="no">01</span>방의 연대기</h2>
+  <p class="sub">월별 메시지 수와, 대화에서 날짜가 확인된 입대·전역 기록. 이 방의 역사는 거의 군대의 역사예요. 위에서 이름을 고르면 그 사람의 월별 메시지가 주황색 선으로 겹쳐져요.</p>
+  <div class="card"><div class="chart" id="monthly"></div><div class="legend" id="milLegend" style="margin-top:8px"></div></div>
+  <h3 class="sec">해마다의 한 장</h3>
+  <div class="grid chapters" id="chapters"></div>
+</section>
+
+<section id="who">
+  <h2><span class="no">02</span>누가 얼마나 말했나</h2>
+  <p class="sub">전체 메시지 수와, 해마다 그 해 대화에서 각자가 차지한 비율. 사진·이모티콘도 한 건으로 셌어요.</p>
+  <div class="two">
+    <div class="card"><div class="chart" id="people"></div></div>
+    <div class="card scroll"><table class="heat" id="yearShare"></table><div class="scale"><span>비율 낮음</span><span class="bar"></span><span>높음</span></div><div class="note" style="margin-top:4px">2022년은 6월 26일부터, 2026년은 11월 1일까지</div></div>
+  </div>
+</section>
+
+<section id="awards">
+  <h2><span class="no">03</span>시상식</h2>
+  <p class="sub">숫자로 뽑은 부문별 1위. 열 명 모두 하나씩은 받았어요.</p>
+  <div class="grid awards" id="awardGrid"></div>
+</section>
+
+<section id="members">
+  <h2><span class="no">04</span>멤버 도감</h2>
+  <p class="sub">말버릇은 그 사람이 다른 멤버들보다 유독 자주 쓰는 말이고, 관심 주제는 방 평균보다 1.25배 이상 자주 꺼낸 주제예요.</p>
+  <div class="grid members" id="memberGrid"></div>
+</section>
+
+<section id="tics">
+  <h2><span class="no">05</span>말버릇 매트릭스</h2>
+  <p class="sub">텍스트 메시지 100개 중 해당 표현이 들어간 메시지 수. 각 열에서 가장 높은 사람이 가장 진하게 칠해져요.</p>
+  <div class="card scroll"><table class="heat" id="ticTable"></table></div>
+  <div class="callout" id="ticNote"></div>
+</section>
+
+<section id="rel">
+  <h2><span class="no">06</span>관계도</h2>
+  <p class="sub">한 사람이 말한 뒤 5분 안에 다른 사람이 이어서 말하면 '받아줬다'고 셌어요. 가로줄이 먼저 말한 사람, 세로줄이 받아준 사람이고, 숫자는 그 사람 말을 누가 받아줬는지의 비율(%)이에요.</p>
+  <div class="card scroll"><table class="heat" id="replyTable"></table></div>
+  <div class="two" style="margin-top:12px">
+    <div class="card"><h3 class="sec" style="margin-top:0">궁합 지수 TOP 5</h3><p class="sub" style="margin-bottom:8px">말을 주고받은 횟수를, 두 사람의 대화량으로 예상되는 횟수와 비교한 값. 1보다 클수록 유독 둘이 잘 받아줘요.</p><table id="affTable"></table></div>
+    <div class="card"><h3 class="sec" style="margin-top:0">이름 부르기 TOP 8</h3><p class="sub" style="margin-bottom:8px">메시지에 상대 이름을 넣은 횟수. 가장 많이 불린 사람은 따로 표시했어요.</p><table id="callTable"></table></div>
+  </div>
+  <h3 class="sec">대화를 여는 사람들</h3>
+  <p class="sub">3시간 넘게 조용하던 방에 첫 메시지를 보낸 횟수와 그 뒤 30분의 반응. '불붙음'은 다른 사람 메시지가 5개 이상 이어진 경우, '무응답'은 아무도 대답하지 않은 경우예요.</p>
+  <div class="card scroll"><table id="startTable"></table></div>
+</section>
+
+<section id="time">
+  <h2><span class="no">07</span>언제 떠드나</h2>
+  <p class="sub">요일 × 시간대 전체 메시지 수와, 사람마다 하루 중 어느 시간에 말하는지의 분포.</p>
+  <div class="card"><div class="chart" id="heat"></div><div class="callout" id="heatNote"></div></div>
+  <h3 class="sec">개인별 활동 시간</h3>
+  <div class="card scroll"><table class="heat compact" id="hourTable"></table><div class="scale"><span>그 사람 메시지 중 비율 낮음</span><span class="bar"></span><span>높음</span></div></div>
+</section>
+
+<section id="topics">
+  <h2><span class="no">08</span>무슨 얘기를 했나</h2>
+  <p class="sub">주제별 키워드가 들어간 메시지로 셌어요. 숫자는 방 평균 대비 배수(1.0 = 평균)라, 누가 어떤 주제를 유독 자주 꺼내는지 볼 수 있어요.</p>
+  <div class="card scroll"><table class="heat" id="topicTable"></table></div>
+  <h3 class="sec">주제의 흥망성쇠</h3>
+  <p class="sub">반기별로 텍스트 메시지 1,000건당 등장 횟수. 전체 대화량이 줄어든 걸 보정한 값이에요. 첫 막대(2022 상반기)는 6월 마지막 5일뿐이라 참고만 해 주세요.</p>
+  <div class="grid smalls" id="topicSmalls"></div>
+</section>
+
+<section id="scenes">
+  <h2><span class="no">09</span>레전드 장면</h2>
+  <p class="sub">모든 10분 구간(10,479개)을 'ㅋ 개수', '참가자 수', '분당 메시지 수' 세 가지로 점수 매긴 뒤 평균 낸 <b>화력</b> 순서예요. ㅋ만 세면 2~3명이 웃은 장면이 위로 올라오기 때문에, 몇 명이 몰려들었고 얼마나 빨리 달렸는지도 같이 봤어요. 화력 100이 역대 1위이고, 2024년 이후는 그해 상위 장면을 넣었어요. 화력이 높아도 수위가 높은 장면(2025년 1위 등)은 뺐어요. 테두리 있는 이름이 그 장면의 주인공이고, 카드 아래에서 당시 대화 전체를 펼쳐 볼 수 있어요.</p>
+  <div class="grid scenes" id="sceneGrid"></div>
+</section>
+
+<section id="records">
+  <h2><span class="no">10</span>기록실</h2>
+  <p class="sub">이 방의 각종 최고 기록.</p>
+  <div class="grid records" id="recordGrid"></div>
+</section>
+
+<section id="table">
+  <h2><span class="no">11</span>전체 표</h2>
+  <p class="sub">위에 쓰인 사람별 숫자를 한 번에.</p>
+  <div class="card scroll"><table id="bigtable"></table></div>
+</section>
+
+<section id="report">
+  <h2><span class="no">12</span>상세 리포트</h2>
+  <p class="sub">위의 숫자들을 한 편의 글로 엮은 종합 분석이에요. 장마다 접혀 있으니 제목을 눌러 펼쳐 보세요. 이름이 나오는 문단은 위에서 그 사람을 고르면 같이 강조돼요.</p>
+  <div class="report">
+
+  <h3>요약</h3>
+  <p>쿰척이들 방은 학창 시절부터 이어진 친구 열 명이 <b>군대라는 2년을 함께 통과한 기록</b>이에요. 2022년 여름엔 하루 345건씩 떠들던 방이 2026년엔 하루 32건으로 조용해졌어요. 그런데 대화한 날의 비율은 4년 내내 80~95%를 지켰어요. 줄어든 건 대화의 '양'이지 '빈도'가 아니에요.</p>
+  <div class="keys">
+    <div><b>1. 빈도는 그대로, 길이만 짧아졌어요</b>1시간 넘게 끊기지 않은 대화 덩어리는 해마다 1,150~1,250개로 거의 같아요. 대신 덩어리 하나의 길이가 62개에서 12개 메시지로 줄었어요.</div>
+    <div><b>2. 세 사람이 방의 3분의 2</b>형규·정서·진웅이 전체 메시지의 65.5%를 썼어요. 서로 말을 받아준 횟수만 따져도 방 전체 '받아주기'의 46%예요.</div>
+    <div><b>3. 군대가 방의 시계를 바꿨어요</b>2023년엔 주말 메시지가 36%까지 올라가고(다른 해 25~29%), 새벽 메시지는 12%에서 5%로 떨어졌어요.</div>
+    <div><b>4. 웃음은 줄고 말은 길어졌어요</b>메시지당 ㅋ는 1.41개에서 0.42개로, 욕 밀도는 1,000건당 48.6회에서 29.6회로 줄었어요. 평균 길이는 9.8자에서 10.7자로 늘었어요.</div>
+    <div><b>5. 화제는 군대에서 일상으로</b>군대 얘기는 2023년 하반기에 정점을 찍고 예비군 얘기로 바뀌었어요. 그 자리를 일본 여행, 촬영, 학교, AI 얘기가 채우고 있어요.</div>
+  </div>
+
+  <h3>1. 데이터와 방법</h3>
+  <p>2026년 11월 2일에 내보낸 대화 파일(153,821줄)에서 메시지 150,041건을 뽑았어요. 기간은 2022년 6월 26일부터 2026년 11월 1일까지예요. 카카오 채팅봇 메시지 20여 건은 뺐어요. '알 수 없음'으로 표시된 계정 두 개는 대화 맥락으로 확인해 민석(2022년 계정)과 정서(2024~25년 투폰)에 합쳤어요.</p>
+  <ul>
+    <li><b>대화 덩어리</b>: 1시간 넘게 아무도 말하지 않으면 새 덩어리로 셌어요.</li>
+    <li><b>대화 시작</b>: 3시간 넘게 조용하던 방에 처음 말한 경우예요.</li>
+    <li><b>받아주기</b>: 한 사람의 말에 다른 사람이 5분 안에 이어 말한 경우예요.</li>
+    <li><b>개그 지수</b>: 내 텍스트 메시지 뒤 2분 안에 다른 사람이 ㅋㅋㅋ(3개 이상)를 친 비율이에요.</li>
+    <li><b>화력</b>: 10분 구간의 ㅋ 개수(로그), 참가자 수, 분당 메시지 수를 각각 표준화해서 평균 낸 값이에요.</li>
+    <li>카톡 시간이 분 단위라 '즉답'은 같은 분 안의 답장이에요. 말버릇·욕·주제는 키워드 매칭이라 오차가 있어요.</li>
+  </ul>
+
+  <h3>2. 시기별 흐름</h3>
+  <div class="scroll"><table id="trendTable"></table></div>
+  <p class="note" style="font-size:12px">2022년은 6월 26일부터 약 6개월, 2026년은 11월 1일까지 10개월이에요. '하루 평균'은 대화가 있었던 날 기준이에요.</p>
+  <h4>2022년 하반기: 전성기와 입대 전야</h4>
+  <p>대화가 있었던 날마다 평균 345건이 오갔고, 대화 덩어리 하나에 평균 62개 메시지가 이어졌어요. 상대 말에 같은 분 안에 답한 비율이 58.5%로 가장 높았던 실시간 수다의 시기예요. 새벽(0~6시) 메시지도 12.2%로 가장 많았어요. 레전드 장면 15개 중 10개가 이 6개월에 몰려 있어요. 9월 진웅, 11월 민석의 입대로 '군대 실황 중계방'의 성격이 생기기 시작해요.</p>
+  <h4>2023년: 군대 시즌</h4>
+  <p>정서·형규·희마가 5월에, 희찬이 9월에 입대했어요. 휴대폰을 쓸 수 있는 시간이 정해지면서 방의 리듬이 바뀌어요. 주말 비중이 36.3%로 치솟고 새벽 비중은 5.2%로 떨어졌어요. 상위 3명 점유율이 72.7%로 4년 중 가장 높았던 해이기도 해요. 말을 할 수 있는 사람이 방을 떠받쳤다는 뜻이에요. 정서 입대 직후의 7.8일은 방 역사상 가장 긴 침묵이에요.</p>
+  <h4>2024년: 하나둘 민간인</h4>
+  <p>6월 진웅, 10월 말 정서, 11월 형규·희마가 전역했어요. 하루 평균 64건으로 줄었지만, 366일 중 349일 대화해, 활동일 비율은 1년을 꽉 채운 해 중 최고(95%)예요. 즉답률이 42.7%로 크게 떨어진 해이기도 해요. 같은 시간에 같은 생활을 하던 사람들이 각자의 시간표로 흩어진 결과로 보여요. 정서가 30.3%로 처음 연간 1위가 됐어요.</p>
+  <h4>2025년: 예비군과 일상</h4>
+  <p>군대 얘기가 예비군 얘기로 바뀌었어요. 하반기엔 먹을 것과 알바 얘기가 4년 중 가장 많았어요. 새벽 비중이 10.8%로 다시 올라간 것도 눈에 띄어요. 블루아카 헌혈 대란 같은 화력 높은 장면도 여전히 나오고, 365일 중 335일 대화했어요.</p>
+  <h4>2026년: 느슨하지만 끊기지 않게</h4>
+  <p>하루 평균 32건, 대화 덩어리당 12개 메시지로 가장 조용한 해예요. 한 달 평균 말한 사람이 8.5명으로, 처음으로 매달 열 명이 다 말하지는 않게 됐어요. 그래도 305일 중 249일은 누군가 말했어요. 사진 비중(4.9%)은 4년 중 가장 높아서, 말 대신 사진으로 근황을 나누는 경향이 보여요.</p>
+
+  <h3>3. 방의 구조: 삼각형과 위성들</h3>
+  <p>이 방은 <b>세 사람이 이루는 삼각형</b>과 그 주위를 도는 위성들로 이뤄져 있어요.</p>
+  <ul>
+    <li data-p="형규"><b>형규</b>는 엔진이에요. 메시지 23.1%, ㅋ의 39%를 혼자 만들었고 대화의 마지막 말을 911번 했어요. 형규가 멈추면 대화도 멈춰요. 2022·2023·2025년 연간 1위.</li>
+    <li data-p="정서"><b>정서</b>는 시동 장치예요. 조용한 방을 710번 깨워 1위이고, 글자 수(37만 자)와 사진(1,678장)도 1위예요. 2024·2026년 연간 1위로 요즘 방의 중심이에요.</li>
+    <li data-p="진웅"><b>진웅</b>은 연결 장치예요. 같은 분 안에 답한 비율 58.4%와 개그 지수 31.0%가 모두 1위이고, 이름도 가장 많이 불렸어요(821회).</li>
+    <li data-p="순겸"><b>순겸</b>은 독자 궤도를 도는 2선이에요. 메시지 14.6%로 4위인데 피크가 오후 2시라 혼자 다른 시간대를 맡고, 서브컬처 정보와 연타로 존재감을 내요.</li>
+  </ul>
+  <p>나머지 여섯 명(민석·준의·재훈·희마·희찬·교한)의 메시지는 합쳐서 19.9%예요. 이들은 대개 <b>코어 중 한 명과 전용 채널</b>을 가지고 있어요. 희마 말의 41%와 재훈 말의 38%는 형규가 받고, 준의 말의 40%는 정서가 받아요. 교한 말은 진웅이 33% 받아요.</p>
+  <p>점유율은 시기에 따라 크게 움직였어요. 준의는 2022년 1.6%에서 전역 후 2024년 10.3%로 올라섰어요. 희찬은 2025년 1.9%에서 2026년 5.2%로 늘었어요. 반대로 재훈(6.4%→0.8%)과 민석(8.6%→1.5%)은 초창기 화력에 비해 최근엔 눈팅에 가까워졌어요.</p>
+
+  <h3>4. 관계 네트워크</h3>
+  <p>대화량만 보면 형규·정서·진웅 사이의 주고받기가 압도적이에요. 그래서 둘의 대화량으로 예상되는 횟수 대비 실제 주고받은 횟수인 <b>궁합 지수</b>를 따로 봤어요.</p>
+  <ul>
+    <li data-p="민석 재훈"><b>민석·재훈 1.84</b>: 궁합 1위예요. 2022년 11월 민석이 계정을 바꿨을 때 18분 만에 다시 초대한 사람이 재훈이에요.</li>
+    <li data-p="정서 준의"><b>정서·준의 1.72</b>: 정서가 준의 이름을 162번 불렀고, 준의 말의 40%를 정서가 받아요. 애니 추천 책임 공방(중2병 고해성사)의 두 주인공이기도 해요.</li>
+    <li data-p="형규 희마"><b>형규·희마 1.69</b>: 희마가 말을 꺼내면 형규가 받아요. 밤 11시 피크의 희마와 저녁 8시 피크의 형규가 밤을 이어 줘요.</li>
+    <li data-p="형규 재훈"><b>형규·재훈 1.62</b>: 짧고 굵은 리액션끼리의 조합이에요.</li>
+  </ul>
+  <p>이름 부르기로 보면 형규가 진웅을 부른 게 310번으로 가장 많아요. 진웅↔정서도 서로 200번 안팎 불렀어요. 많이 불린 이름 순서는 진웅(821), 정서(703), 준의(298), 형규(273)예요.</p>
+
+  <h3>5. 유머의 구조</h3>
+  <p>이 방에선 <b>웃는 사람과 웃기는 사람이 달라요</b>. ㅋ를 가장 많이 치는 건 형규(61,103개)지만, 자기 말 뒤에 남의 ㅋㅋㅋ가 따라붙는 비율은 진웅(31.0%), 희마(30.2%), 정서(29.6%)가 상위예요. 웃음을 받아낸 횟수로는 정서 9,247번, 진웅 8,862번, 형규 8,417번 순이에요.</p>
+  <p>레전드 장면 15개를 화력으로 다시 줄 세우면 1~3위가 순겸의 챔미 대참사, 희찬의 병장 월급 자랑, 순겸·재훈 생존 확인이에요. ㅋ만 셌을 때는 진웅이 등장하는 장면이 위로 몰렸는데, 참가 인원과 속도를 함께 보니 주인공이 고르게 퍼졌어요. 주연 횟수는 순겸 7, 정서 6, 민석 5, 형규·준의 4번이에요. 장면이 2022년에 몰린 건 그때 인원과 속도가 컸기 때문이에요. 2023년 이후 장면들도 각 해에서는 상위 1~2%의 화력이에요.</p>
+
+  <h3>6. 말투와 언어</h3>
+  <ul>
+    <li><b>"~노"체</b>는 이 방의 공용어예요. 형규 메시지의 7.2%가 "~노"로 끝나고, 진웅(4.1%)·희마(3.8%)·재훈(3.7%)이 뒤를 이어요.</li>
+    <li><b>욕 밀도</b>는 2022년 1,000건당 48.6회에서 2024년 28.1회로 크게 줄었다가 30회 안팎을 유지하고 있어요. 사람별로는 민석(83.3)이 가장 높고 준의(28.5)가 가장 낮아요.</li>
+    <li><b>어휘 다양성</b>은 순겸이 가장 높아요(400단어마다 안 겹치는 단어 92.6%). 형규는 86.2%로 가장 낮은데, "오", "ㄹㅇ" 같은 짧은 반응이 많아서예요.</li>
+    <li><b>물음표</b> 비율은 4년 내내 5% 안팎이에요. 사람별로는 희찬(10.0%), 민석(8.6%), 준의(8.3%)가 질문을 많이 해요.</li>
+  </ul>
+
+  <h3>7. 주제 지형</h3>
+  <p><b>군대</b> 얘기는 2,835회로 가장 큰 주제였어요. 2023년 하반기에는 텍스트 1,000건당 59회까지 올라갔다가 2026년엔 2~6회로 줄었어요. <b>우마무스메</b>는 기록이 시작된 2022년 여름이 정점이고 이후 거의 사라졌어요. 반대로 <b>블루아카</b>는 꾸준히 이어지다 2026년 하반기에 가장 높아졌어요.</p>
+  <p>최근 비중이 커진 주제는 <b>일본·여행</b>(2026년 하반기 정점), <b>영상·촬영</b>(2026년), <b>학교·과제</b>(2026년 상반기, 복학 시즌), <b>AI</b>(2025~2026년)예요. <b>돈</b> 얘기는 전역 러시가 있던 2024년 하반기에 가장 많았어요.</p>
+  <p>사람마다 전담 주제가 분명해요. 정서는 영상·촬영(방 평균의 2.2배), 민석은 우마무스메(6.1배), 준의는 AI(3.0배)·운동(2.8배)·애니(2.6배), 희찬은 연애(3.7배)·운동(2.2배), 희마는 음악(1.8배), 교한은 군대(2.1배)를 유독 많이 꺼내요.</p>
+
+  <h3>8. 방 건강 진단</h3>
+  <div class="scroll"><table>
+    <thead><tr><th>지표</th><th>상태</th><th>근거</th></tr></thead>
+    <tbody>
+      <tr><td>지속성</td><td>매우 좋음</td><td>4년 4개월 중 최장 침묵 7.8일, 2026년에도 82%의 날에 대화</td></tr>
+      <tr><td>대화 빈도</td><td>좋음</td><td>대화 덩어리 수가 해마다 1,150~1,250개로 일정</td></tr>
+      <tr><td>대화 깊이</td><td>줄어드는 중</td><td>덩어리당 메시지 62 → 30 → 18 → 15 → 12개</td></tr>
+      <tr><td>응답성</td><td>줄어드는 중</td><td>같은 분 안 답장 58.5% → 33.4%</td></tr>
+      <tr><td>참여 폭</td><td>주의</td><td>월평균 말한 사람 10명 → 8.5명. 재훈 68건·교한 21건(2026)</td></tr>
+      <tr><td>집중도</td><td>코어 의존</td><td>상위 3명이 해마다 63~73%</td></tr>
+    </tbody>
+  </table></div>
+  <p>정리하면 <b>불은 작아졌지만 꺼진 적은 없는 방</b>이에요. 각자 생활이 생기면서 한 번에 오래 떠들 일은 줄었지만, 매일 누군가 한마디는 던지고 누군가는 그걸 받아요. 이 방을 지탱하는 건 형규·정서·진웅의 삼각형이고, 위성 멤버들이 가끔 불씨를 던질 때(희마의 대화 개시 성공률 49%) 가장 크게 타올라요.</p>
+
+  <h3>9. 멤버별 한 줄 진단</h3>
+  <ul class="diag">
+    <li data-p="형규"><b>형규</b>: 방의 엔진이자 마지막 말 담당. 형규의 "ㄹㅇ"과 "~노"가 이 방의 말투를 만들었어요.</li>
+    <li data-p="정서"><b>정서</b>: 대화를 가장 많이 여는 이야기꾼. 요즘 이 방은 정서가 굴려요.</li>
+    <li data-p="진웅"><b>진웅</b>: 가장 빨리 받고 가장 많이 웃기는 연결 장치. 이름이 가장 많이 불린 사람.</li>
+    <li data-p="순겸"><b>순겸</b>: 오후 2시의 정보통. 짧게 끊어 치지만 어휘는 가장 풍부해요.</li>
+    <li data-p="민석"><b>민석</b>: 2022년의 화력 담당이자 우마무스메 홍보대사. 재훈과의 궁합 1위.</li>
+    <li data-p="준의"><b>준의</b>: 또박또박 쓰는 정자체. 전역 후 존재감이 커진 사람이자 생일 축하 담당.</li>
+    <li data-p="재훈"><b>재훈</b>: 짧고 굵은 리액션 장인. 최근엔 눈팅 모드지만 민석·형규와의 궁합은 여전해요.</li>
+    <li data-p="희마"><b>희마</b>: 밤 11시의 불씨. 말을 꺼내면 절반은 불이 붙어요.</li>
+    <li data-p="희찬"><b>희찬</b>: 질문왕. 2026년에 2025년보다 메시지 수가 늘어난 유일한 멤버예요.</li>
+    <li data-p="교한"><b>교한</b>: 오전 11시의 아침형 인간. 가끔 와서 ㄷㄷ 한 번 남기고 가요.</li>
+  </ul>
+
+  <h3>10. 한계</h3>
+  <p>내보내기 파일에 남은 텍스트만 분석했기 때문에 사진·이모티콘·동영상 내용, 보이스톡, 삭제된 메시지는 해석하지 못했어요. 2022년 6월 26일 이전 대화도 없어요. 키워드 매칭은 맥락을 모르기 때문에 주제·욕·말버릇 수치는 방향을 보는 용도로만 쓰는 게 좋아요. 입대·전역 날짜는 대화에서 확인된 것만 넣었어요.</p>
+  </div>
+</section>
+
+<div class="foot">
+  <p>2026년 11월 2일에 저장한 대화 내보내기 파일 기준. 카카오 채팅봇 메시지는 뺐어요. 위쪽 이름 버튼이나 표·카드 속 이름을 누르면 그 사람만 강조되고, 같은 이름을 다시 누르거나 Esc를 누르면 풀려요.</p>
+  <p>'알 수 없음'으로 표시된 두 계정은 합쳤어요. 2022년 11월 20일 새벽에 나간 계정은 민석의 예전 계정이에요. 같은 날 18분 뒤 재훈이 민석을 다시 초대했어요. 2024년 4월에 준의가 초대해 2025년 6월에 나간 계정은 정서의 투폰이에요. 대화에 "정서 투폰이었노", "투폰으로 던그리드는 안되네"가 남아 있어요.</p>
+  <p>욕·말버릇·주제는 키워드 매칭이라 오차가 있어요. 카톡 시간이 분 단위라 '1분 안에 답한 비율'은 같은 분 안에 답한 비율이에요.</p>
+</div>
+</div>
+
+<script>
+const DATA = {"order": ["형규", "정서", "진웅", "순겸", "민석", "준의", "재훈", "희마", "희찬", "교한"], "people": [{"name": "형규", "msgs": 34639, "text": 33437, "chars": 326160, "avg_len": 9.8, "k": 61103, "k_per_msg": 1.83, "max_k": 37, "photos": 826, "emoticon": 175, "link": 135, "sharp": 217, "video": 9, "deleted": 42, "bday": 7, "swear_per_1k": 41.7, "night_pct": 6.9, "peak_hour": 20, "starts": 434, "start_hit_pct": 23.0, "start_dud_pct": 48.8, "ends": 911, "instant_pct": 50.7, "laugh_pct": 25.2, "laugh_got": 8417, "mattr": 0.862, "called": 273, "first": "2022-06-26", "last": "2026-11-01", "years": [16924, 9752, 2712, 3986, 1265], "answers": ["진웅", 32], "answered_by": ["진웅", 32], "sig": ["입갤", "ㅇㅈㄹ", "ㅆㅅㅌㅊ", "ㅁㅌㅊ", "호오", "머농", "간만에", "ㅎㅇ"], "fav": []}, {"name": "정서", "msgs": 33070, "text": 31213, "chars": 370636, "avg_len": 11.9, "k": 28585, "k_per_msg": 0.92, "max_k": 59, "photos": 1678, "emoticon": 109, "link": 207, "sharp": 133, "video": 17, "deleted": 27, "bday": 9, "swear_per_1k": 34.9, "night_pct": 10.0, "peak_hour": 20, "starts": 710, "start_hit_pct": 33.0, "start_dud_pct": 25.4, "ends": 403, "instant_pct": 56.2, "laugh_pct": 29.6, "laugh_got": 9247, "mattr": 0.901, "called": 703, "first": "2022-06-26", "last": "2026-11-01", "years": [10878, 9287, 6782, 3758, 2365], "answers": ["진웅", 35], "answered_by": ["진웅", 35], "sig": ["호옹", "왜캐", "진쟈", "앗차차", "긍까", "같애", "어째서", "그러고보니"], "fav": ["영상·촬영", "학교·과제", "돈"]}, {"name": "진웅", "msgs": 30557, "text": 28606, "chars": 339329, "avg_len": 11.9, "k": 38207, "k_per_msg": 1.34, "max_k": 44, "photos": 1419, "emoticon": 84, "link": 450, "sharp": 110, "video": 15, "deleted": 18, "bday": 10, "swear_per_1k": 40.8, "night_pct": 7.6, "peak_hour": 20, "starts": 490, "start_hit_pct": 31.6, "start_dud_pct": 27.6, "ends": 465, "instant_pct": 58.4, "laugh_pct": 31.0, "laugh_got": 8862, "mattr": 0.893, "called": 821, "first": "2022-06-26", "last": "2026-10-29", "years": [11639, 7742, 5885, 3670, 1621], "answers": ["정서", 35], "answered_by": ["형규", 36], "sig": ["님아", "끼얏호우", "올만에", "겁나", "오키", "먼가", "어쩐지", "마렵다"], "fav": ["블루아카", "군대", "음악"]}, {"name": "순겸", "msgs": 21936, "text": 19743, "chars": 143866, "avg_len": 7.3, "k": 8701, "k_per_msg": 0.44, "max_k": 22, "photos": 1325, "emoticon": 337, "link": 308, "sharp": 291, "video": 38, "deleted": 39, "bday": 1, "swear_per_1k": 42.8, "night_pct": 11.8, "peak_hour": 14, "starts": 344, "start_hit_pct": 14.8, "start_dud_pct": 41.6, "ends": 389, "instant_pct": 46.3, "laugh_pct": 22.8, "laugh_got": 4505, "mattr": 0.926, "called": 136, "first": "2022-06-26", "last": "2026-10-29", "years": [12349, 2336, 2898, 3271, 1082], "answers": ["진웅", 29], "answered_by": ["형규", 31], "sig": ["그뭐냐", "아무튼", "솔직히", "아맞음", "아니근데", "죄다", "못해도", "vs"], "fav": ["우마무스메", "블루아카", "게임"]}, {"name": "민석", "msgs": 8171, "text": 7394, "chars": 71925, "avg_len": 9.7, "k": 5077, "k_per_msg": 0.69, "max_k": 26, "photos": 653, "emoticon": 43, "link": 97, "sharp": 42, "video": 11, "deleted": 7, "bday": 9, "swear_per_1k": 83.3, "night_pct": 8.3, "peak_hour": 16, "starts": 129, "start_hit_pct": 29.5, "start_dud_pct": 27.1, "ends": 84, "instant_pct": 49.0, "laugh_pct": 23.6, "laugh_got": 1743, "mattr": 0.892, "called": 128, "first": "2022-06-26", "last": "2026-10-04", "years": [5583, 1791, 467, 213, 117], "answers": ["형규", 29], "answered_by": ["형규", 30], "sig": ["ㅋㅋㅋㅋㄱㄱ", "헤으응", "정서쿤", "말뽑", "풀돌", "살려줘"], "fav": ["우마무스메", "알바·일"]}, {"name": "준의", "msgs": 7357, "text": 7220, "chars": 87014, "avg_len": 12.1, "k": 640, "k_per_msg": 0.09, "max_k": 21, "photos": 63, "emoticon": 42, "link": 36, "sharp": 9, "video": 2, "deleted": 10, "bday": 12, "swear_per_1k": 28.5, "night_pct": 8.3, "peak_hour": 20, "starts": 328, "start_hit_pct": 29.3, "start_dud_pct": 24.1, "ends": 160, "instant_pct": 44.6, "laugh_pct": 25.5, "laugh_got": 1843, "mattr": 0.892, "called": 298, "first": "2022-06-26", "last": "2026-10-29", "years": [1021, 1980, 2315, 1349, 692], "answers": ["정서", 39], "answered_by": ["정서", 40], "sig": ["왜케", "보니깐", "잼네", "뭐지요", "아시나요", "좋네", "고민되네", "진웅아"], "fav": ["운동·몸", "애니·만화", "게임"]}, {"name": "재훈", "msgs": 6177, "text": 5685, "chars": 35963, "avg_len": 6.3, "k": 9909, "k_per_msg": 1.74, "max_k": 38, "photos": 142, "emoticon": 271, "link": 28, "sharp": 64, "video": 1, "deleted": 9, "bday": 8, "swear_per_1k": 39.4, "night_pct": 13.6, "peak_hour": 17, "starts": 37, "start_hit_pct": 40.5, "start_dud_pct": 35.1, "ends": 123, "instant_pct": 47.5, "laugh_pct": 26.4, "laugh_got": 1503, "mattr": 0.901, "called": 62, "first": "2022-06-26", "last": "2026-09-14", "years": [4200, 1419, 281, 209, 68], "answers": ["형규", 40], "answered_by": ["형규", 38], "sig": ["ㄹㅇㅋㅋ", "ㄷㄷ", "하여튼", "ww", "우흥", "그저", "심지어"], "fav": []}, {"name": "희마", "msgs": 4509, "text": 4262, "chars": 43983, "avg_len": 10.3, "k": 2935, "k_per_msg": 0.69, "max_k": 25, "photos": 101, "emoticon": 118, "link": 4, "sharp": 25, "video": 5, "deleted": 2, "bday": 3, "swear_per_1k": 41.1, "night_pct": 15.1, "peak_hour": 23, "starts": 87, "start_hit_pct": 49.4, "start_dud_pct": 12.6, "ends": 46, "instant_pct": 46.6, "laugh_pct": 30.2, "laugh_got": 1289, "mattr": 0.901, "called": 155, "first": "2022-06-27", "last": "2026-10-28", "years": [1979, 1157, 324, 656, 393], "answers": ["형규", 41], "answered_by": ["형규", 41], "sig": ["건가", "마즘", "아오", "예아", "으악", "어이쿠", "축하한다", "요번에"], "fav": ["음악", "알바·일"]}, {"name": "희찬", "msgs": 3083, "text": 2821, "chars": 31353, "avg_len": 11.1, "k": 1183, "k_per_msg": 0.42, "max_k": 13, "photos": 235, "emoticon": 13, "link": 18, "sharp": 21, "video": 8, "deleted": 1, "bday": 2, "swear_per_1k": 39.0, "night_pct": 6.9, "peak_hour": 16, "starts": 86, "start_hit_pct": 27.9, "start_dud_pct": 36.0, "ends": 75, "instant_pct": 47.1, "laugh_pct": 20.2, "laugh_got": 571, "mattr": 0.91, "called": 44, "first": "2022-06-26", "last": "2026-10-29", "years": [604, 1196, 541, 325, 417], "answers": ["형규", 31], "answered_by": ["형규", 31], "sig": ["형규야", "사려고", "어때", "이거로", "친구가", "지금은"], "fav": ["운동·몸", "돈", "군대"]}, {"name": "교한", "msgs": 542, "text": 525, "chars": 3276, "avg_len": 6.2, "k": 123, "k_per_msg": 0.23, "max_k": 5, "photos": 4, "emoticon": 6, "link": 4, "sharp": 2, "video": 1, "deleted": 3, "bday": 0, "swear_per_1k": 32.4, "night_pct": 1.7, "peak_hour": 11, "starts": 26, "start_hit_pct": 19.2, "start_dud_pct": 30.8, "ends": 14, "instant_pct": 27.5, "laugh_pct": 7.4, "laugh_got": 39, "mattr": 0.871, "called": 18, "first": "2022-06-30", "last": "2026-08-22", "years": [91, 187, 165, 78, 21], "answers": ["진웅", 36], "answered_by": ["진웅", 33], "sig": ["ㄷㄷ", "ㅋㅋㄱㄲ", "님들", "나만"], "fav": ["군대"]}], "total": 150041, "first": "2022-06-26", "last": "2026-11-01", "span_days": 1590, "days_active": 1451, "k_total": 156463, "photo_total": 6446, "chars_total": 1453505, "months": ["2022-06", "2022-07", "2022-08", "2022-09", "2022-10", "2022-11", "2022-12", "2023-01", "2023-02", "2023-03", "2023-04", "2023-05", "2023-06", "2023-07", "2023-08", "2023-09", "2023-10", "2023-11", "2023-12", "2024-01", "2024-02", "2024-03", "2024-04", "2024-05", "2024-06", "2024-07", "2024-08", "2024-09", "2024-10", "2024-11", "2024-12", "2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03", "2026-04", "2026-05", "2026-06", "2026-07", "2026-08", "2026-09", "2026-10", "2026-11"], "month_total": [1351, 14276, 12741, 13429, 7149, 7244, 9078, 6492, 3588, 3601, 4915, 1909, 1207, 1344, 4589, 2348, 2820, 1078, 2956, 1186, 1547, 2982, 1782, 1717, 1758, 2458, 2065, 1886, 1771, 2064, 1154, 1879, 1834, 2313, 1575, 1469, 1621, 1657, 643, 1882, 1224, 392, 1026, 860, 902, 735, 795, 1580, 443, 826, 792, 408, 694, 6], "years": [2022, 2023, 2024, 2025, 2026], "year_total": [65268, 36847, 22370, 17515, 8041], "year_active_days": [189, 329, 349, 335, 249], "year_share": {"형규": [25.9, 26.5, 12.1, 22.8, 15.7], "정서": [16.7, 25.2, 30.3, 21.5, 29.4], "진웅": [17.8, 21.0, 26.3, 21.0, 20.2], "순겸": [18.9, 6.3, 13.0, 18.7, 13.5], "민석": [8.6, 4.9, 2.1, 1.2, 1.5], "준의": [1.6, 5.4, 10.3, 7.7, 8.6], "재훈": [6.4, 3.9, 1.3, 1.2, 0.8], "희마": [3.0, 3.1, 1.4, 3.7, 4.9], "희찬": [0.9, 3.2, 2.4, 1.9, 5.2], "교한": [0.1, 0.5, 0.7, 0.4, 0.3]}, "hour_share": {"형규": [4.02, 1.31, 0.66, 0.65, 0.13, 0.15, 0.55, 0.66, 1.89, 3.18, 3.66, 4.29, 5.49, 5.62, 5.74, 5.99, 6.43, 6.14, 7.68, 10.07, 10.18, 5.39, 4.66, 5.45], "정서": [3.57, 2.09, 1.37, 1.11, 0.97, 0.9, 1.04, 0.83, 2.04, 2.45, 3.38, 5.01, 5.25, 5.64, 6.63, 6.19, 6.3, 7.19, 7.6, 8.85, 8.89, 5.12, 3.36, 4.23], "진웅": [3.51, 1.68, 0.82, 0.65, 0.64, 0.34, 0.71, 0.57, 1.09, 2.27, 3.45, 4.63, 5.93, 5.62, 7.27, 6.98, 5.88, 6.14, 8.33, 9.67, 10.0, 4.68, 3.67, 5.48], "순겸": [4.11, 1.93, 1.86, 1.23, 1.39, 1.27, 0.9, 1.09, 1.53, 2.36, 2.83, 4.47, 6.76, 5.53, 8.41, 7.23, 6.64, 5.72, 7.81, 7.02, 6.25, 4.96, 3.68, 5.01], "민석": [4.45, 1.7, 1.22, 0.23, 0.56, 0.11, 0.13, 0.84, 0.5, 1.68, 2.85, 3.93, 5.63, 5.63, 8.44, 8.57, 9.4, 7.29, 8.63, 7.05, 6.3, 5.42, 4.74, 4.68], "준의": [3.3, 1.93, 1.25, 0.8, 0.57, 0.39, 0.41, 1.1, 1.4, 2.5, 3.1, 4.46, 6.1, 3.18, 7.82, 7.35, 7.33, 7.14, 7.99, 10.62, 11.01, 4.62, 2.38, 3.25], "재훈": [5.63, 3.64, 1.26, 0.86, 0.73, 1.44, 2.17, 0.81, 1.15, 3.27, 2.99, 4.87, 5.94, 5.16, 6.56, 6.22, 7.11, 7.37, 6.39, 5.99, 5.7, 4.24, 4.97, 5.52], "희마": [6.7, 4.26, 2.24, 0.82, 0.93, 0.16, 0.75, 0.69, 0.95, 2.68, 2.22, 3.55, 4.68, 3.48, 3.79, 4.97, 4.24, 8.21, 7.14, 7.78, 8.07, 3.73, 8.14, 9.82], "희찬": [2.63, 1.33, 0.81, 0.97, 0.49, 0.65, 0.13, 0.26, 1.3, 1.56, 2.04, 4.15, 6.65, 7.95, 7.69, 10.57, 13.49, 10.09, 5.55, 4.83, 5.97, 3.02, 3.44, 4.44], "교한": [0.37, 0.55, 0.0, 0.74, 0.0, 0.0, 0.18, 1.85, 4.8, 10.89, 5.72, 15.68, 9.59, 5.17, 5.54, 7.56, 11.81, 7.93, 4.06, 1.85, 2.58, 0.74, 0.92, 1.48]}, "hour_weekday": [[1082, 323, 384, 204, 132, 161, 115, 216, 235, 518, 436, 1118, 981, 1733, 1895, 1537, 1562, 1681, 2066, 2309, 1719, 934, 722, 1279], [737, 434, 138, 151, 229, 62, 142, 223, 291, 432, 771, 976, 1512, 1048, 1261, 1294, 1386, 1427, 2092, 1600, 2178, 1625, 864, 936], [721, 265, 222, 410, 166, 208, 197, 152, 342, 606, 704, 784, 1333, 740, 932, 886, 1692, 1179, 1753, 1948, 1534, 853, 1047, 874], [933, 606, 171, 106, 151, 91, 392, 163, 286, 675, 828, 627, 994, 694, 1364, 969, 991, 1525, 1623, 1845, 1728, 1062, 919, 1727], [1088, 365, 214, 126, 172, 213, 114, 153, 221, 490, 901, 993, 729, 892, 1117, 1536, 1499, 1202, 1502, 1986, 1741, 797, 926, 734], [560, 403, 229, 125, 111, 29, 35, 82, 498, 819, 715, 915, 1499, 1780, 2239, 1809, 1700, 1468, 1343, 2060, 2390, 876, 486, 753], [765, 427, 378, 139, 95, 124, 168, 177, 447, 336, 546, 1448, 1629, 1297, 1548, 2028, 1150, 1451, 1255, 1396, 1843, 1243, 1039, 1308]], "tics": ["ㅋ", "ㄹㅇ", "ㄷㄷ", "ㅇㅇ", "ㅇㅎ", "오", "~노", "?", "진짜", "근데", "존나 계열", "시발 계열"], "tic": {"형규": {"ㅋ": 16.6, "ㄹㅇ": 4.7, "ㄷㄷ": 0.7, "ㅇㅇ": 0.6, "ㅇㅎ": 0.3, "오": 6.1, "~노": 7.2, "?": 6.2, "진짜": 1.4, "근데": 1.0, "존나 계열": 0.9, "시발 계열": 1.0}, "정서": {"ㅋ": 7.0, "ㄹㅇ": 0.6, "ㄷㄷ": 0.2, "ㅇㅇ": 0.6, "ㅇㅎ": 0.1, "오": 0.7, "~노": 3.2, "?": 4.5, "진짜": 3.5, "근데": 1.6, "존나 계열": 1.1, "시발 계열": 0.9}, "진웅": {"ㅋ": 13.4, "ㄹㅇ": 0.7, "ㄷㄷ": 0.7, "ㅇㅇ": 0.7, "ㅇㅎ": 0.2, "오": 1.0, "~노": 4.1, "?": 3.9, "진짜": 2.0, "근데": 1.3, "존나 계열": 1.9, "시발 계열": 0.9}, "순겸": {"ㅋ": 8.3, "ㄹㅇ": 1.7, "ㄷㄷ": 0.4, "ㅇㅇ": 0.8, "ㅇㅎ": 0.0, "오": 0.4, "~노": 1.2, "?": 4.1, "진짜": 1.1, "근데": 0.8, "존나 계열": 1.3, "시발 계열": 1.6}, "민석": {"ㅋ": 13.0, "ㄹㅇ": 2.5, "ㄷㄷ": 1.9, "ㅇㅇ": 0.7, "ㅇㅎ": 0.6, "오": 0.3, "~노": 1.8, "?": 8.6, "진짜": 1.1, "근데": 0.9, "존나 계열": 1.9, "시발 계열": 3.7}, "준의": {"ㅋ": 2.0, "ㄹㅇ": 0.6, "ㄷㄷ": 0.2, "ㅇㅇ": 0.5, "ㅇㅎ": 0.3, "오": 0.2, "~노": 3.1, "?": 8.3, "진짜": 5.7, "근데": 2.4, "존나 계열": 1.3, "시발 계열": 0.6}, "재훈": {"ㅋ": 31.9, "ㄹㅇ": 4.3, "ㄷㄷ": 2.6, "ㅇㅇ": 0.8, "ㅇㅎ": 0.1, "오": 4.6, "~노": 3.7, "?": 6.1, "진짜": 0.4, "근데": 0.3, "존나 계열": 0.8, "시발 계열": 1.4}, "희마": {"ㅋ": 14.9, "ㄹㅇ": 1.9, "ㄷㄷ": 0.3, "ㅇㅇ": 0.3, "ㅇㅎ": 0.3, "오": 0.9, "~노": 3.8, "?": 4.9, "진짜": 1.7, "근데": 1.1, "존나 계열": 1.9, "시발 계열": 0.9}, "희찬": {"ㅋ": 10.7, "ㄹㅇ": 1.1, "ㄷㄷ": 1.5, "ㅇㅇ": 0.2, "ㅇㅎ": 0.7, "오": 0.5, "~노": 1.8, "?": 10.0, "진짜": 0.4, "근데": 1.2, "존나 계열": 1.7, "시발 계열": 1.1}, "교한": {"ㅋ": 10.1, "ㄹㅇ": 2.3, "ㄷㄷ": 4.0, "ㅇㅇ": 1.3, "ㅇㅎ": 0.0, "오": 0.2, "~노": 0.6, "?": 5.3, "진짜": 1.5, "근데": 0.8, "존나 계열": 2.1, "시발 계열": 1.0}}, "reply_pct": {"형규": {"형규": null, "정서": 30.3, "진웅": 31.6, "순겸": 10.9, "민석": 5.7, "준의": 4.0, "재훈": 9.5, "희마": 5.3, "희찬": 2.5, "교한": 0.2}, "정서": {"형규": 34.3, "정서": null, "진웅": 34.7, "순겸": 8.5, "민석": 3.8, "준의": 9.0, "재훈": 4.5, "희마": 3.2, "희찬": 1.8, "교한": 0.2}, "진웅": {"형규": 35.7, "정서": 33.8, "진웅": null, "순겸": 10.9, "민석": 4.4, "준의": 7.5, "재훈": 3.8, "희마": 1.8, "희찬": 1.7, "교한": 0.3}, "순겸": {"형규": 31.2, "정서": 22.1, "진웅": 28.4, "순겸": null, "민석": 6.1, "준의": 3.9, "재훈": 5.0, "희마": 1.4, "희찬": 1.7, "교한": 0.2}, "민석": {"형규": 30.2, "정서": 18.6, "진웅": 23.2, "순겸": 11.3, "민석": null, "준의": 2.2, "재훈": 9.5, "희마": 2.7, "희찬": 2.3, "교한": 0.0}, "준의": {"형규": 15.8, "정서": 40.2, "진웅": 32.8, "순겸": 6.3, "민석": 1.7, "준의": null, "재훈": 1.3, "희마": 0.8, "희찬": 0.8, "교한": 0.0}, "재훈": {"형규": 37.8, "정서": 21.2, "진웅": 16.3, "순겸": 9.2, "민석": 8.7, "준의": 1.5, "재훈": null, "희마": 3.4, "희찬": 1.6, "교한": 0.1}, "희마": {"형규": 40.5, "정서": 26.8, "진웅": 16.0, "순겸": 5.0, "민석": 3.6, "준의": 1.4, "재훈": 5.1, "희마": null, "희찬": 1.2, "교한": 0.3}, "희찬": {"형규": 31.3, "정서": 24.0, "진웅": 20.8, "순겸": 8.6, "민석": 5.3, "준의": 3.8, "재훈": 3.7, "희마": 2.4, "희찬": null, "교한": 0.2}, "교한": {"형규": 21.2, "정서": 24.4, "진웅": 33.1, "순겸": 4.4, "민석": 2.5, "준의": 2.5, "재훈": 3.1, "희마": 3.8, "희찬": 5.0, "교한": null}}, "aff": [{"a": "민석", "b": "재훈", "n": 595, "aff": 1.84}, {"a": "정서", "b": "준의", "n": 3016, "aff": 1.72}, {"a": "형규", "b": "희마", "n": 1731, "aff": 1.69}, {"a": "형규", "b": "재훈", "n": 2629, "aff": 1.62}, {"a": "정서", "b": "진웅", "n": 10595, "aff": 1.51}, {"a": "진웅", "b": "준의", "n": 2470, "aff": 1.41}, {"a": "형규", "b": "진웅", "n": 10287, "aff": 1.39}, {"a": "형규", "b": "정서", "n": 9897, "aff": 1.34}, {"a": "순겸", "b": "민석", "n": 753, "aff": 1.32}, {"a": "형규", "b": "희찬", "n": 785, "aff": 1.28}, {"a": "형규", "b": "순겸", "n": 3564, "aff": 1.24}, {"a": "진웅", "b": "순겸", "n": 3410, "aff": 1.24}, {"a": "형규", "b": "민석", "n": 1867, "aff": 1.22}, {"a": "정서", "b": "희마", "n": 1113, "aff": 1.15}, {"a": "정서", "b": "희찬", "n": 591, "aff": 1.02}, {"a": "진웅", "b": "민석", "n": 1452, "aff": 0.99}, {"a": "순겸", "b": "재훈", "n": 602, "aff": 0.99}, {"a": "정서", "b": "순겸", "n": 2673, "aff": 0.98}, {"a": "진웅", "b": "희찬", "n": 539, "aff": 0.93}, {"a": "정서", "b": "재훈", "n": 1371, "aff": 0.88}, {"a": "정서", "b": "민석", "n": 1215, "aff": 0.83}, {"a": "순겸", "b": "준의", "n": 492, "aff": 0.72}, {"a": "진웅", "b": "재훈", "n": 1107, "aff": 0.71}, {"a": "형규", "b": "준의", "n": 1246, "aff": 0.68}, {"a": "진웅", "b": "희마", "n": 647, "aff": 0.66}], "calls": [{"from": "형규", "to": "진웅", "n": 310}, {"from": "진웅", "to": "정서", "n": 203}, {"from": "정서", "to": "진웅", "n": 188}, {"from": "형규", "to": "정서", "n": 163}, {"from": "정서", "to": "준의", "n": 162}, {"from": "순겸", "to": "진웅", "n": 116}, {"from": "준의", "to": "진웅", "n": 89}, {"from": "순겸", "to": "정서", "n": 84}], "topics": {"군대": {"total": 2835, "idx": {"형규": 0.91, "정서": 1.18, "진웅": 1.35, "순겸": 0.27, "민석": 0.53, "준의": 1.98, "재훈": 0.22, "희마": 1.04, "희찬": 1.59, "교한": 2.08}, "half": [2.4, 11.6, 27.1, 59.0, 39.3, 18.1, 6.7, 5.2, 2.3, 6.2]}, "학교·과제": {"total": 1366, "idx": {"형규": 0.94, "정서": 1.94, "진웅": 0.42, "순겸": 0.79, "민석": 0.18, "준의": 1.7, "재훈": 0.18, "희마": 1.23, "희찬": 0.33, "교한": 0.59}, "half": [6.4, 13.8, 3.5, 3.1, 8.9, 3.6, 11.1, 10.9, 16.6, 9.7]}, "알바·일": {"total": 838, "idx": {"형규": 1.03, "정서": 1.11, "진웅": 1.16, "순겸": 0.53, "민석": 1.25, "준의": 1.07, "재훈": 0.38, "희마": 1.42, "희찬": 1.07, "교한": 0.0}, "half": [5.6, 4.5, 7.3, 6.2, 3.1, 8.6, 6.6, 13.6, 6.6, 6.6]}, "게임": {"total": 1362, "idx": {"형규": 0.51, "정서": 0.87, "진웅": 1.3, "순겸": 1.35, "민석": 0.97, "준의": 2.15, "재훈": 0.84, "희마": 0.39, "희찬": 1.28, "교한": 0.79}, "half": [12.1, 10.4, 9.8, 7.6, 13.2, 7.1, 9.5, 10.1, 4.5, 8.2]}, "블루아카": {"total": 289, "idx": {"형규": 0.5, "정서": 1.05, "진웅": 1.48, "순겸": 1.63, "민석": 0.79, "준의": 0.27, "재훈": 0.94, "희마": 0.92, "희찬": 0.0, "교한": 0.0}, "half": [0.0, 2.1, 2.4, 1.2, 1.5, 1.1, 2.4, 3.6, 2.7, 4.3]}, "우마무스메": {"total": 289, "idx": {"형규": 0.32, "정서": 0.34, "진웅": 0.9, "순겸": 2.2, "민석": 6.07, "준의": 0.2, "재훈": 0.43, "희마": 0.34, "희찬": 0.0, "교한": 0.0}, "half": [8.9, 3.6, 0.9, 0.3, 0.1, 1.7, 0.5, 0.9, 0.8, 0.8]}, "애니·만화": {"total": 778, "idx": {"형규": 0.71, "정서": 1.07, "진웅": 1.06, "순겸": 1.1, "민석": 0.73, "준의": 2.58, "재훈": 0.76, "희마": 0.25, "희찬": 0.71, "교한": 0.34}, "half": [3.2, 5.9, 4.3, 5.1, 10.2, 5.6, 2.5, 4.6, 7.0, 3.5]}, "일본·여행": {"total": 1006, "idx": {"형규": 1.2, "정서": 1.03, "진웅": 1.19, "순겸": 0.62, "민석": 0.83, "준의": 1.05, "재훈": 0.37, "희마": 0.69, "희찬": 1.04, "교한": 1.07}, "half": [3.2, 4.8, 9.4, 2.8, 9.6, 13.7, 8.9, 10.4, 9.4, 14.4]}, "먹을 것": {"total": 1042, "idx": {"형규": 0.97, "정서": 0.98, "진웅": 1.2, "순겸": 0.92, "민석": 0.8, "준의": 1.25, "재훈": 0.55, "희마": 1.02, "희찬": 0.91, "교한": 1.03}, "half": [3.2, 7.7, 5.7, 6.4, 7.7, 7.2, 8.7, 10.9, 7.0, 9.0]}, "돈": {"total": 1250, "idx": {"형규": 0.77, "정서": 1.31, "진웅": 1.09, "순겸": 0.73, "민석": 0.85, "준의": 1.81, "재훈": 0.46, "희마": 0.34, "희찬": 1.68, "교한": 0.86}, "half": [5.6, 5.6, 11.1, 11.0, 10.2, 15.8, 10.7, 11.7, 9.0, 10.1]}, "음악": {"total": 440, "idx": {"형규": 0.95, "정서": 1.24, "진웅": 1.31, "순겸": 0.32, "민석": 0.82, "준의": 1.11, "재훈": 0.56, "희마": 1.8, "희찬": 0.57, "교한": 0.0}, "half": [2.4, 2.8, 4.0, 2.3, 3.9, 2.2, 1.6, 5.2, 6.8, 1.9]}, "영상·촬영": {"total": 912, "idx": {"형규": 0.64, "정서": 2.2, "진웅": 0.74, "순겸": 0.81, "민석": 0.38, "준의": 0.77, "재훈": 0.41, "희마": 0.54, "희찬": 0.27, "교한": 0.29}, "half": [7.3, 6.8, 5.8, 3.0, 5.3, 6.4, 5.7, 9.0, 13.6, 12.1]}, "운동·몸": {"total": 205, "idx": {"형규": 0.82, "정서": 1.23, "진웅": 0.77, "순겸": 0.59, "민석": 1.12, "준의": 2.76, "재훈": 0.48, "희마": 0.97, "희찬": 2.19, "교한": 0.0}, "half": [0.8, 1.1, 2.0, 1.5, 2.7, 2.2, 1.5, 1.1, 0.8, 0.0]}, "연애": {"total": 149, "idx": {"형규": 1.02, "정서": 1.24, "진웅": 0.63, "순겸": 0.43, "민석": 1.53, "준의": 2.1, "재훈": 0.0, "희마": 1.11, "희찬": 3.69, "교한": 0.0}, "half": [0.8, 1.1, 1.4, 1.0, 1.2, 0.9, 0.2, 1.6, 0.8, 0.4]}, "AI": {"total": 53, "idx": {"형규": 0.48, "정서": 2.3, "진웅": 0.28, "순겸": 0.27, "민석": 1.44, "준의": 2.95, "재훈": 0.47, "희마": 0.0, "희찬": 1.88, "교한": 0.0}, "half": [0.0, 0.0, 0.1, 0.0, 0.3, 0.2, 0.7, 2.1, 3.5, 3.1]}}, "topic_order": ["군대", "학교·과제", "알바·일", "게임", "블루아카", "우마무스메", "애니·만화", "일본·여행", "먹을 것", "돈", "음악", "영상·촬영", "운동·몸", "연애", "AI"], "halves": ["2022-1", "2022-2", "2023-1", "2023-2", "2024-1", "2024-2", "2025-1", "2025-2", "2026-1", "2026-2"], "gaps": [[7.8, "2023-05-01 15:23:00", "2023-05-09 10:51:00", "순겸"], [6.0, "2023-05-11 18:20:00", "2023-05-17 18:53:00", "준의"], [5.1, "2026-01-23 21:47:00", "2026-01-29 01:12:00", "진웅"], [3.8, "2026-08-12 12:59:00", "2026-08-16 08:31:00", "정서"], [3.7, "2023-06-12 17:36:00", "2023-06-16 11:13:00", "정서"], [3.5, "2026-09-10 14:24:00", "2026-09-14 02:24:00", "정서"]], "top_days": [["2022-09-13", 1497], ["2022-09-05", 964], ["2022-08-19", 948], ["2022-07-26", 935], ["2022-08-22", 920], ["2022-09-25", 899], ["2023-08-05", 865], ["2022-07-21", 854]], "month_per": {"형규": [270, 3220, 3180, 3250, 2152, 2090, 2762, 2072, 990, 1158, 1568, 399, 82, 497, 1334, 605, 577, 129, 341, 137, 112, 235, 155, 232, 176, 255, 285, 264, 221, 372, 268, 331, 623, 605, 399, 295, 380, 273, 177, 304, 287, 90, 222, 90, 169, 84, 91, 250, 79, 195, 134, 62, 108, 3], "정서": [181, 1839, 1881, 2190, 1659, 1275, 1853, 1679, 764, 961, 1188, 676, 435, 229, 1181, 505, 825, 234, 610, 374, 552, 869, 500, 584, 614, 711, 655, 615, 516, 469, 323, 473, 459, 536, 275, 223, 335, 404, 130, 467, 198, 59, 199, 293, 245, 214, 276, 460, 138, 213, 242, 105, 176, 3], "진웅": [198, 3415, 2547, 2543, 357, 934, 1645, 830, 729, 636, 1053, 458, 269, 232, 984, 512, 662, 349, 1028, 359, 500, 983, 556, 401, 528, 519, 629, 352, 408, 376, 274, 392, 339, 387, 400, 408, 340, 396, 118, 335, 243, 58, 254, 257, 253, 109, 83, 263, 63, 206, 117, 80, 190, 0], "순겸": [278, 2766, 2691, 2882, 1322, 1307, 1103, 649, 347, 217, 351, 63, 94, 107, 101, 82, 64, 102, 159, 63, 155, 238, 134, 117, 145, 588, 254, 356, 376, 310, 162, 553, 207, 416, 314, 229, 224, 348, 92, 376, 246, 107, 159, 120, 67, 119, 118, 278, 30, 76, 99, 36, 139, 0], "민석": [199, 1440, 953, 1077, 700, 652, 562, 438, 208, 183, 88, 70, 211, 94, 271, 76, 48, 46, 58, 15, 18, 82, 57, 47, 59, 33, 13, 17, 30, 87, 9, 5, 72, 36, 5, 16, 20, 22, 8, 14, 0, 2, 13, 11, 0, 17, 16, 15, 6, 11, 2, 35, 4, 0], "준의": [6, 116, 262, 154, 149, 160, 174, 150, 131, 72, 140, 60, 63, 30, 298, 107, 359, 143, 427, 142, 172, 488, 297, 178, 119, 283, 163, 157, 103, 144, 69, 52, 63, 189, 117, 132, 188, 127, 42, 190, 146, 31, 72, 26, 45, 107, 114, 170, 54, 25, 68, 37, 46, 0], "재훈": [159, 1067, 816, 786, 434, 432, 506, 419, 173, 178, 323, 72, 19, 61, 75, 12, 18, 15, 54, 37, 8, 17, 10, 17, 5, 7, 4, 12, 42, 104, 18, 17, 2, 31, 14, 50, 39, 8, 4, 16, 20, 4, 4, 6, 7, 18, 10, 12, 0, 10, 3, 2, 0, 0], "희마": [18, 224, 352, 461, 262, 247, 415, 209, 195, 98, 90, 82, 0, 2, 227, 74, 52, 10, 118, 29, 12, 47, 22, 55, 32, 46, 12, 12, 23, 28, 6, 33, 51, 95, 25, 97, 65, 54, 37, 91, 51, 27, 30, 13, 81, 25, 32, 56, 38, 48, 66, 22, 12, 0], "희찬": [35, 165, 53, 78, 87, 138, 48, 39, 48, 89, 106, 29, 31, 92, 114, 358, 215, 33, 42, 14, 11, 18, 43, 62, 77, 14, 33, 58, 42, 153, 16, 15, 18, 16, 24, 13, 30, 24, 35, 55, 17, 10, 68, 41, 35, 33, 55, 74, 29, 42, 60, 29, 19, 0], "교한": [7, 24, 6, 8, 27, 9, 10, 7, 3, 9, 8, 0, 3, 0, 4, 17, 0, 17, 119, 16, 7, 5, 8, 24, 3, 2, 17, 43, 10, 21, 9, 8, 0, 2, 2, 6, 0, 1, 0, 34, 16, 4, 5, 3, 0, 9, 0, 2, 6, 0, 1, 0, 0, 0]}, "trend": {"2022": {"msgs": 65268, "active_days": 189, "per_active_day": 345.3, "top3_share": 62.7, "speakers": 10, "avg_monthly_speakers": 10, "avg_len": 9.8, "k_per_msg": 1.41, "photo_pct": 3.8, "link_pct": 0.9, "night_pct": 12.2, "weekend_pct": 28.8, "instant_pct": 58.5, "median_gap_min": 0.0, "sessions": 1053, "msgs_per_session": 62.0, "swear_per_1k": 48.6, "question_pct": 5.2}, "2023": {"msgs": 36847, "active_days": 329, "per_active_day": 112.0, "top3_share": 72.7, "speakers": 10, "avg_monthly_speakers": 9.7, "avg_len": 10.6, "k_per_msg": 1.11, "photo_pct": 2.9, "link_pct": 0.8, "night_pct": 5.2, "weekend_pct": 36.3, "instant_pct": 57.0, "median_gap_min": 0.0, "sessions": 1244, "msgs_per_session": 29.6, "swear_per_1k": 42.9, "question_pct": 5.8}, "2024": {"msgs": 22370, "active_days": 349, "per_active_day": 64.1, "top3_share": 69.6, "speakers": 10, "avg_monthly_speakers": 10, "avg_len": 10.9, "k_per_msg": 0.78, "photo_pct": 4.3, "link_pct": 1.0, "night_pct": 5.9, "weekend_pct": 29.2, "instant_pct": 42.7, "median_gap_min": 1.0, "sessions": 1216, "msgs_per_session": 18.4, "swear_per_1k": 28.1, "question_pct": 5.0}, "2025": {"msgs": 17515, "active_days": 335, "per_active_day": 52.3, "top3_share": 65.2, "speakers": 10, "avg_monthly_speakers": 9.7, "avg_len": 10.7, "k_per_msg": 0.72, "photo_pct": 4.3, "link_pct": 0.7, "night_pct": 10.8, "weekend_pct": 25.1, "instant_pct": 36.4, "median_gap_min": 1.0, "sessions": 1149, "msgs_per_session": 15.2, "swear_per_1k": 33.9, "question_pct": 5.4}, "2026": {"msgs": 8041, "active_days": 249, "per_active_day": 32.3, "top3_share": 65.3, "speakers": 10, "avg_monthly_speakers": 8.5, "avg_len": 10.7, "k_per_msg": 0.42, "photo_pct": 4.9, "link_pct": 0.7, "night_pct": 7.1, "weekend_pct": 25.3, "instant_pct": 33.4, "median_gap_min": 1.0, "sessions": 696, "msgs_per_session": 11.6, "swear_per_1k": 29.6, "question_pct": 4.7}}, "scenes": [{"t": "2022-08-22 14:23", "title": "순겸의 챔미 대참사", "stars": ["순겸", "민석"], "start": "2022-08-22 14:23:00", "kk": 49, "ppl": 7, "mpm": 16.7, "msgs": 167, "fire": 100, "pct": 0.01, "who": ["민석", "순겸", "재훈", "정서", "준의", "진웅", "형규"], "year_rank": 1, "year_pct": 0.3}, {"t": "2023-09-09 16:43", "title": "병장 월급 자랑 대회", "stars": ["희찬", "형규"], "start": "2023-09-09 16:43:00", "kk": 183, "ppl": 7, "mpm": 13.6, "msgs": 136, "fire": 95, "pct": 0.04, "who": ["순겸", "정서", "준의", "진웅", "형규", "희마", "희찬"], "year_rank": 1, "year_pct": 0.3}, {"t": "2022-12-22 00:47", "title": "순겸·재훈 생존 확인", "stars": ["순겸", "재훈", "민석"], "start": "2022-12-22 00:47:00", "kk": 342, "ppl": 6, "mpm": 13.9, "msgs": 139, "fire": 91, "pct": 0.07, "who": ["민석", "순겸", "재훈", "정서", "진웅", "형규"], "year_rank": 2, "year_pct": 0.5}, {"t": "2022-09-11 20:00", "title": "정서네 바퀴벌레 습격", "stars": ["정서", "민석", "순겸"], "start": "2022-09-11 20:00:00", "kk": 285, "ppl": 6, "mpm": 12.3, "msgs": 123, "fire": 82, "pct": 0.28, "who": ["민석", "순겸", "재훈", "정서", "진웅", "형규"], "year_rank": 5, "year_pct": 1.4}, {"t": "2022-07-18 19:39", "title": "전역일 계산의 공포", "stars": ["준의", "정서"], "start": "2022-07-18 19:39:00", "kk": 326, "ppl": 6, "mpm": 11.3, "msgs": 113, "fire": 78, "pct": 0.46, "who": ["순겸", "재훈", "정서", "준의", "진웅", "형규"], "year_rank": 7, "year_pct": 1.9}, {"t": "2022-09-25 17:37", "title": "입대 전날의 삭발", "stars": ["순겸", "정서", "진웅"], "start": "2022-09-25 17:37:00", "kk": 347, "ppl": 6, "mpm": 10.1, "msgs": 101, "fire": 73, "pct": 0.77, "who": ["민석", "순겸", "재훈", "정서", "진웅", "형규"], "year_rank": 11, "year_pct": 3.0}, {"t": "2022-09-23 18:55", "title": "통영의 아들", "stars": ["재훈", "형규", "희마"], "start": "2022-09-23 18:55:00", "kk": 159, "ppl": 7, "mpm": 8.3, "msgs": 83, "fire": 69, "pct": 1.15, "who": ["민석", "순겸", "재훈", "정서", "진웅", "형규", "희마"], "year_rank": 14, "year_pct": 3.8}, {"t": "2022-07-16 23:41", "title": "새벽의 길냥이", "stars": ["희찬", "형규"], "start": "2022-07-16 23:41:00", "kk": 90, "ppl": 8, "mpm": 6.5, "msgs": 65, "fire": 67, "pct": 1.4, "who": ["민석", "순겸", "재훈", "정서", "진웅", "형규", "희마", "희찬"], "year_rank": 15, "year_pct": 4.1}, {"t": "2022-08-09 19:04", "title": "펜타포트 라인업 회의", "stars": ["희마", "민석"], "start": "2022-08-09 19:04:00", "kk": 211, "ppl": 7, "mpm": 5.9, "msgs": 59, "fire": 60, "pct": 2.15, "who": ["민석", "순겸", "재훈", "정서", "진웅", "형규", "희마"], "year_rank": 21, "year_pct": 5.7}, {"t": "2023-05-19 19:40", "title": "훈련소 3주차 유급", "stars": ["정서"], "start": "2023-05-19 19:40:00", "kk": 353, "ppl": 3, "mpm": 13.8, "msgs": 138, "fire": 59, "pct": 2.22, "who": ["정서", "진웅", "형규"], "year_rank": 8, "year_pct": 2.4}, {"t": "2022-08-17 19:53", "title": "중2병 고해성사", "stars": ["준의", "정서"], "start": "2022-08-17 19:53:00", "kk": 518, "ppl": 4, "mpm": 9.8, "msgs": 98, "fire": 53, "pct": 3.13, "who": ["정서", "준의", "진웅", "형규"], "year_rank": 27, "year_pct": 7.4}, {"t": "2022-07-11 14:52", "title": "민석의 본계 살리기", "stars": ["민석", "순겸"], "start": "2022-07-11 14:52:00", "kk": 119, "ppl": 4, "mpm": 11.8, "msgs": 118, "fire": 52, "pct": 3.44, "who": ["민석", "순겸", "재훈", "진웅"], "year_rank": 30, "year_pct": 8.2}, {"t": "2024-03-15 19:48", "title": "도쿄의 정서, 냉수의 준의", "stars": ["정서", "준의"], "start": "2024-03-15 19:48:00", "kk": 85, "ppl": 5, "mpm": 9.4, "msgs": 94, "fire": 48, "pct": 4.15, "who": ["순겸", "정서", "준의", "진웅", "형규"], "year_rank": 1, "year_pct": 0.4}, {"t": "2025-04-21 13:42", "title": "예비군 동원과 블루아카 헌혈 대란", "stars": ["순겸", "형규", "진웅"], "start": "2025-04-21 13:42:00", "kk": 100, "ppl": 4, "mpm": 10.0, "msgs": 100, "fire": 42, "pct": 6.26, "who": ["순겸", "정서", "진웅", "형규"], "year_rank": 2, "year_pct": 0.8}, {"t": "2026-03-31 23:25", "title": "만우절이라 믿고 싶었던 완결", "stars": ["준의", "희찬", "순겸"], "start": "2026-03-31 23:29:00", "kk": 34, "ppl": 5, "mpm": 7.8, "msgs": 78, "fire": 34, "pct": 9.46, "who": ["순겸", "정서", "준의", "진웅", "희찬"], "year_rank": 2, "year_pct": 1.9}]};
+const fmt = n => n.toLocaleString('ko-KR');
+const P = Object.fromEntries(DATA.people.map(p => [p.name, p]));
+let FOCUS = null;
+const EXC = {
+"chap-2022": {
+"lines": [
+[
+"2022-11-05 16:31",
+"민석",
+"애니플러스 클린 하네요"
+],
+[
+"2022-11-05 16:31",
+"민석",
+"아직 우마무스메 하고있네"
+],
+[
+"2022-11-05 16:31",
+"진웅",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-11-05 16:31",
+"형규",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-11-05 16:32",
+"형규",
+"여진웅 프사 개웃기네"
+],
+[
+"2022-11-05 16:32",
+"형규",
+"잡아먹히기 직전 뿌링클의 시점 같음"
+],
+[
+"2022-11-05 16:32",
+"재훈",
+"ㅋㅋㅋㅋ"
+]
+],
+"anchor": 50442,
+"note": null
+},
+"chap-2023": {
+"lines": [
+[
+"2023-07-29 13:45",
+"형규",
+"이거 히트다..."
+],
+[
+"2023-07-29 13:45",
+"형규",
+"진짜 개맛잇네 하"
+],
+[
+"2023-07-29 13:48",
+"정서",
+"3일뒤면 2호봉이네"
+],
+[
+"2023-07-29 13:48",
+"정서",
+"일꺽에 훈련소로 돌아가는 군인이 있다!?!?"
+],
+[
+"2023-07-29 13:51",
+"형규",
+"와!"
+],
+[
+"2023-07-29 13:51",
+"형규",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2023-07-29 13:59",
+"준의",
+"영원회귀.."
+],
+[
+"2023-07-29 14:01",
+"순겸",
+"ㅋㅋㅋㅋㅋㅋㅋ"
+]
+],
+"anchor": 88256,
+"note": null
+},
+"chap-2024": {
+"lines": [
+[
+"2024-10-31 10:19",
+"진웅",
+"일단 원화로 좀 들고있어야지"
+],
+[
+"2024-10-31 10:19",
+"진웅",
+"일주일 뒤에 일본가는데 어케 보면 또 호재긴 하네"
+],
+[
+"2024-10-31 10:20",
+"순겸",
+"갑자기 일본 초전도체 발명해서"
+],
+[
+"2024-10-31 10:20",
+"순겸",
+"엔화 9200원 가면 어캄 ㄷㄷ"
+],
+[
+"2024-10-31 10:20",
+"진웅",
+"외노자 하러 가야지.."
+],
+[
+"2024-10-31 10:21",
+"정서",
+"워홀 신청 블루오션때 넣은 여진웅이 승자다"
+],
+[
+"2024-10-31 10:22",
+"진웅",
+"ㅋㅋ"
+],
+[
+"2024-10-31 10:24",
+"형규",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2024-10-31 10:24",
+"형규",
+"환전 좀 해둬야겟다"
+]
+],
+"anchor": 121158,
+"note": null
+},
+"chap-2025": {
+"lines": [
+[
+"2025-02-04 13:20",
+"진웅",
+"일단 차 한대만 구해서 은봉산 위에 기능 시험장 폐허로 와"
+],
+[
+"2025-02-04 13:20",
+"진웅",
+"뭐 제 군생활보다 조금 더 길죠"
+],
+[
+"2025-02-04 13:21",
+"정서",
+"은봉산 언덕 올라가다 추락하겟노.."
+],
+[
+"2025-02-04 13:21",
+"진웅",
+"거기까진 스스로 운전해서 와야해"
+],
+[
+"2025-02-04 13:21",
+"진웅",
+"그렇지 않으면 배울 자격이 없다"
+],
+[
+"2025-02-04 13:22",
+"순겸",
+"ㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2025-02-04 13:23",
+"순겸",
+"취조받을때"
+],
+[
+"2025-02-04 13:23",
+"순겸",
+"여진웅의따까리입니다해야지"
+],
+[
+"2025-02-04 13:26",
+"형규",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+]
+],
+"anchor": 126639,
+"note": null
+},
+"chap-2026": {
+"lines": [
+[
+"2026-02-07 15:43",
+"진웅",
+"길안내의 정령 등장"
+],
+[
+"2026-02-07 15:50",
+"형규",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2026-02-07 15:50",
+"형규",
+"어이-! 나먄 믿고 따라오라구!!!!"
+],
+[
+"2026-02-07 15:51",
+"정서",
+"저주받은 일본의 곽튜브같이 생겼네"
+],
+[
+"2026-02-07 16:07",
+"진웅",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2026-02-07 16:16",
+"형규",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+]
+],
+"anchor": 142958,
+"note": null
+},
+"aw-수다왕": {
+"lines": [
+[
+"2022-08-07 15:58",
+"정서",
+"회의가 생각보다 일찍이었네"
+],
+[
+"2022-08-07 15:58",
+"정서",
+"조옺됐다"
+],
+[
+"2022-08-07 15:58",
+"형규",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-08-07 15:58",
+"형규",
+"짐승같은 삶..."
+],
+[
+"2022-08-07 15:59",
+"정서",
+"샤와하면서 변명을 생각하고 있어야지"
+],
+[
+"2022-08-07 15:59",
+"형규",
+"잤노.."
+],
+[
+"2022-08-07 16:00",
+"정서",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-08-07 16:00",
+"재훈",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-08-07 16:00",
+"진웅",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-08-07 16:20",
+"순겸",
+"우리"
+]
+],
+"anchor": 17545,
+"note": null
+},
+"aw-ㅋ 생산왕": {
+"lines": [
+[
+"2022-09-04 17:33",
+"정서",
+"자로 잰거 같음"
+],
+[
+"2022-09-04 17:33",
+"재훈",
+"ㄹㅇ"
+],
+[
+"2022-09-04 17:34",
+"진웅",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-09-04 17:34",
+"희마",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ 이야"
+],
+[
+"2022-09-04 17:35",
+"형규",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-09-04 17:35",
+"진웅",
+"이마 여드름 4개 개웃기네 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-09-04 17:35",
+"진웅",
+"비밀번호 4자리 입력해야될거같노.."
+],
+[
+"2022-09-04 17:35",
+"형규",
+"비밀번호 누르면 정수리 열리겠노"
+]
+],
+"anchor": 29784,
+"note": null
+},
+"aw-마지막 말 담당": {
+"lines": [
+[
+"2025-05-07 14:21",
+"민석",
+"형규 생축🎂"
+],
+[
+"2025-05-07 14:25",
+"준의",
+"🎉🥳👏"
+],
+[
+"2025-05-07 15:50",
+"희마",
+"🎉🥳👏"
+],
+[
+"2025-05-07 16:03",
+"교한",
+"🎉🥳👏"
+],
+[
+"2025-05-07 16:10",
+"진웅",
+"🎉🥳👏"
+],
+[
+"2025-05-07 17:35",
+"형규",
+"고맙다이기야~"
+]
+],
+"anchor": 132302,
+"note": "이후 3시간 넘게 조용"
+},
+"aw-글자수왕": {
+"lines": [
+[
+"2023-10-13 16:16",
+"정서",
+"선풍기만 준다매"
+],
+[
+"2023-10-13 16:16",
+"형규",
+"?"
+],
+[
+"2023-10-13 16:17",
+"정서",
+"렌고쿠 퍼즐 액자랑 이브이 인형이랑 니 수영복이랑 수영안경이랑 런닝이랑 빤스랑 수건이랑 너가 먹던 레몬 슬러시는"
+],
+[
+"2023-10-13 16:17",
+"정서",
+"필요 없다고 이녀석아"
+],
+[
+"2023-10-13 16:19",
+"순겸",
+"ㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2023-10-13 16:19",
+"순겸",
+"라인업"
+]
+],
+"anchor": 96432,
+"note": null
+},
+"aw-대화 개시왕": {
+"lines": [
+[
+"2025-03-12 14:14",
+"정서",
+"조 못짠사람 손들래서 손드는데"
+],
+[
+"2025-03-12 14:14",
+"정서",
+"나말고도 한명 더 있네"
+],
+[
+"2025-03-12 14:14",
+"정서",
+"휴.."
+],
+[
+"2025-03-12 14:18",
+"형규",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2025-03-12 14:25",
+"순겸",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2025-03-12 14:28",
+"준의",
+"아 진짜 마음 아프네"
+],
+[
+"2025-03-12 14:29",
+"준의",
+"난 이번에 조 역대급인데"
+],
+[
+"2025-03-12 14:29",
+"준의",
+"버스 야무지게 타야지 😆"
+]
+],
+"anchor": 129227,
+"note": "3시간 넘게 조용하던 방에서"
+},
+"aw-사진작가": {
+"lines": [
+[
+"2023-03-24 15:35",
+"준의",
+"진짜 어지럽다"
+],
+[
+"2023-03-24 15:35",
+"정서",
+"[사진]"
+],
+[
+"2023-03-24 15:35",
+"정서",
+"ㅎ..히힣 할로윈에 나온다..."
+],
+[
+"2023-03-24 15:35",
+"재훈",
+"ㅋㅋㅋㅋ"
+],
+[
+"2023-03-24 15:36",
+"정서",
+"트리크오어 트리트~"
+],
+[
+"2023-03-24 15:42",
+"순겸",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2023-03-24 15:42",
+"순겸",
+"와 저사람 봐"
+],
+[
+"2023-03-24 15:42",
+"형규",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+]
+],
+"anchor": 78048,
+"note": null
+},
+"aw-최장 ㅋ": {
+"lines": [
+[
+"2025-04-04 10:23",
+"정서",
+"요즘 이미지 능력 좋아졌다길래 함 써봤는데"
+],
+[
+"2025-04-04 10:23",
+"정서",
+"지리네"
+],
+[
+"2025-04-04 10:27",
+"진웅",
+"오"
+],
+[
+"2025-04-04 10:27",
+"진웅",
+"본인쟝 맘에 드노"
+],
+[
+"2025-04-04 10:27",
+"정서",
+"[사진]"
+],
+[
+"2025-04-04 10:27",
+"정서",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2025-04-04 10:27",
+"정서",
+"아ㅏ 개놀랐네"
+],
+[
+"2025-04-04 10:31",
+"형규",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+]
+],
+"anchor": 130667,
+"note": null
+},
+"aw-즉답왕": {
+"lines": [
+[
+"2022-09-04 17:23",
+"진웅",
+"동화 앞 벚꽃나무 길 지나가는데 툭 하고 옷에 붙더라"
+],
+[
+"2022-09-04 17:23",
+"정서",
+"나뮷잎이 약해진듯"
+],
+[
+"2022-09-04 17:24",
+"진웅",
+"반대편으로 오는 사람들이랑 스쳐 지나가던 중이었는데"
+],
+[
+"2022-09-04 17:24",
+"진웅",
+"계집아이처럼 소리 질러버렸어"
+],
+[
+"2022-09-04 17:24",
+"희마",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-09-04 17:24",
+"정서",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-09-04 17:24",
+"형규",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-09-04 17:24",
+"재훈",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-09-04 17:24",
+"재훈",
+"히야앙~"
+]
+],
+"anchor": 29668,
+"note": null
+},
+"aw-개그 지수 1위": {
+"lines": [
+[
+"2022-11-20 21:26",
+"민석",
+"골라주실분"
+],
+[
+"2022-11-20 21:27",
+"진웅",
+"아 폰 내야되네"
+],
+[
+"2022-11-20 21:27",
+"진웅",
+"시~~~팔~!!!"
+],
+[
+"2022-11-20 21:27",
+"진웅",
+"자대갈때 보자 바이바이 내 예쁜폰아.."
+],
+[
+"2022-11-20 21:28",
+"민석",
+"ㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-11-20 21:28",
+"형규",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-11-20 21:31",
+"순겸",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-11-20 21:34",
+"재훈",
+"ㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-11-20 21:46",
+"정서",
+"3일만에 카톡보는데"
+]
+],
+"anchor": 53843,
+"note": null
+},
+"aw-링크 배달부": {
+"lines": [
+[
+"2022-08-26 19:48",
+"정서",
+"그의 마지막 표정입니다.."
+],
+[
+"2022-08-26 19:48",
+"진웅",
+"[링크 · youtube]"
+],
+[
+"2022-08-26 19:48",
+"민석",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㄱㄱ"
+],
+[
+"2022-08-26 19:48",
+"정서",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-08-26 19:48",
+"민석",
+"표정 ㄹㅇ 레전드네"
+],
+[
+"2022-08-26 19:48",
+"순겸",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-08-26 19:48",
+"재훈",
+"ㅋㅋㅋㅋㅋ"
+],
+[
+"2022-08-26 19:48",
+"순겸",
+"준의"
+]
+],
+"anchor": 26122,
+"note": null
+},
+"aw-연타왕": {
+"lines": [
+[
+"2022-09-13 12:46",
+"민석",
+"그거도 뽑아야하나?"
+],
+[
+"2022-09-13 12:46",
+"민석",
+"반년 숙성해서 근지육성때 쓴다는데"
+],
+[
+"2022-09-13 12:48",
+"순겸",
+"근딕터"
+],
+[
+"2022-09-13 12:48",
+"순겸",
+"먹으면"
+],
+[
+"2022-09-13 12:48",
+"순겸",
+"최소디지털"
+],
+[
+"2022-09-13 12:48",
+"순겸",
+"최대쌀대리포기하고가져가야하는건데"
+],
+[
+"2022-09-13 12:48",
+"순겸",
+"굳이"
+],
+[
+"2022-09-13 12:49",
+"순겸",
+"달에 60씩 박을거면 고민해봐도됨"
+],
+[
+"2022-09-13 12:49",
+"순겸",
+"아오하루 들어가면"
+],
+[
+"2022-09-13 12:49",
+"순겸",
+"키타산 비코 네이처 파인 쌀 대리"
+],
+[
+"2022-09-13 12:49",
+"순겸",
+"얘네로"
+],
+[
+"2022-09-13 12:49",
+"순겸",
+"초장거리빼고 다함"
+],
+[
+"2022-09-13 12:49",
+"순겸",
+"장거리도 저기서 고점육성뜨면 대부분 가능하고"
+],
+[
+"2022-09-13 12:50",
+"순겸",
+"아오하루넘어가면"
+],
+[
+"2022-09-13 12:50",
+"순겸",
+"쌀대리안쓴다곤하는데"
+],
+[
+"2022-09-13 12:50",
+"순겸",
+"반대로말하면"
+],
+[
+"2022-09-13 12:50",
+"순겸",
+"반년동안"
+],
+[
+"2022-09-13 12:50",
+"순겸",
+"인권이라"
+],
+[
+"2022-09-13 12:50",
+"순겸",
+"그리고 키타산은 뉴트랙때 힘빠지다가 이번 그랜라 열리면서"
+],
+[
+"2022-09-13 12:50",
+"순겸",
+"다시 0티어 들어왔고"
+],
+[
+"2022-09-13 12:51",
+"순겸",
+"나라면 안그래도 피로도 높은 뉴트랙쪽에서 조금 손해보고"
+],
+[
+"2022-09-13 12:51",
+"순겸",
+"아오하루랑 그랜라 신경쓸듯"
+],
+[
+"2022-09-13 12:51",
+"순겸",
+"그리고"
+],
+[
+"2022-09-13 12:51",
+"순겸",
+"간담회추가답변나왔네"
+],
+[
+"2022-09-13 12:52",
+"민석",
+"근딕터는 존버해야겠네 그럼?"
+],
+[
+"2022-09-13 12:52",
+"민석",
+"돈 존나 들겠네ㅋㅋ"
+]
+],
+"anchor": 34692,
+"note": "순겸 혼자 22연타"
+},
+"aw-어휘력 1위": {
+"lines": [
+[
+"2022-09-29 01:06",
+"순겸",
+"말건거"
+],
+[
+"2022-09-29 01:06",
+"순겸",
+"한손가락으로세짐"
+],
+[
+"2022-09-29 01:07",
+"순겸",
+"교수님 조별과제 혼자해도 될까요? 네 감사합니다"
+],
+[
+"2022-09-29 01:08",
+"형규",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-09-29 01:08",
+"형규",
+"어이가없네"
+],
+[
+"2022-09-29 01:18",
+"재훈",
+"ㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-09-29 01:25",
+"정서",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+]
+],
+"anchor": 41127,
+"note": null
+},
+"aw-이모티콘·샵검색 1위": {
+"lines": [
+[
+"2022-07-21 09:31",
+"진웅",
+"얼굴이 개연성이야"
+],
+[
+"2022-07-21 09:31",
+"정서",
+"아항"
+],
+[
+"2022-07-21 09:31",
+"정서",
+"ㅈ밥아었네"
+],
+[
+"2022-07-21 09:31",
+"순겸",
+"[#이세계삼촌 검색]"
+],
+[
+"2022-07-21 09:31",
+"형규",
+"거인 닮았노"
+],
+[
+"2022-07-21 09:31",
+"정서",
+"진짜 족같이 생기긴했다"
+],
+[
+"2022-07-21 09:31",
+"순겸",
+"그리고"
+],
+[
+"2022-07-21 09:31",
+"진웅",
+"[#이세계삼촌 검색]"
+]
+],
+"anchor": 10797,
+"note": null
+},
+"aw-우마무스메 홍보대사": {
+"lines": [
+[
+"2022-08-06 13:40",
+"순겸",
+"플라잉 스피어우먼"
+],
+[
+"2022-08-06 13:46",
+"민석",
+"@진웅 (여) 아 ㅋㅋㅋ 우리 여행갔을때 타이신 뽑이다"
+],
+[
+"2022-08-06 13:46",
+"민석",
+"숙소에서 쥬얼 꼴박 가즈아~"
+],
+[
+"2022-08-06 13:46",
+"형규",
+"아 ㅋㅋ"
+],
+[
+"2022-08-06 13:46",
+"진웅",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-08-06 13:46",
+"진웅",
+"그 때구나.."
+],
+[
+"2022-08-06 13:51",
+"정서",
+"꿈에서 탈영했다가 자수하는 꿈꿈"
+],
+[
+"2022-08-06 13:52",
+"정서",
+"쥰내 오래쳐잤네"
+]
+],
+"anchor": 17302,
+"note": null
+},
+"aw-욕 밀도 1위": {
+"lines": [
+[
+"2022-09-17 15:58",
+"민석",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-09-17 15:58",
+"민석",
+"사이방패 = 공산단 황금방패"
+],
+[
+"2022-09-17 15:58",
+"민석",
+"같은 파워임 시발"
+],
+[
+"2022-09-17 16:00",
+"형규",
+"아 ㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-09-17 16:00",
+"순겸",
+"[사진 5장]"
+],
+[
+"2022-09-17 16:06",
+"형규",
+"한은 ㅅㅂㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-09-17 16:09",
+"재훈",
+"ㅋㅋㅋㅋㅋ"
+]
+],
+"anchor": 37052,
+"note": null
+},
+"aw-생일 축하 담당": {
+"lines": [
+[
+"2023-04-19 21:33",
+"준의",
+"와 정서 생축!!!"
+],
+[
+"2023-04-19 21:33",
+"준의",
+"훈련소에서 생일이면 생일케이크도 주는데"
+],
+[
+"2023-04-19 21:33",
+"준의",
+"아쉽네"
+],
+[
+"2023-04-19 21:35",
+"형규",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2023-04-19 21:35",
+"형규",
+"쌀케이크인가 그런거 주는거같던데"
+]
+],
+"anchor": 82115,
+"note": null
+},
+"aw-정자체": {
+"lines": [
+[
+"2023-08-11 19:56",
+"정서",
+"웨안하지?"
+],
+[
+"2023-08-11 20:01",
+"준의",
+"넌 아직 어려서 몰라 ㅋ"
+],
+[
+"2023-08-11 20:02",
+"준의",
+"형은 군생활의 쓴맛을 다~ 맛봤다 이미"
+],
+[
+"2023-08-11 20:03",
+"진웅",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2023-08-11 20:04",
+"형규",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2023-08-11 20:04",
+"순겸",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2023-08-11 20:07",
+"정서",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+]
+],
+"anchor": 90057,
+"note": null
+},
+"aw-리액션 장인": {
+"lines": [
+[
+"2022-08-13 03:41",
+"진웅",
+"다 너무하네 ㅋㅋ"
+],
+[
+"2022-08-13 03:41",
+"재훈",
+"ㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-08-13 03:41",
+"정서",
+"이 위선자!"
+],
+[
+"2022-08-13 03:41",
+"재훈",
+"ㄹㅇㅋㅋㅋㅋ"
+],
+[
+"2022-08-13 03:41",
+"진웅",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-08-13 03:41",
+"진웅",
+"듣고보니까 웃기긴 하네 ㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-08-13 03:41",
+"정서",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+]
+],
+"anchor": 20070,
+"note": null
+},
+"aw-불씨왕": {
+"lines": [
+[
+"2023-03-08 14:57",
+"희마",
+"면허 갱신하러 갔는데"
+],
+[
+"2023-03-08 14:58",
+"희마",
+"딱붙 츄리닝에 구찌 클러치백 든 양아치 아재가 난동부리더라 ㅋㅋ"
+],
+[
+"2023-03-08 14:58",
+"희마",
+"너무 전형적인 스테레오타입이라 ㅈㄴ 웃겼음"
+],
+[
+"2023-03-08 14:59",
+"재훈",
+"ㅋㅋㅋㅋㅋ"
+],
+[
+"2023-03-08 15:03",
+"형규",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2023-03-08 15:18",
+"순겸",
+"ㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2023-03-08 15:19",
+"순겸",
+"[#양아치 퉁퉁이 검색]"
+]
+],
+"anchor": 75931,
+"note": "3시간 넘게 조용하던 방에서"
+},
+"aw-올빼미": {
+"lines": [
+[
+"2022-12-01 01:19",
+"희마",
+"[사진]"
+],
+[
+"2022-12-01 01:19",
+"희마",
+"이새끼 뭐함"
+],
+[
+"2022-12-01 01:19",
+"순겸",
+"\"다음\""
+],
+[
+"2022-12-01 01:20",
+"희마",
+"ㅋㅋㅋㅋㅋㅋㅋ 봤노"
+],
+[
+"2022-12-01 01:20",
+"형규",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-12-01 01:20",
+"희마",
+"홍수몬쉑.."
+],
+[
+"2022-12-01 01:20",
+"형규",
+"덤벼라이기"
+]
+],
+"anchor": 56243,
+"note": null
+},
+"aw-질문왕": {
+"lines": [
+[
+"2022-12-07 16:57",
+"재훈",
+"퇴소했다던데"
+],
+[
+"2022-12-07 16:57",
+"희찬",
+"윤모 빙의 했음?"
+],
+[
+"2022-12-07 16:57",
+"민석",
+"윤모는 아니지 ㅅㅂ ㅋㅋㅋㅋㄱㄱ"
+],
+[
+"2022-12-07 16:57",
+"재훈",
+"ㅋㅋㅋㅋ"
+],
+[
+"2022-12-07 16:57",
+"형규",
+"말넘심"
+],
+[
+"2022-12-07 16:57",
+"재훈",
+"ㄹㅇ"
+],
+[
+"2022-12-07 16:57",
+"민석",
+"존나 대들고"
+],
+[
+"2022-12-07 16:57",
+"희찬",
+"강찬석 정도인가"
+]
+],
+"anchor": 57813,
+"note": null
+},
+"aw-아침형 인간": {
+"lines": [
+[
+"2022-10-05 09:25",
+"정서",
+"듣기만해도 섬뜩한 단어"
+],
+[
+"2022-10-05 09:25",
+"교한",
+"곤란해;;"
+],
+[
+"2022-10-05 09:25",
+"교한",
+"난 훈련도 아니고"
+],
+[
+"2022-10-05 09:25",
+"교한",
+"실제로 나라를 지킨다구;;"
+],
+[
+"2022-10-05 09:27",
+"형규",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-10-05 09:27",
+"형규",
+"공익도 나라를 지킴"
+],
+[
+"2022-10-05 09:27",
+"형규",
+"나라(요양원)"
+],
+[
+"2022-10-05 09:27",
+"재훈",
+"ㅋㅋㅋ"
+]
+],
+"anchor": 42935,
+"note": null
+},
+"aw-ㄷㄷ 비율 1위": {
+"lines": [
+[
+"2026-01-31 15:08",
+"희마",
+"나도 함 가야되는데"
+],
+[
+"2026-01-31 15:12",
+"교한",
+"ㄷㄷ"
+],
+[
+"2026-01-31 15:12",
+"교한",
+"드라이버들의 삶"
+],
+[
+"2026-01-31 15:20",
+"정서",
+"창문 누래서 사이드미러 안보일때까지 타다가 세차"
+],
+[
+"2026-01-31 15:22",
+"형규",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+]
+],
+"anchor": 142856,
+"note": null
+},
+"mem-형규": {
+"lines": [
+[
+"2022-07-17 00:08",
+"진웅",
+"누구 놀리나"
+],
+[
+"2022-07-17 00:08",
+"순겸",
+"여름이라"
+],
+[
+"2022-07-17 00:08",
+"형규",
+"ㅋㅋ"
+],
+[
+"2022-07-17 00:08",
+"형규",
+"암막커튼 입갤..."
+],
+[
+"2022-07-17 00:09",
+"재훈",
+"ㅋㅋㅋ"
+],
+[
+"2022-07-17 00:10",
+"정서",
+"의정부 입갤..."
+],
+[
+"2022-07-17 00:10",
+"정서",
+"다음엔 의정부에서 만나자 해야지"
+],
+[
+"2022-07-17 00:10",
+"진웅",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+]
+],
+"anchor": 8725,
+"note": null
+},
+"mem-정서": {
+"lines": [
+[
+"2022-09-25 17:41",
+"민석",
+"오 ㅋㅋㅋ"
+],
+[
+"2022-09-25 17:41",
+"진웅",
+"예아"
+],
+[
+"2022-09-25 17:41",
+"정서",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-09-25 17:41",
+"정서",
+"왜캐 잘어울림?"
+],
+[
+"2022-09-25 17:41",
+"민석",
+"밤주우러가자"
+],
+[
+"2022-09-25 17:41",
+"정서",
+"천생 군인이네"
+],
+[
+"2022-09-25 17:41",
+"진웅",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-09-25 17:42",
+"형규",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+]
+],
+"anchor": 39458,
+"note": null
+},
+"mem-진웅": {
+"lines": [
+[
+"2022-09-13 15:38",
+"순겸",
+"K스파이더만"
+],
+[
+"2022-09-13 15:38",
+"민석",
+"창문으로 아줌마 나오길래"
+],
+[
+"2022-09-13 15:38",
+"진웅",
+"[사진]"
+],
+[
+"2022-09-13 15:38",
+"진웅",
+"끼얏호우~~"
+],
+[
+"2022-09-13 15:38",
+"민석",
+"바로 엎드려서 기어갔네 시발"
+],
+[
+"2022-09-13 15:38",
+"민석",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㄱㄱㄱ"
+],
+[
+"2022-09-13 15:38",
+"형규",
+"오"
+],
+[
+"2022-09-13 15:38",
+"형규",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+]
+],
+"anchor": 34862,
+"note": null
+},
+"mem-순겸": {
+"lines": [
+[
+"2022-08-09 21:25",
+"정서",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-08-09 21:25",
+"정서",
+"그거 명작이었지"
+],
+[
+"2022-08-09 21:25",
+"순겸",
+"그 작가 단편선은"
+],
+[
+"2022-08-09 21:25",
+"순겸",
+"그뭐냐"
+],
+[
+"2022-08-09 21:25",
+"순겸",
+"꼭지털?"
+],
+[
+"2022-08-09 21:25",
+"순겸",
+"그게명작인데"
+],
+[
+"2022-08-09 21:26",
+"정서",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-08-09 21:26",
+"정서",
+"명작이 너무 많음"
+]
+],
+"anchor": 19254,
+"note": null
+},
+"mem-민석": {
+"lines": [
+[
+"2022-12-27 19:46",
+"형규",
+"오.."
+],
+[
+"2022-12-27 19:46",
+"민석",
+"희마야"
+],
+[
+"2022-12-27 19:46",
+"민석",
+"상하차 멤버 뽑니?"
+],
+[
+"2022-12-27 19:46",
+"민석",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㄱㄱ"
+],
+[
+"2022-12-27 19:49",
+"민석",
+"[사진]"
+],
+[
+"2022-12-27 19:49",
+"형규",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-12-27 20:01",
+"재훈",
+"ㅋㅋㅋㅋㅋ"
+],
+[
+"2022-12-27 20:18",
+"희마",
+"뭔진 모르지만"
+]
+],
+"anchor": 64248,
+"note": null
+},
+"mem-준의": {
+"lines": [
+[
+"2023-04-12 20:01",
+"진웅",
+"집가면 빌려드림"
+],
+[
+"2023-04-12 20:01",
+"정서",
+"오"
+],
+[
+"2023-04-12 20:01",
+"정서",
+"네이숭"
+],
+[
+"2023-04-12 20:02",
+"준의",
+"진웅이 왜케 휴가 오래나가있는거 같냐"
+],
+[
+"2023-04-12 20:02",
+"준의",
+"어서 돌아와~"
+],
+[
+"2023-04-12 20:02",
+"준의",
+"너가 있을 곳은 거기가 아냐~"
+],
+[
+"2023-04-12 20:02",
+"형규",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2023-04-12 20:02",
+"정서",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+]
+],
+"anchor": 80931,
+"note": null
+},
+"mem-재훈": {
+"lines": [
+[
+"2022-10-11 19:43",
+"정서",
+"얼마나 고달픈지 아냐고~"
+],
+[
+"2022-10-11 19:44",
+"형규",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅌㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-10-11 19:44",
+"형규",
+"당당해져라"
+],
+[
+"2022-10-11 19:44",
+"재훈",
+"ㄹㅇㅋㅋㅋ"
+],
+[
+"2022-10-11 19:44",
+"재훈",
+"실수인척 음량최대로하고"
+],
+[
+"2022-10-11 19:44",
+"재훈",
+"블루아카키죠?"
+],
+[
+"2022-10-11 19:45",
+"형규",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-10-11 19:55",
+"정서",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+]
+],
+"anchor": 44014,
+"note": null
+},
+"mem-희마": {
+"lines": [
+[
+"2022-08-28 15:22",
+"희마",
+"씨~바"
+],
+[
+"2022-08-28 15:22",
+"희마",
+"백석 맘터 전화 주문해서 가져가는 거"
+],
+[
+"2022-08-28 15:22",
+"희마",
+"어제도 잘못 주더니"
+],
+[
+"2022-08-28 15:22",
+"희마",
+"오늘도 이상한 거 주고 있네 아오"
+],
+[
+"2022-08-28 15:23",
+"진웅",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-08-28 15:23",
+"민석",
+"ㅋㅋㅋㅋㅋㅋㅋㄱㄱ"
+],
+[
+"2022-08-28 15:23",
+"희마",
+"치즈홀릭에멘탈버거랑"
+],
+[
+"2022-08-28 15:23",
+"민석",
+"어 나도 콜라 안주는거 2번 있는데"
+]
+],
+"anchor": 26607,
+"note": null
+},
+"mem-희찬": {
+"lines": [
+[
+"2026-06-01 22:28",
+"희찬",
+"코리아 마트에 갇힌 썰푼다"
+],
+[
+"2026-06-01 22:31",
+"순겸",
+"[이모티콘]"
+],
+[
+"2026-06-01 22:39",
+"형규",
+"뭐임?"
+],
+[
+"2026-06-01 22:40",
+"희찬",
+"코리아 마트에서 고기 사려고 하는데"
+],
+[
+"2026-06-01 22:40",
+"희찬",
+"불끄고 문잠구고 나가버림"
+],
+[
+"2026-06-01 22:40",
+"희찬",
+"유리창 존나 두들기면사 저기요!!! 하니까 멀리서 뛰어옴"
+],
+[
+"2026-06-01 22:42",
+"정서",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2026-06-01 22:42",
+"순겸",
+"[사진]"
+]
+],
+"anchor": 146889,
+"note": null
+},
+"mem-교한": {
+"lines": [
+[
+"2023-12-03 11:46",
+"민석",
+"시발..."
+],
+[
+"2023-12-03 11:47",
+"진웅",
+"깜짯이야"
+],
+[
+"2023-12-03 11:47",
+"진웅",
+"[사진]"
+],
+[
+"2023-12-03 11:49",
+"교한",
+"ㄷㄷ"
+],
+[
+"2023-12-03 11:49",
+"희마",
+"먼 산적이 하나 있노 ㅋㅋ"
+],
+[
+"2023-12-03 11:50",
+"희마",
+"대체 어떤 삶을"
+],
+[
+"2023-12-03 11:50",
+"진웅",
+"아 비콘 풀고올껄"
+],
+[
+"2023-12-03 11:50",
+"진웅",
+"나도 사진마렵다"
+]
+],
+"anchor": 99392,
+"note": null
+},
+"aff-민석-재훈": {
+"lines": [
+[
+"2022-10-05 19:22",
+"민석",
+"29분에는 온다는데"
+],
+[
+"2022-10-05 19:22",
+"민석",
+"22분 열차 어디로 증발함"
+],
+[
+"2022-10-05 19:24",
+"재훈",
+"ㅋㅋㅋㅋ"
+],
+[
+"2022-10-05 19:25",
+"민석",
+"다시 생김"
+],
+[
+"2022-10-05 19:25",
+"민석",
+"버근가?"
+],
+[
+"2022-10-05 19:25",
+"민석",
+"지각이에요 기관사님"
+],
+[
+"2022-10-05 19:25",
+"민석",
+"식빵 물고 얼른 오시라구요 아 ㅋㅋ"
+],
+[
+"2022-10-05 19:26",
+"재훈",
+"에엣~지가쿠 지가ㅣ쿠~"
+],
+[
+"2022-10-05 19:26",
+"민석",
+"ㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-10-05 19:29",
+"준의",
+"알바빵 가위바위보 어이가없네 ㅋㅋ"
+]
+],
+"anchor": 43112,
+"note": null
+},
+"aff-정서-준의": {
+"lines": [
+[
+"2022-06-26 17:19",
+"형규",
+"수영복 위에 옷 좀 벗어라~!"
+],
+[
+"2022-06-26 17:20",
+"준의",
+"호랑이형님이라는 웹툰을 아시나요.."
+],
+[
+"2022-06-26 17:20",
+"정서",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-06-26 17:20",
+"준의",
+"정말 재밌습니다.."
+],
+[
+"2022-06-26 17:20",
+"정서",
+"자연스럽게 들어오는거 개웃기네"
+],
+[
+"2022-06-26 17:20",
+"정서",
+"그거 이번에 3부였나"
+],
+[
+"2022-06-26 17:20",
+"정서",
+"다시 엱9하던데"
+],
+[
+"2022-06-26 17:21",
+"준의",
+"맨날 명작이라해도 안봤었는데"
+],
+[
+"2022-06-26 17:21",
+"정서",
+"중간까지 열심히 보다가 안봤는데"
+],
+[
+"2022-06-26 17:21",
+"준의",
+"군머오니깐 보게되네"
+]
+],
+"anchor": 369,
+"note": null
+},
+"aff-형규-희마": {
+"lines": [
+[
+"2022-08-05 23:25",
+"정서",
+"럭키고로시 ㄷㄷ"
+],
+[
+"2022-08-05 23:25",
+"형규",
+"ㄷㄷ"
+],
+[
+"2022-08-05 23:25",
+"희마",
+"실수(밧줄 던져 낙사 유도)"
+],
+[
+"2022-08-05 23:25",
+"희마",
+"재미는 있다"
+],
+[
+"2022-08-05 23:25",
+"형규",
+"그거 밧줄로 묶어서 익사 시키는 재미도 있음"
+],
+[
+"2022-08-05 23:26",
+"형규",
+"아니면 육식동물 밥으로 주던가"
+],
+[
+"2022-08-05 23:26",
+"희마",
+"ㅋㅋㅋㅋㅋㅋㅋ 별거 다하더만"
+],
+[
+"2022-08-05 23:26",
+"희마",
+"키마로 하나?"
+],
+[
+"2022-08-05 23:26",
+"형규",
+"ㅇㅇㅇㅇㅇ"
+],
+[
+"2022-08-05 23:26",
+"형규",
+"난 키마로 하는 중"
+]
+],
+"anchor": 17160,
+"note": null
+},
+"aff-형규-재훈": {
+"lines": [
+[
+"2022-08-09 12:45",
+"진웅",
+"지랄임 ㅋㅋ"
+],
+[
+"2022-08-09 12:46",
+"형규",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-08-09 12:46",
+"재훈",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-08-09 12:46",
+"재훈",
+"진짜 ㄹㅇ"
+],
+[
+"2022-08-09 12:46",
+"재훈",
+"야랄났노"
+],
+[
+"2022-08-09 12:46",
+"형규",
+"꼬꼬꼭은 알겠는데 카푸는 뭐임"
+],
+[
+"2022-08-09 12:46",
+"형규",
+"감도 안 잡히네"
+],
+[
+"2022-08-09 12:46",
+"재훈",
+"카푸어?"
+],
+[
+"2022-08-09 12:47",
+"형규",
+"설명 개웃기네"
+],
+[
+"2022-08-09 12:47",
+"진웅",
+"혐로라"
+]
+],
+"anchor": 18690,
+"note": null
+},
+"aff-정서-진웅": {
+"lines": [
+[
+"2022-08-25 23:44",
+"준의",
+"나 어쩌면 오구리캡쟝 좋아할지도..///"
+],
+[
+"2022-08-25 23:44",
+"정서",
+"나 50몇화"
+],
+[
+"2022-08-25 23:45",
+"진웅",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-08-25 23:45",
+"진웅",
+"오"
+],
+[
+"2022-08-25 23:45",
+"정서",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-08-25 23:45",
+"정서",
+"오구리쟝은 참 맛있게 먹어"
+],
+[
+"2022-08-25 23:45",
+"진웅",
+"마시던데"
+],
+[
+"2022-08-25 23:45",
+"정서",
+"우울하면 더 많이 먹더라"
+],
+[
+"2022-08-25 23:46",
+"진웅",
+"실사화로는 보고싶지 않네"
+],
+[
+"2022-08-25 23:53",
+"재훈",
+"ㅋㅋㅋㅋ"
+]
+],
+"anchor": 25589,
+"note": null
+},
+"top-군대": {
+"lines": [
+[
+"2023-08-19 16:03",
+"형규",
+"ㅋㅋ"
+],
+[
+"2023-08-19 16:04",
+"재훈",
+"ㅋㅋㅋㅋㅋ"
+],
+[
+"2023-08-19 16:13",
+"정서",
+"주늬 진짜 전역하고 메이플 해주면 안됌?"
+],
+[
+"2023-08-19 16:13",
+"정서",
+"그러면 내 마음이 조금 편할 것 같아.."
+],
+[
+"2023-08-19 16:16",
+"형규",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2023-08-19 16:22",
+"순겸",
+"ㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2023-08-19 16:22",
+"순겸",
+"저주를박네"
+],
+[
+"2023-08-19 16:42",
+"준의",
+"노력해보겠습니다!"
+]
+],
+"anchor": 91601,
+"note": null
+},
+"top-학교·과제": {
+"lines": [
+[
+"2026-03-03 10:14",
+"형규",
+"근데 왜 공지를 안해주노"
+],
+[
+"2026-03-03 10:15",
+"준의",
+"강의일정 어떻게 진행되냐니깐"
+],
+[
+"2026-03-03 10:15",
+"준의",
+"오늘 수업 없습니다 하고 끝남;;"
+],
+[
+"2026-03-03 10:16",
+"형규",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2026-03-03 10:16",
+"형규",
+"미친새기노"
+],
+[
+"2026-03-03 10:36",
+"순겸",
+"[사진]"
+],
+[
+"2026-03-03 10:36",
+"순겸",
+"그냥 이런 회색후드집업에 어울리는 색 골라보라니까"
+],
+[
+"2026-03-03 10:37",
+"순겸",
+"잼민이 고장났노"
+]
+],
+"anchor": 143844,
+"note": null
+},
+"top-게임": {
+"lines": [
+[
+"2024-01-15 19:48",
+"정서",
+"선술집 패스도 다뚫고.."
+],
+[
+"2024-01-15 19:48",
+"정서",
+"하창이 돼부렸다.."
+],
+[
+"2024-01-15 19:49",
+"진웅",
+"나도 좀 진득하게 잡고 할 게임 하나 있었으면 젛겠는데"
+],
+[
+"2024-01-15 19:50",
+"준의",
+"요즘은 가방도 주네"
+],
+[
+"2024-01-15 19:51",
+"재훈",
+"와"
+],
+[
+"2024-01-15 19:52",
+"재훈",
+"나 하스 제일높게 찍은게 9급이였던거같은데"
+],
+[
+"2024-01-15 19:52",
+"재훈",
+"ㅋㅋㅋㅋ"
+]
+],
+"anchor": 102670,
+"note": null
+},
+"top-우마무스메": {
+"lines": [
+[
+"2022-07-07 22:08",
+"정서",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-07-07 22:08",
+"정서",
+"진짜 야랄이다 ㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-07-07 22:08",
+"정서",
+"톰크루즈도 우마무스메 하나보네"
+],
+[
+"2022-07-07 22:12",
+"진웅",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-07-07 22:12",
+"형규",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-07-07 22:12",
+"진웅",
+"톰크루즈 우마뾰이 따라부르는 거 상상하니까 존나 웃기노 ㅋㅋㅋ"
+],
+[
+"2022-07-07 22:12",
+"재훈",
+"ㅋㅋㅋㅋ"
+]
+],
+"anchor": 4709,
+"note": null
+},
+"top-블루아카": {
+"lines": [
+[
+"2026-08-18 00:03",
+"정서",
+"수강신청 날짜와"
+],
+[
+"2026-08-18 00:04",
+"정서",
+"블루아카이브 한정픽업이 겹치다니"
+],
+[
+"2026-08-18 00:04",
+"정서",
+"무엇 하나 실패해선 안되는데"
+],
+[
+"2026-08-18 00:06",
+"희마",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2026-08-18 00:10",
+"정서",
+"One day more.."
+],
+[
+"2026-08-18 00:28",
+"순겸",
+"[#말띠 운세 검색]"
+],
+[
+"2026-08-18 00:31",
+"정서",
+"좋구나"
+]
+],
+"anchor": 148413,
+"note": null
+},
+"top-일본·여행": {
+"lines": [
+[
+"2024-08-16 23:47",
+"순겸",
+"오타쿠가모여"
+],
+[
+"2024-08-16 23:48",
+"순겸",
+"오타쿠로마어로대화"
+],
+[
+"2024-08-16 23:49",
+"진웅",
+"일본어 못한대"
+],
+[
+"2024-08-16 23:49",
+"진웅",
+"나만 영어 못해서 버벅이고 옴"
+],
+[
+"2024-08-16 23:49",
+"진웅",
+"로마에 왔으면 로마법을 따르라고~"
+],
+[
+"2024-08-16 23:54",
+"정서",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+]
+],
+"anchor": 116842,
+"note": null
+},
+"top-돈": {
+"lines": [
+[
+"2024-07-08 19:44",
+"순겸",
+"근데 영숙이는 아들이 집한채를해왔다더라"
+],
+[
+"2024-07-08 19:44",
+"준의",
+"치킨피자 몇번 쏘긴했는데"
+],
+[
+"2024-07-08 19:45",
+"형규",
+"난 아빠가 월급 줘서"
+],
+[
+"2024-07-08 19:45",
+"형규",
+"첫 출근부터 뭐 없냐고 물어봄"
+],
+[
+"2024-07-08 19:45",
+"정서",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2024-07-08 19:45",
+"진웅",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2024-07-08 19:46",
+"정서",
+"진웅 이번 여행 몇일임"
+],
+[
+"2024-07-08 19:46",
+"정서",
+"몇박"
+]
+],
+"anchor": 113453,
+"note": null
+},
+"top-AI": {
+"lines": [
+[
+"2026-05-10 15:22",
+"준의",
+"[사진]"
+],
+[
+"2026-05-10 15:22",
+"진웅",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2026-05-10 15:22",
+"준의",
+"그 똑똑하다는 제미나이 프로도 인정함"
+],
+[
+"2026-05-10 15:23",
+"진웅",
+"ai는 이기노"
+],
+[
+"2026-05-10 15:23",
+"희찬",
+"ㅋㅋㅋ"
+],
+[
+"2026-05-10 15:23",
+"정서",
+"프롬프트 타격은 좀 치는구나"
+],
+[
+"2026-05-10 15:24",
+"정서",
+"근데 시가전이면 좀 자신있는데"
+],
+[
+"2026-05-10 15:24",
+"정서",
+"자연에서 만나면 뒤질듯"
+]
+],
+"anchor": 145766,
+"note": null
+},
+"rec-최장 침묵": {
+"lines": [
+[
+"2023-05-01 15:22",
+"정서",
+"뭐 백신 언제 맞았고 코로나 언제 확진됐고"
+],
+[
+"2023-05-01 15:22",
+"정서",
+"주소랑 계좌랑 보호자 전번이랑"
+],
+[
+"2023-05-01 15:22",
+"정서",
+"이것저것"
+],
+[
+"2023-05-01 15:23",
+"형규",
+"오"
+],
+[
+"",
+"",
+"(7.8일 동안 아무도 말하지 않음)"
+],
+[
+"2023-05-09 10:51",
+"순겸",
+"[사진]"
+],
+[
+"2023-05-09 10:51",
+"형규",
+"어어"
+],
+[
+"2023-05-09 18:18",
+"형규",
+"군바리들아"
+],
+[
+"2023-05-09 18:18",
+"형규",
+"요금제 뭐 씀"
+]
+],
+"anchor": 83920,
+"note": null
+},
+"rec-하루 최다": {
+"lines": [
+[
+"2022-09-13 01:07",
+"순겸",
+"[사진]"
+],
+[
+"2022-09-13 01:07",
+"재훈",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-09-13 01:07",
+"진웅",
+"하이잭 ㅋㅋ"
+],
+[
+"2022-09-13 01:07",
+"순겸",
+"[사진]"
+],
+[
+"2022-09-13 01:07",
+"정서",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-09-13 01:07",
+"진웅",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-09-13 01:07",
+"재훈",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-09-13 01:07",
+"진웅",
+"저건 처음보노"
+],
+[
+"2022-09-13 01:09",
+"형규",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-09-13 01:09",
+"형규",
+"폭발했다이기"
+]
+],
+"anchor": 34545,
+"note": null
+},
+"rec-새벽 5시": {
+"lines": [
+[
+"2022-12-27 05:10",
+"진웅",
+"너는 평생 갤럭시 써야겠다"
+],
+[
+"2022-12-27 05:10",
+"진웅",
+"전화할때마다 음성녹음 안키면 좆되겠노"
+],
+[
+"2022-12-27 05:11",
+"정서",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-12-27 05:11",
+"정서",
+"근데 진심으로 와 시발 이새끼랑 대화한건 다 기록해둬야지 이랬음"
+],
+[
+"2022-12-27 05:11",
+"진웅",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-12-27 05:11",
+"정서",
+"내일 1교시인데"
+],
+[
+"2022-12-27 05:11",
+"정서",
+"쨀까.."
+],
+[
+"2022-12-27 05:12",
+"순겸",
+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"
+],
+[
+"2022-12-27 05:23",
+"재훈",
+"ㅋㅋㅋㅋㅋㅋ"
+]
+],
+"anchor": 64174,
+"note": null
+},
+"rec-개근상": {
+"lines": [
+[
+"",
+"",
+"— 첫날 —"
+],
+[
+"2022-06-26 00:01",
+"형규",
+"ㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷ"
+],
+[
+"2022-06-26 00:09",
+"형규",
+"?"
+],
+[
+"2022-06-26 00:09",
+"",
+"(생략)"
+],
+[
+"2022-06-26 00:15",
+"정서",
+"아가씨 말"
+],
+[
+"2022-06-26 00:15",
+"정서",
+"?"
+],
+[
+"2022-06-26 01:29",
+"정서",
+"기상술사 이거"
+],
+[
+"",
+"",
+"— 마지막 날 —"
+],
+[
+"2026-11-01 02:37",
+"정서",
+"[링크 · youtube]"
+],
+[
+"2026-11-01 02:38",
+"정서",
+"요즘 쇼츠에 종내 나오는 이노래 AI였노.."
+],
+[
+"2026-11-01 02:38",
+"정서",
+"1400만 조회수 실화가"
+],
+[
+"2026-11-01 09:45",
+"형규",
+"와"
+],
+[
+"2026-11-01 09:45",
+"형규",
+"ㅁㅊ"
+],
+[
+"2026-11-01 09:45",
+"형규",
+"이젠 노래도 만드노"
+]
+],
+"anchor": 4,
+"note": null
+}
+};
+const STX = {"순겸의 챔미 대참사": {"lines": [["14:21", "정서", "즐거운 사과의 말씀을 드립니다.."], ["14:21", "진웅", "사과 끼얏호우~!"], ["14:21", "민석", "와 시발 기대를 져버리지 않네"], ["14:22", "", "ㅋㅋㅋ (재훈)"], ["14:22", "재훈", "4흘"], ["14:22", "정서", "삼가 뜻은 지금 알긴했네"], ["14:22", "재훈", "떼잉.."], ["14:22", "재훈", "요즘것들은.."], ["14:22", "정서", "[사진]"], ["14:23", "재훈", "[#삼가다 검색]"], ["14:23", "재훈", "한국거"], ["14:23", "순겸", "아"], ["14:23", "재훈", "한국어"], ["14:23", "순겸", "진짜"], ["14:23", "민석", "드디어 이짤을 쓸 타이밍이 왔다"], ["14:23", "재훈", "존나어렵노"], ["14:23", "민석", "[사진]"], ["14:23", "순겸", "맥이빠지네"], ["14:23", "진웅", "챔미 뭐하는건지"], ["14:23", "진웅", "방금 갤 보고 알았농 ㅋㅋ"], ["14:23", "민석", "[사진]"], ["14:23", "순겸", "진짜"], ["14:23", "", "ㅋㅋㅋ (재훈)"], ["14:23", "순겸", "몰랐농"], ["14:23", "", "ㅋㅋㅋ (순겸)"], ["14:23", "민석", "야들아"], ["14:23", "", "ㅋㅋㅋ (재훈)"], ["14:23", "민석", "누워 걍"], ["14:23", "", "ㅋㅋㅋ (민석)"], ["14:23", "순겸", "아니"], ["14:23", "순겸", "진짜"], ["14:23", "순겸", "걍"], ["14:23", "순겸", "5시간만에"], ["14:23", "재훈", "배를버려라~~~"], ["14:23", "순겸", "4.5가"], ["14:23", "진웅", "[링크 · dcinside]"], ["14:23", "순겸", "1.2가된걸보고도"], ["14:23", "진웅", "그렇다네요~"], ["14:23", "순겸", "기싸움을쳐하려하네"], ["14:24", "", "ㅋㅋㅋ (재훈)"], ["14:24", "정서", "무슨 일인지는 모르겠지만"], ["14:24", "진웅", "대충 롤 격전 그런 거처럼 하늨건가"], ["14:24", "진웅", "정서 내일 준의랑 영와보실"], ["14:24", "정서", "힘내라 씹덕들아"], ["14:24", "", "(생략)"], ["14:24", "순겸", "걍 비슷하게 생각하믄 댐"], ["14:24", "정서", "오 좋지"], ["14:24", "순겸", "근데 격전 참여하면"], ["14:24", "순겸", "우승을못해도"], ["14:24", "순겸", "쥬얼 여신상 칭호같은거 맛있게줌"], ["14:24", "진웅", "그 인간판 구스구스덕 영와를 볼 생각"], ["14:24", "민석", "[링크 · namu.wiki]"], ["14:24", "진웅", "오.."], ["14:24", "순겸", "그래서"], ["14:24", "정서", "그게대체뭐노"], ["14:24", "민석", "이때 내가 직관했었는데"], ["14:24", "순겸", "걍넣어두기만하면"], ["14:24", "순겸", "이득임"], ["14:24", "진웅", "이름이 뭐였지"], ["14:24", "순겸", "물론"], ["", "", "(중략 82줄)"], ["14:29", "진웅", "옹"], ["14:29", "순겸", "그거말고도"], ["14:29", "순겸", "2도주 1선행 전략"], ["14:29", "순겸", "2도주 1고루시"], ["14:30", "순겸", "아니면 역병네이쳐에 독점력루돌프 독점력그라스같은것도"], ["14:30", "민석", "도주마가 없음 ㅅㅂ"], ["14:30", "순겸", "있고"], ["14:30", "진웅", "고루시 아직 2성인데"], ["14:30", "진웅", "그라스 역병으로 하나 만들어야지"], ["14:30", "순겸", "저거"], ["14:30", "순겸", "역병네이쳐 독점력듀오는"], ["14:30", "순겸", "독점력듀오가 투에이스라고 생각하믄 좋음"], ["14:30", "준의", "김 정서씨 오늘 오나?"], ["14:30", "진웅", "근데 컴이 없나본데"], ["14:31", "민석", "[사진]"], ["14:31", "민석", "데뷔전 여러분의 선택은?"], ["14:31", "진웅", "도주"], ["14:31", "순겸", "데뷔에서"], ["14:31", "민석", "두리안 특 사고 존나 남"], ["14:31", "순겸", "도주로못이길거면"], ["14:31", "순겸", "다른거여도못이김"], ["14:31", "", "ㅋㅋㅋ (진웅)"], ["14:31", "민석", "오구리 특"], ["14:31", "민석", "추입놔도 이김 ㅋ"], ["14:32", "순겸", "그리고 2도주는 사실상 마르젠로켓이랑 탑건로또 노리는거라"], ["14:32", "준의", "롤은 못하겠네"], ["14:32", "순겸", "차라리 선,추입쪽 쓰는게 나음"], ["14:32", "순겸", "그쪽이 육성난이도도 그나마 편하고"], ["14:32", "민석", "오 도주 걍 이기는구나"], ["14:32", "순겸", "이번 맵이 직선이 길어서 선추입이 엄청 유리함"], ["14:32", "정서", "피방이라도 갈까"], ["14:32", "민석", "뭐냐"], ["14:32", "정서", "저녁에 뢀기?"], ["14:32", "민석", "ㄱㄱ"], ["14:33", "민석", "순겸 각질은 패널티 스텟 머임"], ["14:33", "준의", "좋지"], ["14:33", "준의", "내일은 영화나 함 보자"], ["14:33", "순겸", "잔디 더트는 스태 거리는 스피드 각질은 능지"], ["14:33", "형규", "너네 놀러가는거 이번주임?"], ["14:33", "형규", "25일이라 그랬나"], ["14:33", "민석", "ㅇㅎ"], ["14:33", "순겸", "그래서"], ["14:33", "순겸", "챔미말은"], ["14:33", "민석", "이번주임"], ["14:33", "순겸", "거리s붙여주면좋음"]], "from": "14:21", "to": "14:34", "raw": 187}, "병장 월급 자랑 대회": {"lines": [["16:41", "희마", "나도 8"], ["16:41", "희찬", "정서 일병임?"], ["16:41", "형규", "일꺾 달아야 후임 들어옴"], ["16:41", "정서", "그럼"], ["16:41", "희찬", "훈련소 일병 좀 귀하네"], ["16:41", "형규", "아직은 이병같은 일병"], ["16:41", "희찬", "후임 ㅈㄴ 많겠당"], ["16:41", "희찬", "항상 상급자네"], ["16:41", "정서", "군대 오고나니까 참"], ["16:41", "형규", "코급자 ㅋㅋ"], ["16:42", "정서", "아버지가 너무 존경스러워"], ["16:42", "형규", "난 여진웅이 너무 부러워"], ["16:42", "정서", "우리는 3 6 6 3인데"], ["16:42", "정서", "6 12 12 6이었던거 아냐"], ["16:42", "형규", "2664 아니노"], ["16:42", "형규", "와 씨발 소름이 쫙 돋네"], ["16:42", "진웅", "난 너가 부러워.."], ["16:43", "형규", "이병 6개월?ㅋㅋㅋㅋㅋㅋㅋㅋㅋ"], ["16:43", "정서", "아버지 시절이면 난 아직 이병 5호봉이네"], ["16:43", "형규", "내가 왜 부러워 이꿀벌색기야~~~~~~~~"], ["16:43", "", "(생략)"], ["16:43", "진웅", "지리노"], ["16:43", "정서", "진짜 아찔하다"], ["16:43", "희찬", "그래서 철이 안들었나봄"], ["16:43", "진웅", "꿀빨라고 공군 왔는데 좀 빨아야지 ㅋㅋ"], ["16:43", "희마", "어헛"], ["16:43", "형규", "본인 지금 이병4호봉임.."], ["16:43", "진웅", "ㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷ"], ["16:43", "정서", "윤형규 이녀석은"], ["16:43", "희찬", "송희찬 병장월급 205만원"], ["16:43", "희찬", "이거 좀 히트일지도"], ["16:44", "", "ㅋㅋㅋ (형규·희마)"], ["16:44", "진웅", "우왓 부럽다.."], ["16:44", "희찬", "상병 135"], ["16:44", "정서", "본인이 꿀빠는지 인지하지 못하고 있는게"], ["16:44", "희찬", "아ㅜㅋㅋㅋ̆̈ 시~~~~~발"], ["16:44", "정서", "진짜 존나 화남"], ["16:44", "형규", "그래 많이 벌어~"], ["16:44", "진웅", "ㄹㅇ"], ["16:44", "", "ㅋㅋㅋ (형규)"], ["16:44", "희찬", "진웅이 힘들지?"], ["16:44", "형규", "인지 잘 하고 있는데?"], ["16:44", "진웅", "일과중에 폰 쓰는거면 말 다했지~"], ["16:44", "형규", "니들 열받으라고 그러는거지 ㅋㅋ"], ["16:44", "형규", "아점 끝나고 폰 받는게 당연한거 아니노 ㅋㅋ"], ["16:44", "진웅", "힘드렁"], ["16:44", "희찬", "주말엔 폰 계속 주내"], ["16:44", "희찬", "냐"], ["16:44", "진웅", "ㅇㅇ"], ["16:44", "희찬", "ㅈ까 시발"], ["16:44", "", "ㅋㅋㅋ (형규·진웅)"], ["16:45", "형규", "유ㅐ 물어봤노"], ["16:45", "진웅", "답정너였노 이기.."], ["16:45", "", "ㅋㅋㅋ (희찬)"], ["16:45", "준의", "병장월급 200 개부럽네"], ["16:45", "형규", "희찬아 나도 힘드렁~"], ["16:45", "준의", "난 왜 100밖에 안줌?"], ["16:45", "", "ㅋㅋㅋ (형규)"], ["16:45", "진웅", "ㄹㅇ.."], ["16:45", "형규", "내년에는 165만원이더라"], ["", "", "(중략 56줄)"], ["16:50", "형규", "폰 들거가서"], ["16:50", "정서", "주말에 폰도 받는 새기들이"], ["16:50", "형규", "카메라 풀어와야지"], ["16:50", "진웅", "코드 입력을 도당체 어디서 하노"], ["16:50", "정서", "카톡하다 걸려서 주말폰 금지당하고"], ["16:50", "희찬", "파일 다운해서"], ["16:50", "", "(생략)"], ["16:50", "", "ㅋㅋㅋ (순겸)"], ["16:50", "희찬", "풀수있어"], ["16:50", "진웅", "첨들어보네"], ["16:50", "순겸", "뭐 수련원이노"], ["16:51", "형규", "ㄹㅇ"], ["16:51", "희찬", "[사진]"], ["16:51", "진웅", "근데 생각보다 진짜 저능아 많음"], ["16:51", "진웅", "총기 분해하다가 부품 잃어버리고 질질 짜는 새끼.."], ["16:51", "희찬", "이거로 잠기면 저 파일 누르고 다운받으면 풀림"], ["16:51", "형규", "ㄹㅇ 군대에 저능아련들 개많음 씨발"], ["16:51", "진웅", "신기하네"], ["16:51", "진웅", "신기한 사람들 진짜 많이 봄"], ["16:52", "형규", "가스실습때 끈 다 조이라고 몇번이나 설명해줬는데"], ["16:52", "진웅", "ㄹ 발음을 못 해서 매일 밤마다 발음 연습 시켜줬던 친구,,"], ["16:52", "형규", "안듣고 멍ㅋ대리다가"], ["16:52", "진웅", "정헌아 라디오 해봐 라디오~"], ["16:52", "형규", "입장하자마자 나간새끼"], ["16:52", "진웅", "ㅏ디오.."], ["16:52", "희찬", "근데 급식 부실하다고 고발하는게 다 저런거로 풀고 찍는거 아님?"], ["16:52", "정서", "조교님 저 핸드폰을 정지시키고 왔는데 오똑해요~?"], ["16:52", "형규", "샤워바구니를 자기 필통으로 쓰는 새끼"], ["16:52", "희마", "야수교 때 생활관 팀장이었던 형이 딱 이랬는데 ㅋㅋㅋㅋㅋㅋ"], ["16:52", "정서", "으앵 저 배떠리가 업어용~"], ["16:52", "진웅", "걍 투폰쓰는거지"], ["16:52", "희찬", "ㅇㅎ"], ["16:52", "형규", "샤워하고 옷을 바로 안갈아입고"], ["16:52", "희찬", "형규 27사단 이던가?"], ["16:52", "형규", "꼭 씨발 입었던 옷 입고 생활관까지 와서"], ["16:53", "형규", "새 옷으로 갈아입던 새끼"], ["16:53", "형규", "기상하자마자 프링글스 쳐먹는 새끼"], ["16:53", "희찬", "오 나도 햐봐여지"], ["16:53", "진웅", "기상 꽈자 맛있겠노 ㅋㅋ"], ["16:53", "형규", "면도기 날만 잡고 생활관에서 면도하덬 새끼"], ["16:53", "희찬", "형규 27사단?"], ["16:53", "형규", "그래놓고 면도가 잘 안되네.."], ["16:53", "형규", "ㄴㄴ28"], ["16:53", "희찬", "태풍 맞지?"], ["16:53", "형규", "이거 모두 다 한 사람의 이야기입니다..."]], "from": "16:41", "to": "16:54", "raw": 163}, "순겸·재훈 생존 확인": {"lines": [["00:45", "형규", "재훈이랑 순겸이는 졸업하고나서 한번도 못봤노"], ["00:45", "순겸", "여진웅보다"], ["00:45", "순겸", "이정돈가씨랑"], ["00:45", "순겸", "더친한듯 ㅋㅋ"], ["00:45", "민석", "난 고등학교때 재훈이 봤었나"], ["00:45", "", "ㅋㅋㅋ (형규·정서)"], ["00:45", "민석", "호수공원 간게 고딩인가"], ["00:45", "민석", "정서야"], ["00:45", "민석", "재훈이랑"], ["00:45", "재훈", "아마그럴걸"], ["00:46", "민석", "오래됐누..."], ["00:46", "", "ㅋㅋㅋ (진웅)"], ["00:46", "진웅", "저번에 뭐 카톡 먹통 됐었다매"], ["00:46", "진웅", "남들은 몰라도 너에겐 정말 사회와의 단절이었겠구나.."], ["00:47", "순겸", "뭔소리임"], ["00:47", "민석", "디스코드가 있는데"], ["00:47", "", "ㅋㅋㅋ (형규·민석)"], ["00:47", "순겸", "[사진]"], ["00:47", "민석", "?"], ["00:47", "순겸", "[사진]"], ["00:47", "", "ㅋㅋㅋ (진웅)"], ["00:47", "순겸", "여기 다있음"], ["00:47", "", "ㅋㅋㅋ (민석·형규)"], ["00:47", "진웅", "뭐야.. 있었잖아..?"], ["00:47", "형규", "싱붕아..."], ["00:47", "", "(생략)"], ["00:47", "진웅", "언제나 볼 수 있는 친구.."], ["00:47", "순겸", "어허"], ["00:47", "", "ㅋㅋㅋ (민석)"], ["00:47", "정서", "난 진짜 호수공원때 재훈이 마지막으로 본거같은데"], ["00:47", "순겸", "그런 갤 안 들어갑니다"], ["00:47", "민석", "나도"], ["00:47", "형규", "브이알챗으로 모여"], ["00:48", "민석", "순겸이는 초딩때 이후로 기억없음"], ["00:48", "정서", "그나마 가장 최근에 본게 형규인듯"], ["00:48", "형규", "순겸이 죽었나"], ["00:48", "정서", "영화 소품으로 염주 빌리러 감"], ["00:48", "", "ㅋㅋㅋ (민석)"], ["00:48", "형규", "진짜 망령 아님?"], ["00:48", "민석", "ㄹㅇ"], ["00:48", "형규", "잘 있니"], ["00:48", "민석", "김순겸 버튜버썰"], ["00:48", "진웅", "ㄷㄷㄷㄷㄷ"], ["00:48", "형규", "버튜버(얼굴안나옴)"], ["00:48", "민석", "ㄹㅇ ㅋㅋ"], ["00:48", "정서", "순겸이랑 재훈이는 진짜"], ["00:49", "정서", "어떤 살인마가 죽여서 카톡 대신하고 있다해도"], ["00:49", "정서", "진짜인지 모를거 같아"], ["00:49", "", "ㅋㅋㅋ (진웅·재훈)"], ["00:49", "진웅", "따라하기도 쉬움"], ["00:49", "", "ㅋㅋㅋ (형규)"], ["00:49", "진웅", "가끔 ㅋㅋㅋ랑 부르라미 콘 올리면 됨"], ["00:49", "", "ㅋㅋㅋ (정서)"], ["00:49", "형규", "ㄹㅇ"], ["00:49", "민석", "ㄹㅇ ㅋㅋ"], ["00:49", "민석", "그놈목소리 입갤..."], ["00:49", "형규", "[이모티콘]"], ["00:50", "재훈", "[이모티콘]"], ["00:50", "형규", "[이모티콘]"], ["00:50", "민석", "[이모티콘]"], ["", "", "(중략 49줄)"], ["00:53", "민석", "뺏어간"], ["00:53", "순겸", "라이트는"], ["00:53", "정서", "살래?"], ["00:53", "순겸", "ㄹㅇ 당근으로도 잘 안팔릴텐데"], ["00:54", "순겸", "아닌가"], ["00:54", "정서", "그리고 뭔가"], ["00:54", "순겸", "라이트도 모니터연결되나"], ["00:54", "정서", "그냥 롤체 제외하고 게임 자체를 안함"], ["00:54", "형규", "어린이날이나 크리스마스 특수 노려라"], ["00:54", "진웅", "시발"], ["00:54", "순겸", "이번시즌 롤체해봄?"], ["00:54", "진웅", "마리오 칩은 내꺼잖아"], ["00:54", "재훈", "일에 치이는 샒"], ["00:54", "정서", "ㅇㅇㅇ"], ["00:54", "재훈", "삶"], ["00:54", "", "ㅋㅋㅋ (순겸)"], ["00:54", "형규", "그때쯤 당근에 올리면 팔릴긋"], ["00:54", "", "ㅋㅋㅋ (순겸)"], ["00:54", "재훈", "Ntr이였노?"], ["00:54", "", "ㅋㅋㅋ (형규)"], ["00:54", "진웅", "카에시떼"], ["00:54", "정서", "이미 1년동안 내가 가지고 있었는데"], ["00:54", "정서", "이정도면 소유권 넘어온거 아님?"], ["00:54", "", "ㅋㅋㅋ (진웅)"], ["00:54", "형규", "존나 자연스럽게 넘어가노"], ["00:54", "", "ㅋㅋㅋ (재훈)"], ["00:55", "진웅", "저번에 군대에서 동생이 카톡해서"], ["00:55", "진웅", "마딧세이 없다길래"], ["00:55", "진웅", "존나 갈궜는데"], ["00:55", "진웅", "다음날 생각해보니까 김정서한테 빌려줬다는걸 떠올림"], ["00:55", "", "ㅋㅋㅋ (순겸·민석·정서)"], ["00:56", "", "(생략)"], ["00:56", "진웅", "심심해"], ["00:56", "정서", "[사진]"], ["00:56", "정서", "타바코 스이테루"], ["00:56", "진웅", "눈 존나 왔네"], ["00:56", "", "(생략)"], ["00:56", "정서", "실제로 어제 존나했지"], ["00:56", "재훈", "하늘에서내리는쓰레기"], ["00:57", "정서", "화가 존나남"], ["00:57", "진웅", "부대에 염화칼륨 다 써가던데"], ["00:57", "진웅", "좆된거야~~"], ["00:57", "민석", "어"], ["00:57", "민석", "그거 몸에 나빠요"], ["00:57", "재훈", "눈치우는 로봇청소기 누가 안만드나"]], "from": "00:45", "to": "00:58", "raw": 160}, "정서네 바퀴벌레 습격": {"lines": [["20:15", "", "ㅋㅋㅋ (순겸)"], ["20:16", "정서", "페이스톡 종료 09:49"], ["20:16", "진웅", "어우"], ["20:16", "진웅", "스릴러 영화 왜 봄"], ["20:16", "진웅", "김정서네 바퀴 한 마리 넣어주면 되느데"], ["20:16", "정서", "[사진]"], ["20:16", "진웅", "아 시발"], ["20:16", "정서", "존나 커 진짜"], ["20:16", "정서", "씨이발"], ["20:16", "진웅", "와"], ["20:16", "", "(생략)"], ["20:17", "", "ㅋㅋㅋ (정서)"], ["20:17", "정서", "내 눈깔로 보고있는 나는"], ["20:17", "진웅", "저걸 어케 짜부하고 분리했냐"], ["20:17", "", "(생략)"], ["20:17", "진웅", "벌레 내성 진짜 상당하구나"], ["20:17", "정서", "진짜 신발 신은게 최고의 판단이었다"], ["20:17", "", "ㅋㅋㅋ (진웅)"], ["20:17", "진웅", "맨발 짜부할뻔 ㅋㅋ"], ["20:17", "정서", "다시는 저녁에 창문을 열지 않겠습니다..."], ["20:18", "진웅", "진짜 존나 무섭네"], ["20:18", "진웅", "내 방 창문 닫았다.."], ["20:18", "순겸", "죠우-지"], ["20:19", "형규", "아 씨발"], ["20:19", "형규", "사진 뭐야"], ["20:20", "정서", "아직도 손이 덜덜덜 떨린다 그냥"], ["20:20", "정서", "나 지금 너무 무서워서 5분째 현관에 서 있어 애들아"], ["20:20", "", "ㅋㅋㅋ (형규·진웅)"], ["20:21", "민석", "?"], ["20:21", "민석", "바퀴가 아니고"], ["20:21", "민석", "곱등이 여치 이런애들인것같은디"], ["20:21", "", "(생략)"], ["20:21", "순겸", "여치는"], ["20:21", "순겸", "밟아도 안뭉개져서"], ["20:22", "민석", "?"], ["20:22", "", "ㅋㅋㅋ (진웅)"], ["20:22", "민석", "걍 터짐"], ["20:22", "순겸", "나"], ["20:22", "진웅", "벌레가 깡통보다 셈?"], ["20:22", "순겸", "중딩때"], ["20:22", "순겸", "1주에"], ["20:22", "순겸", "여치"], ["20:22", "순겸", "5번씩들어왔었는데"], ["20:22", "순겸", "가끔 벌자강여치들들어오면"], ["20:22", "순겸", "눌러도 원형 유지하는 애들"], ["20:22", "진웅", "완전 야인의 삶을 살고 있었구나"], ["20:22", "순겸", "꽤 많았음"], ["20:22", "", "ㅋㅋㅋ (민석)"], ["20:22", "진웅", "고무고무노 여치 아님?"], ["20:22", "민석", "곤충학자 ㄹㅇ"], ["20:23", "민석", "곱등이 여치도 아니고"], ["20:23", "", "ㅋㅋㅋ (형규)"], ["20:23", "형규", "순브르"], ["20:23", "민석", "저거 귀뚜라미 같기도 하다"], ["20:23", "진웅", "그렇네"], ["20:23", "진웅", "저번에 내 방에 들욌던거 진짜 딱 저랬음"], ["20:23", "진웅", "상황도 비슷하고"], ["20:23", "진웅", "모니터 옆으로 날아들던데"], ["20:23", "민석", "나도 귀뚜라미는 잘 못잡음"], ["20:23", "", "(생략)"], ["", "", "(중략 44줄)"], ["20:26", "순겸", "여치과쪽은아니긴함"], ["20:26", "민석", "ㅇㅇ"], ["20:26", "민석", "다시보니까 바퀴같음"], ["20:26", "정서", "에어포스 신발로 최선을 다해 밟았는데도"], ["20:26", "정서", "원형 유지한거보면"], ["20:26", "민석", "그 제일 흔한 바퀴"], ["20:26", "정서", "깡통보다 단단한거 같긴함"], ["20:26", "민석", "독일바퀴였나"], ["20:26", "민석", "무늬랑 색깔도 비슷하네"], ["20:26", "", "ㅋㅋㅋ (진웅)"], ["20:27", "순겸", "대충"], ["20:27", "순겸", "3.5?"], ["20:27", "순겸", "4?"], ["20:27", "", "ㅋㅋㅋ (재훈)"], ["20:27", "순겸", "cm정도되는듯"], ["20:27", "정서", "내가 방금 시체 치우면서 다시한번 정밀검사 해봤는데"], ["20:27", "정서", "진짜 내 새끼손가락보다 조금 더 큼"], ["20:28", "", "ㅋㅋㅋ (진웅·형규)"], ["20:28", "형규", "바퀴감별사네"], ["20:28", "진웅", "사진으로 보니까 좀 체감이 되던데"], ["20:28", "진웅", "진짜 존나 크네"], ["20:29", "정서", "진짜 딱 창문에 붙었을때"], ["20:29", "정서", "설마 저 존나 큰게 방충망 안으로 들어온건가?"], ["20:29", "순겸", "인지부조화"], ["20:29", "", "ㅋㅋㅋ (순겸)"], ["20:29", "정서", "아니겠지 방충망 밖이겠지? 하면서 5초동안 쳐다봄"], ["20:29", "", "ㅋㅋㅋ (진웅)"], ["20:29", "진웅", "뭔지 알거같다"], ["20:29", "정서", "그러다 푸드덕 거리면서 날아오길래"], ["20:29", "", "ㅋㅋㅋ (민석)"], ["20:29", "정서", "진짜 소리지르면서 나감"], ["20:29", "정서", "내가 이런 목소리 낼줄 있는지 처음 알았네"], ["20:29", "민석", "근데 너도 바퀴약 사서 놔야겠다"], ["20:30", "민석", "바퀴 보이면 그안에 알이 이미 있다는 증거라는데"], ["20:30", "정서", "나도 달에 한번씩 다 뿌려놓는데"], ["20:30", "민석", "아 그르냐"], ["20:30", "정서", "쟤처럼 밖에서 쳐 오는거는"], ["20:30", "정서", "진짜 막을 수가 없음"], ["20:30", "", "ㅋㅋㅋ (민석)"], ["20:30", "진웅", "ㄹㅇ"], ["20:30", "진웅", "재해지"], ["20:30", "순겸", "저게"], ["20:30", "순겸", "밖에서온거라"], ["20:30", "순겸", "ㅇㅇ"], ["20:30", "순겸", "안에있던거면몰라도"]], "from": "20:12", "to": "20:32", "raw": 151}, "전역일 계산의 공포": {"lines": [["19:37", "진웅", "걍 북진하면 안됨?"], ["19:37", "순겸", "사람미칠만하지"], ["19:37", "준의", "오"], ["19:37", "형규", "김남인도 있겠다"], ["19:37", "형규", "그냥 밀자"], ["19:38", "진웅", "북괴 얼굴.."], ["19:38", "형규", "우정연 앞에 세우고 북진하면 아군인 줄 알고 안 쏠 듯"], ["19:39", "", "ㅋㅋㅋ (정서)"], ["19:39", "준의", "와 근데 10월에 공군가면"], ["19:39", "준의", "나 나오고 9개월 후에 나오네"], ["19:39", "", "ㅋㅋㅋ (형규)"], ["19:39", "준의", "24년 7월 ?"], ["19:39", "", "ㅋㅋㅋ (순겸)"], ["19:39", "준의", "오우 쒯 ㅋㅋ"], ["19:39", "순겸", "24년 오긴함?"], ["19:39", "형규", "ㄹㅇ"], ["19:39", "", "ㅋㅋㅋ (진웅)"], ["19:39", "정서", "우리가 다 제대하고 모일라면"], ["19:39", "형규", "23년도 아직인데"], ["19:39", "정서", "대체 앞으로 몇년이냐"], ["19:40", "진웅", "오우 쒯 이 지랄 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"], ["19:40", "진웅", "존나 찰지노"], ["19:40", "", "ㅋㅋㅋ (정서)"], ["19:40", "준의", "23년 10월도 존나 막막한데"], ["19:40", "형규", "나 내년 5월에 육군으로 가면 24년11월 입대고"], ["19:40", "형규", "아 입대래"], ["19:40", "형규", "전역"], ["19:40", "형규", "공군은 25년 2월임"], ["19:41", "형규", "애-₩;₩:₩/미 씨발"], ["19:41", "", "ㅋㅋㅋ (진웅)"], ["19:41", "형규", "미쳣네"], ["19:41", "준의", "진짜 비타민이노 ㅋㅋ"], ["19:41", "", "ㅋㅋㅋ (순겸)"], ["19:41", "형규", "공익 보내줘 병무쳥 애미없는년들아"], ["19:41", "순겸", "군대 일찍 가려다 강제 팽당한 애도 있는데"], ["19:41", "진웅", "사이트가서 좆꿀이나 빨고싶네"], ["19:41", "정서", "난 23년에 군대가는데"], ["19:42", "진웅", "기체정비 걸려서 사이트가면"], ["19:42", "정서", "그냥 육군갈까"], ["19:42", "진웅", "활주로가 없어서"], ["19:42", "진웅", "걍 보일러병된다든데"], ["19:42", "진웅", "존나 하고싶다"], ["19:42", "형규", "오"], ["19:42", "준의", "국방대 오면 되는뎅"], ["19:42", "준의", "왜공군을 가지"], ["19:42", "", "ㅋㅋㅋ (형규·순겸)"], ["19:42", "진웅", "걍 보일러 전원 딸깍 하고 하루 일과 끝나느거임"], ["19:42", "형규", "장세민도 딸깍딸깍 아님?"], ["19:42", "", "ㅋㅋㅋ (진웅)"], ["19:42", "형규", "마우스 딸깍 딸깍"], ["19:42", "정서", "어디 조까튼데로 빠지면 어캄"], ["19:43", "형규", "ㄹㅇ"], ["19:43", "정서", "넘모 무서워"], ["19:43", "진웅", "열쇠야 십련아 ㅋㅋ"], ["19:43", "형규", "씹좆부대 이런 곳 가면 우잠"], ["19:43", "", "ㅋㅋㅋ (형규·정서)"], ["19:43", "형규", "당사자 입갤.."], ["19:43", "정서", "니세코이 주인공을 포기하네;"], ["19:43", "형규", "ㄹㅇ"], ["19:43", "진웅", "잘풀려도 페바"], ["", "", "(중략 16줄)"], ["19:45", "", "(생략)"], ["19:45", "진웅", "오"], ["19:45", "", "ㅋㅋㅋ (순겸·진웅·정서)"], ["19:45", "순겸", "인편으로 톡캡쳐 보내야겠다"], ["19:45", "진웅", "그래도 존나 얼척없이 갈구고 그런건 없나보네"], ["19:46", "준의", "인편으로 톡캡쳐보내면 안보이던디"], ["19:46", "형규", "흑백이라그런가"], ["19:46", "형규", "아님 작아서 안보이나"], ["19:46", "준의", "요즘엔 막 억까로 갈구면"], ["19:46", "진웅", "존나 작지 않나"], ["19:46", "준의", "바로 군기교육대 가서"], ["19:46", "진웅", "옹"], ["19:46", "형규", "오"], ["19:46", "형규", "선진병영이네"], ["19:47", "정서", "일 족같은건 참아도 사람 ㅈ같은건 참기 어렵더라"], ["19:47", "준의", "빨리 휴가 나가서 군머 썰이나 풀고싶노"], ["19:47", "", "ㅋㅋㅋ (진웅)"], ["19:47", "정서", "궁금하긴함"], ["19:47", "재훈", "ㄹㅇㅋㅋ"], ["19:47", "형규", "군대에 오딲꾸들 많음?"], ["19:47", "형규", "최근에 신세계 갔을 때도"], ["19:47", "준의", "아직도 내가 군인이라는게 안믿기네"], ["19:48", "", "ㅋㅋㅋ (정서)"], ["19:48", "형규", "영풍에서 군인들이 라노벨 구경하던데"], ["19:48", "진웅", "티를 딱히 안낼거같은데"], ["19:48", "준의", "메이플 274렙짜리는 있던데"], ["19:48", "진웅", "그린캠프 안 보냄?"], ["19:48", "", "ㅋㅋㅋ (형규)"], ["19:48", "형규", "ㄹㅇ"], ["19:48", "", "(생략)"], ["19:48", "재훈", "에이전트인데?"], ["19:48", "준의", "생긴것도 푸짐하고"], ["19:48", "진웅", "오우"], ["19:48", "준의", "처음에 폐급짓 좀 하길래"], ["19:48", "준의", "그런앤가 했는데"], ["19:48", "형규", "풍채유지비 따로 받나"], ["19:48", "준의", "최게 착하고 좋은형이었어"], ["19:48", "진웅", "햄버거 놀이 하면 하나 죽을지도"], ["19:48", "형규", "옹"], ["19:48", "", "ㅋㅋㅋ (형규)"], ["19:49", "준의", "요즘엔 그냥 운동하는 낙으로 산다"], ["19:49", "형규", "옹"], ["19:49", "형규", "체단실 좋음?"], ["19:49", "진웅", "거긴 시설 좋음?"], ["19:49", "", "(생략)"]], "from": "19:37", "to": "19:50", "raw": 125}, "입대 전날의 삭발": {"lines": [["17:39", "진웅", "당장 가서 하나 맞춰야겠다"], ["17:39", "정서", "논 글레시스 좀 멋있네"], ["17:39", "형규", "ㄹㅇ"], ["17:39", "진웅", "논 바이너리"], ["17:39", "형규", "멋이 확 없어지네"], ["17:39", "", "ㅋㅋㅋ (재훈·민석)"], ["17:39", "", "(생략)"], ["17:40", "", "ㅋㅋㅋ (정서)"], ["17:40", "정서", "빨리 군대 갔다와서 라식이나 해야지"], ["17:40", "진웅", "머리 6미리로 미니까 존나 계속 만지게 되네 ㅣ"], ["17:40", "진웅", "느낌 개좋노"], ["17:40", "정서", "빨리 사진 ㄱㄱ"], ["17:40", "", "ㅋㅋㅋ (민석)"], ["17:40", "진웅", "[사진]"], ["17:41", "민석", "오 ㅋㅋㅋ"], ["17:41", "진웅", "예아"], ["17:41", "", "ㅋㅋㅋ (정서)"], ["17:41", "정서", "왜캐 잘어울림?"], ["17:41", "민석", "밤주우러가자"], ["17:41", "정서", "천생 군인이네"], ["17:41", "", "ㅋㅋㅋ (진웅·형규)"], ["17:42", "형규", "ㄹㅇ"], ["17:42", "", "ㅋㅋㅋ (재훈·정서)"], ["17:42", "형규", "군인 이라는 직업은 여진웅 하라고 만든 직업일지도?"], ["17:42", "재훈", "어디서본얼ㅇ굴같은데"], ["17:42", "정서", "아 진짜 웃음이 계속 나네"], ["17:42", "형규", "라오스의 그 남자..."], ["17:42", "정서", "약간 우정연식 웃음발생"], ["17:42", "", "ㅋㅋㅋ (형규·재훈)"], ["17:43", "진웅", "[사진]"], ["17:43", "형규", "[사진]"], ["17:43", "", "ㅋㅋㅋ (민석)"], ["17:43", "형규", "누끼 on..."], ["17:43", "", "ㅋㅋㅋ (재훈·정서)"], ["17:44", "재훈", "[#꿈속에서 이남자를 검색]"], ["17:44", "진웅", "[사진]"], ["17:44", "진웅", "머리를 밀어도 실감은 안나고"], ["17:44", "정서", "진짜 두상 쥰내 학도병같ㄴ"], ["17:44", "진웅", "그냥 머리 보드라워서 기분만 좋네"], ["17:44", "진웅", "아 시발 복면 가져올걸"], ["17:44", "", "ㅋㅋㅋ (재훈)"], ["17:44", "정서", "전쟁영화에서 15분만에 죽는 친구처럼 생김"], ["17:44", "순겸", "아니"], ["17:44", "순겸", "머리싹밀었는데"], ["17:45", "순겸", "달라진게없네"], ["17:45", "순겸", "그냥여진웅인데?"], ["17:45", "", "ㅋㅋㅋ (형규·재훈·정서)"], ["17:45", "정서", "ㄹㅇ"], ["17:45", "형규", "[사진]"], ["17:45", "형규", "감사합니다.."], ["17:45", "진웅", "개새기야"], ["17:45", "진웅", "[사진]"], ["17:45", "형규", "앞으로 2개월간은 행복 만땅이겠다"], ["17:45", "진웅", "신남"], ["17:45", "", "ㅋㅋㅋ (형규·정서)"], ["17:46", "정서", "아니 이거 윤형규가 합성한줄"], ["17:46", "", "ㅋㅋㅋ (형규)"], ["17:46", "형규", "진짜 개웃기네"], ["17:46", "진웅", "머리를 좌우로 존나 털어도"], ["17:46", "진웅", "머리가 떨리는 느낌이 없다는게"], ["17:46", "진웅", "존나 신기함"], ["17:46", "형규", "[사진]"], ["17:46", "형규", "너무 재밌다 진짜"], ["17:47", "형규", "[사진]"], ["17:47", "형규", "머리 어디갔노 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"], ["17:47", "", "ㅋㅋㅋ (정서)"], ["17:47", "진웅", "[사진]"], ["17:47", "", "ㅋㅋㅋ (형규)"]], "from": "17:39", "to": "17:48", "raw": 76}, "통영의 아들": {"lines": [["18:53", "재훈", "오"], ["18:54", "정서", "옹"], ["18:55", "정서", "브라디오는 인정이지"], ["18:55", "민석", "[사진]"], ["18:55", "민석", "가보자잇~"], ["18:55", "희마", "일본 한국 고르라길래"], ["18:55", "희마", "닛뽄 골랐음 ㅋㅋ"], ["18:55", "형규", "오"], ["18:55", "", "ㅋㅋㅋ (정서)"], ["18:55", "정서", "한국이었으면 뭐였을까..."], ["18:56", "진웅", "오 ㅋㅋ"], ["18:56", "희마", "술탄이나 장범준이었으려나"], ["18:56", "진웅", "나도 잊었는데"], ["18:56", "", "ㅋㅋㅋ (희마·형규)"], ["18:56", "진웅", "정답은 술탄이었습니다"], ["18:56", "형규", "오"], ["18:56", "형규", "통베권~"], ["18:56", "희마", "감사히 잘 듣겠읍니다 ㅠㅠ"], ["18:56", "진웅", "캐러밴을 들을 수 있었을거야"], ["18:56", "진웅", "그랴요"], ["18:57", "정서", "김정서 지금 막 수업 끝나고"], ["18:57", "정서", "본가 올라가는중"], ["18:58", "정서", "토요일날 여진웅의 마지막을 봐야겠군.."], ["18:59", "순겸", "디쓰리"], ["18:59", "재훈", "여진웅 현 통영의 아들 사망..."], ["18:59", "형규", "어어"], ["18:59", "형규", "통영의 아들의 아들입니다"], ["18:59", "재훈", "아하"], ["19:00", "형규", "말은 바로 해주세요"], ["19:00", "형규", "아하 ㅇㅈㄹㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"], ["19:00", "", "ㅋㅋㅋ (재훈)"], ["19:00", "희마", "zzzzㅋㅋㅋㅋㅋㅋㅋㅋㅋ"], ["19:00", "형규", "이 나쁜새끼"], ["19:00", "희마", "부럽노.."], ["19:00", "형규", "토요일에는 진웅이 보러갈까"], ["19:00", "희마", "나도 홍죽3리의 아들 가능?"], ["19:00", "형규", "ㅆㄱㄴ"], ["19:00", "희마", "ㄱㅅ"], ["19:00", "재훈", "굳"], ["19:00", "형규", "오늘 지하철 타는데"], ["19:00", "형규", "이름 홍준기인 할아버지 봄"], ["19:01", "재훈", "?"], ["19:01", "희마", "미래에서 온"], ["19:01", "형규", "가방에 본인 성함을 써서 들고다니시더라고"], ["19:01", "형규", "할배지키미도 할배가 되는군..."], ["19:01", "", "ㅋㅋㅋ (희마)"], ["19:01", "재훈", "이러다 저 할배 되어버려요?"], ["19:01", "", "ㅋㅋㅋ (정서)"], ["19:01", "재훈", "(진짜됨)"], ["19:02", "", "ㅋㅋㅋ (형규)"], ["19:02", "희마", "오 정서 올라오농"], ["19:02", "형규", "주말에 통아아 송별회 하나"], ["19:02", "희마", "ㄹㅇ"], ["19:02", "정서", "ㄱㄱ"], ["19:02", "형규", "장소는 복지리 파리바게트로.."], ["19:02", "희마", "저녁까지 있을 거면 나도 참석가능.."], ["19:02", "희마", "일 끗나구 감"], ["19:03", "정서", "일 언제 끝나농?"], ["19:03", "재훈", "오"], ["19:03", "희마", "빠르면 7시"], ["19:03", "희마", "아 5시"], ["19:03", "희마", "늦으면 7시"], ["19:03", "정서", "적당하구먼"], ["19:03", "형규", "진웅이 토요일 저녁에 가지않나"], ["19:03", "희마", "어이쿠.."], ["19:03", "형규", "여진웅 없는 여진웅 송별회"], ["19:03", "정서", "다음주 화요일 아녔음?"], ["19:04", "형규", "군지 월욜 아님?"], ["19:04", "", "ㅋㅋㅋ (진웅)"], ["19:04", "희마", "대체 언제야~"], ["19:04", "정서", "월욜이네"], ["19:04", "진웅", "내일 저녁에 통영감"], ["19:04", "정서", "이런"], ["19:04", "형규", "그럼 낮에 봐야하네"], ["19:04", "진웅", "뭔 근별회여 ㅋㅋ"], ["19:04", "형규", "메타버스 세카이에서 볼까?"], ["19:04", "형규", "ㄹㅇ"], ["19:04", "진웅", "화본역에서 보자"], ["19:04", "진웅", "오"], ["19:04", "", "ㅋㅋㅋ (정서)"], ["19:04", "진웅", "나도 딱 그말할라했는데"], ["19:04", "", "ㅋㅋㅋ (형규)"], ["19:04", "희마", "찌찌뽕 ㅋㅋ"], ["19:04", "형규", "찜질방으로 모여"], ["19:05", "형규", "음식은 내가쏜다이기"]], "from": "18:53", "to": "19:06", "raw": 86}, "새벽의 길냥이": {"lines": [["23:39", "형규", "옹"], ["23:39", "형규", "크리피 넛츠"], ["23:41", "진웅", "[링크 · dcinside]"], ["23:41", "", "ㅋㅋㅋ (진웅)"], ["23:41", "진웅", "각개구루이 이지랄 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"], ["23:42", "정서", "디어타고 복사까지 왔는데도"], ["23:42", "정서", "안잡히네"], ["23:42", "정서", "시발~"], ["23:43", "순겸", "택시"], ["23:43", "순겸", "지금은"], ["23:43", "순겸", "역말고안잡히지않나"], ["23:43", "", "ㅋㅋㅋ (재훈)"], ["23:43", "희마", "늦어버린..."], ["23:43", "희마", "말구집"], ["23:43", "희마", "ㄱㄱ"], ["23:43", "형규", "디어가 머임"], ["23:44", "희찬", "[사진]"], ["23:44", "희찬", "길냥이"], ["23:44", "진웅", "헉"], ["23:44", "정서", "킥보드"], ["23:44", "형규", "납치 입갤..."], ["23:44", "진웅", "가와이"], ["23:44", "형규", "아"], ["23:44", "진웅", "그 억울한 고양이 짤 닮았다"], ["23:44", "", "(생략)"], ["23:44", "형규", "코가 짧아서 귀엽네요"], ["23:44", "희찬", "[사진]"], ["23:44", "희찬", "혹시 들면 할퀴나 했는데"], ["23:44", "희찬", "ㅈㄴ 순함"], ["23:45", "형규", "멱살 잡혔노"], ["23:45", "희찬", "[사진]"], ["23:45", "진웅", "개귀엽네"], ["23:45", "형규", "ㄹㅇ"], ["23:45", "형규", "납치 ㄱㄱ"], ["23:45", "민석", "[사진]"], ["23:45", "희찬", "키우고싶은데"], ["23:45", "민석", "3만 돌파"], ["23:45", "희찬", "고양이 알레르기 있음ㅋㅋ̆̈"], ["23:45", "진웅", "쟤도 귀엽네"], ["23:45", "", "ㅋㅋㅋ (형규·진웅)"], ["23:45", "형규", "강아지랑 고양이 알레르기가 따로 있나"], ["23:45", "희찬", "강아지는 앖어"], ["23:46", "형규", "그냥 털 알레르기로 퉁치는 게 아닌가보네"], ["23:46", "형규", "ㄱㅊ 계속 만지면 익숙해짐"], ["23:46", "정서", "8번버스 입갤.."], ["23:46", "진웅", "오..."], ["23:47", "진웅", "길고긴 여정을 떠나는구나"], ["23:47", "형규", "오"], ["23:47", "정서", "진짜 족같다"], ["23:47", "형규", "8번 타면 집 안가자너"], ["23:47", "형규", "버스 차고지 가서 노숙하삼"], ["23:47", "정서", "가능이나 의정부가서 잡을라고"], ["23:48", "형규", "오"], ["23:48", "정서", "그냥 예근이 갈때 같이 갈걸"], ["23:48", "형규", "참붕아..."], ["23:48", "", "ㅋㅋㅋ (진웅)"], ["23:49", "재훈", "[이모티콘]"], ["23:49", "진웅", "가능슬럼에선 잘 잡히겠다"], ["23:49", "형규", "ㄹㅇ"], ["23:50", "순겸", "천장"], ["23:50", "순겸", "쌓였네"], ["23:50", "정서", "방금까지만해도 무기력했는데"], ["23:50", "정서", "화가 잔뜩 나네"], ["23:50", "정서", "디어타고 버스타고 택시타고 집가기"], ["23:50", "", "ㅋㅋㅋ (형규·재훈)"], ["23:51", "형규", "모험심이 강한 아이로구나"], ["23:51", "정서", "시발..."], ["23:51", "형규", "월요일에는 여레쥬르 가서 빙수랑 도나쓰 먹어봐야지"], ["23:51", "정서", "오"], ["23:51", "형규", "귀찮은 메뉴가 빙수 말고 또 뭐있지"], ["23:51", "정서", "그럼 나도 월요일에 피규어 받으러 가야겠다"], ["23:51", "형규", "만들기 진짜 존나게 귀찮은 메뉴"], ["23:51", "형규", "오"], ["23:51", "정서", "아포가토 만들어달라 해야지"]], "from": "23:39", "to": "23:52", "raw": 76}, "펜타포트 라인업 회의": {"lines": [["19:02", "형규", "[사진]"], ["19:02", "형규", "이런 것도 있노"], ["19:03", "재훈", "부지 락페스티벌 ㄷㄷ"], ["19:03", "희마", "요즘 락페 많이 하자너"], ["19:03", "형규", "오늘은 이거다 ㅋㅋ"], ["19:03", "희마", "펜타 끝나자마자"], ["19:03", "희마", "비 죠낸 오는 거 보면"], ["19:03", "희마", "날짜 ㅈㄴ 잘잡은 것 같음 ㅋㅋㅋ"], ["19:04", "", "ㅋㅋㅋ (진웅)"], ["19:04", "진웅", "기상청과의 긴밀한 협력이 있던 거 아닐까.."], ["19:04", "", "ㅋㅋㅋ (정서)"], ["19:04", "희마", "ㄹㅇ ㅋㅋ"], ["19:04", "희마", "잔나비 이새기들은"], ["19:04", "희마", "맘대로 공연 더 해서"], ["19:04", "희마", "뒤에 해외 밴드들 순서 밀리고 ㅋㅋ"], ["19:04", "", "ㅋㅋㅋ (정서·진웅)"], ["19:04", "정서", "여기는 한국이다..."], ["19:04", "진웅", "앵콜 해달라했다고 진짜 하냐고~"], ["19:04", "민석", "이번 락페 누구옴?"], ["19:05", "민석", "해외"], ["19:05", "희마", "국밥 뱀윜이랑"], ["19:05", "희마", "[#펜타포트 라인업 검색]"], ["19:05", "희마", "머지 알던 거랑 좀 다른데"], ["19:05", "희마", "이게 아닌가"], ["19:06", "진웅", "옹"], ["19:06", "진웅", "잘 모르겠지만 엄청 오네요"], ["19:06", "민석", "이게 락페스티벌 이노"], ["19:06", "민석", "나머지 다빼고 메탈리카 하나만 와다"], ["19:06", "민석", "와도 전석 매진이다 맨이야"], ["19:06", "민석", "ㄹㅇ"], ["19:06", "형규", "우효wwwwwwwwww"], ["19:06", "진웅", "헤밍웨이는 아는데"], ["19:06", "진웅", "헤서웨이는 뭐임"], ["19:06", "형규", "하늘에서 물이 질질wwwwewew"], ["19:06", "민석", "글렌체크는 좋아하는데"], ["19:06", "재훈", "앤 해서웨이?"], ["19:07", "민석", "?"], ["19:07", "재훈", "?"], ["19:07", "희마", "데프헤븐도 왔었네"], ["19:07", "진웅", "그냥 헤서웨이라고 써져있는데"], ["19:07", "정서", "진짜 하나도 모르겠군"], ["19:08", "정서", "이무진 선우정아는 안다"], ["19:09", "희마", "돔황가쟈~"], ["19:09", "정서", "자랑스러운 동방대 선우정아"], ["19:10", "희마", "ㄹㅇ?"], ["19:10", "형규", "오"], ["19:10", "형규", "이무진 지금 남원에 있던데"], ["19:11", "진웅", "오"], ["19:11", "형규", "[사진]"], ["19:11", "형규", "이무진..."], ["19:11", "", "ㅋㅋㅋ (정서)"], ["19:11", "희마", "이왜진 ㅋㅋ"], ["19:11", "", "ㅋㅋㅋ (형규)"], ["19:11", "형규", "이왜진이었노"], ["19:12", "희마", "사상도 딱  명예확국신ㅁㄴ닌이자너"], ["19:12", "희마", "빗방울 십"], ["19:13", "", "ㅋㅋㅋ (정서)"], ["19:13", "순겸", "와"], ["19:13", "순겸", "저 머리를 다 밀고"], ["19:13", "순겸", "군머들어간거임?"], ["19:13", "희마", "2kg는 빠졌을듯"], ["19:13", "순겸", "머리가 어깨까지 내려오네"], ["19:13", "", "ㅋㅋㅋ (진웅)"], ["19:13", "진웅", "개웃기네 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"], ["19:13", "", "ㅋㅋㅋ (재훈·형규)"], ["19:14", "진웅", "존나 억울한 장무진.."], ["19:14", "순겸", "슈퍼언럭키 무진"], ["19:14", "형규", "이왜진으로 고쳐주세요~"], ["19:14", "형규", "입에 착착 붙노"], ["19:14", "형규", "남원의 이왜진.."], ["19:14", "희마", "대교의 자랑이지요"]], "from": "19:02", "to": "19:15", "raw": 73}, "훈련소 3주차 유급": {"lines": [["19:37", "정서", "[사진]"], ["19:38", "정서", "만약..."], ["19:38", "정서", "[사진]"], ["19:38", "정서", "만약에 말이야"], ["19:38", "정서", "훈련소 3주차 마지막 주말 전날에"], ["19:38", "진웅", "이건... \"죽은 자의 소생\"...?"], ["19:38", "정서", "아침점호 중 넘어져 쇄골골절로 국군 수도병원에 오게 돼서"], ["19:38", "정서", "유급이 되는 훈련병이 있다면?"], ["19:38", "진웅", "어?"], ["19:39", "정서", "[사진]"], ["19:39", "", "ㅋㅋㅋ (진웅)"], ["19:39", "정서", "씨발 꿈에서 깨라고 김정서"], ["19:39", "", "(생략)"], ["19:39", "", "ㅋㅋㅋ (형규)"], ["19:39", "진웅", "모-이치도 해야됨???"], ["19:39", "형규", "나랑 만나나?"], ["19:40", "정서", "아니 말이 돼?"], ["19:40", "진웅", "[링크 · youtube]"], ["19:40", "정서", "진짜 말이 안되는거잖아"], ["19:40", "", "ㅋㅋㅋ (형규)"], ["19:40", "형규", "개억울하겠다"], ["19:40", "형규", "3주차인데"], ["19:40", "진웅", "제로카라...!"], ["19:40", "형규", "나온 김에 아이네 서울여행 영상이나 봐라.."], ["19:40", "정서", "나 사격 15발 팔굽 특급 윗몸 2급 뜀걸음 3급의 사나이인데"], ["19:40", "형규", "오"], ["19:40", "정서", "겨우 아침점호때 자빠진걸로"], ["19:40", "진웅", "와 지리노"], ["19:40", "정서", "유급이 된다고?"], ["19:40", "정서", "진짜 지랄하지마"], ["19:40", "", "ㅋㅋㅋ (진웅)"], ["19:41", "진웅", "아니 도대체 뭘하면"], ["19:41", "진웅", "아침점호때 넘어졌다가"], ["19:41", "진웅", "쇄골이 부러짐"], ["19:41", "형규", "쇄골로 떨어짐?"], ["19:41", "정서", "나도 씨발 존나 하나도 안아프길래"], ["19:41", "진웅", "육군은 아침체조때 풍차돌리기함?"], ["19:41", "", "ㅋㅋㅋ (형규)"], ["19:41", "정서", "동기들한테 아 존나 멀쩡해 절대 문제없어 하고 왔는데"], ["19:41", "형규", "젯따이 몬다이나이~"], ["19:41", "정서", "지구병원에서 씨티 찍어보니까"], ["19:41", "", "ㅋㅋㅋ (진웅)"], ["19:41", "정서", "쇄골이 깔끔하게 3등분 났네요"], ["19:41", "정서", "안아프세요?"], ["19:41", "", "ㅋㅋㅋ (형규)"], ["19:41", "정서", "이지랄"], ["19:41", "형규", "바게트노"], ["19:41", "진웅", "3등분의 쇄골.."], ["19:42", "", "(생략)"], ["19:42", "진웅", "이참에 공군 와라~"], ["19:42", "진웅", "너 올때쯤 급양 티오 생김.."], ["19:42", "정서", "지금 병원 입실했는데"], ["19:42", "", "(생략)"], ["19:42", "진웅", "존나 오래걸리겠네"], ["19:42", "정서", "ㅇㅇ"], ["19:42", "형규", "ㄹㅇ"], ["19:42", "정서", "지구병원에서 갑자기"], ["19:42", "형규", "3주차 유급 개억울하겠다"], ["19:42", "정서", "님 좆됌"], ["19:42", "형규", "왜"], ["", "", "(중략 54줄)"], ["19:47", "정서", "\"니 말년 군생활에서 그만큼 빠짐\""], ["19:47", "형규", "렘은 없고 람만 있는 세계..."], ["19:47", "형규", "오"], ["19:47", "", "(생략)"], ["19:47", "형규", "전역일은 똑같은거임?"], ["19:47", "진웅", "같겠노 ㅣ"], ["19:47", "형규", "11.1?"], ["19:48", "진웅", "19일 빨리 전역하지"], ["19:48", "형규", "ㅇㅇ 그니까"], ["19:48", "", "(생략)"], ["19:48", "정서", "다를걸"], ["19:48", "정서", "15일정도 더 느릴듯"], ["19:48", "형규", "원래 입대한 날짜대로 전역하나"], ["19:48", "형규", "아"], ["19:48", "정서", "여기 서울인데"], ["19:48", "정서", "면회 올사람 없냐"], ["19:48", "정서", "하루 2시간 가능이래"], ["19:48", "형규", "나도 다치면 갈 수 있겠노"], ["19:48", "형규", "기다리셈 고관절 박살내서 간다"], ["19:48", "정서", "오늘 딱 화생방 하는 날이라서"], ["19:49", "형규", "오"], ["19:49", "정서", "여진웅이 써준 꿀팁노트 애들이랑 복습하고 있었는데"], ["19:49", "진웅", "화생방 2번 안하는건 호재네"], ["19:49", "정서", "씨발"], ["19:49", "", "ㅋㅋㅋ (형규·진웅)"], ["19:49", "진웅", "면회 마렵네"], ["19:49", "진웅", "다음주 목금토에도 병원임?"], ["19:49", "진웅", "나 그때 나가는데"], ["19:49", "정서", "장세민이랑 여진웅때문ㅇ"], ["19:49", "형규", "희마가 면회가면 딱이겠다"], ["19:49", "정서", "내 별명 씹덕 M자 교장선생님 됐어"], ["19:49", "정서", "씨팔련들아 ㅋㅋ"], ["19:49", "형규", "훈련소 꿀팁도 얻어와라"], ["19:49", "", "ㅋㅋㅋ (진웅)"], ["19:49", "형규", "교장쌤은 머임"], ["19:49", "형규", "블루아카?"], ["19:50", "정서", "머리 없다고"], ["19:50", "정서", "교장쌤이래"], ["19:50", "", "ㅋㅋㅋ (형규)"], ["19:50", "정서", "건방진 04년이 그러더라"], ["19:50", "형규", "건방지노"], ["19:50", "진웅", "04 쉽지않네"], ["19:50", "형규", "육훈 폰 줌?"], ["19:50", "진웅", "진짜 mz노"], ["19:50", "진웅", "꿈꺼라 이기 ㅋㅋ"]], "from": "19:36", "to": "19:51", "raw": 164}, "중2병 고해성사": {"lines": [["19:43", "진웅", "아냐 근데 진짜 잼씀"], ["19:43", "진웅", "아 맞아 준의야"], ["19:43", "진웅", "오빠는 끝 애니화 되는거 아니"], ["19:43", "준의", "거봐"], ["19:43", "진웅", "무섭더라"], ["19:43", "", "ㅋㅋㅋ (정서)"], ["19:43", "준의", "세간의 사람들은 안다고"], ["19:43", "정서", "거봐ㅏ 이러고 있네"], ["19:43", "", "ㅋㅋㅋ (진웅)"], ["19:44", "준의", "응 우마무스멘가 뭔가보단 훨 잼써~"], ["19:45", "진웅", "흠.."], ["19:45", "정서", "나루호도네?"], ["19:45", "준의", "애니나오면 진짜 떡상한다"], ["19:45", "준의", "두고봐 황혼의 시간에 미소짓는건 누구일지.."], ["19:45", "", "ㅋㅋㅋ (진웅·정서)"], ["19:45", "진웅", "카타와레노 도키.. 네~"], ["19:46", "정서", "너도 육군은 끝 찍으삼"], ["19:46", "준의", "끼발노이"], ["19:46", "", "ㅋㅋㅋ (진웅·정서)"], ["19:46", "진웅", "비탈에서 굴러떨어졌더니 여자 부사관?!"], ["19:46", "준의", "응 내가 육군은 끝 찍을때 넌 육군의 시작 찍고있어~"], ["19:47", "", "ㅋㅋㅋ (진웅)"], ["19:47", "진웅", "시작과 끝.."], ["19:47", "정서", "[사진]"], ["19:47", "정서", "이것도 애니화 된다했던거 같은데"], ["19:48", "준의", "찾았다 내 사랑"], ["19:48", "진웅", "아이쿠.."], ["19:48", "준의", "너 발굴좀 할 줄 아는구나"], ["19:48", "", "ㅋㅋㅋ (정서)"], ["19:48", "진웅", "신시대 씹덕들은 저런거로 럽코 시작하겠지?"], ["19:49", "", "(생략)"], ["19:49", "정서", "요즘 오타쿠들은 신념이 없어"], ["19:49", "준의", "저거 나오다가 안나오네"], ["19:49", "진웅", "일본어를 못하는 러시아인 미소녀 전학생이 의지할 수 있는 것은, 다국어 마스터인 나 1명 이 있는데 ㅋㅋ"], ["19:49", "", "ㅋㅋㅋ (정서·형규)"], ["19:51", "", "(생략)"], ["19:52", "준의", "2화감상완료"], ["19:53", "형규", "뭐 봄"], ["19:53", "", "(생략)"], ["19:53", "형규", "모국어?"], ["19:53", "", "ㅋㅋㅋ (진웅·형규·정서)"], ["19:53", "진웅", "우마무스메 프리티더비 신데렐라 그레이도 2화까지만 감상해봐"], ["19:53", "진웅", "볼 것도 없잖아~"], ["19:53", "형규", "아 ㅋㅋ"], ["19:53", "", "(생략)"], ["19:53", "정서", "진짜 한 3화까지만 봐도"], ["19:54", "정서", "정신차리면 폰 반납시간일거야"], ["19:54", "준의", "몇화까지만 감상해봐 에 대한 안좋은 추억이 있어용"], ["19:54", "", "ㅋㅋㅋ (형규)"], ["19:54", "정서", "에이 만와는 금방이잖아~"], ["19:54", "형규", "맛만 봐~"], ["19:54", "", "ㅋㅋㅋ (진웅)"], ["19:54", "진웅", "김정서 이놈!!!"], ["19:54", "준의", "내가 이리야를 안봤었더라면"], ["19:54", "준의", "정서에 대한 시선이 조금은 고왔겠지.."], ["19:55", "형규", "[사진]"], ["19:55", "", "ㅋㅋㅋ (정서)"], ["19:55", "형규", "개요부터 죽탱이 마렵네 진짜"], ["19:55", "정서", "이준의가 나한테 중2코이를 추천안했다면"], ["19:55", "형규", "남주가 특수부대 훈련이라니"], ["", "", "(중략 34줄)"], ["19:58", "형규", "아 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"], ["19:58", "진웅", "이 스마트폰을 들고 이세계에 가고싶다~"], ["19:58", "형규", "이세계(병원)"], ["19:58", "준의", "에. 그거 나잖아."], ["19:58", "진웅", "에엣.. 마지?"], ["19:58", "", "ㅋㅋㅋ (형규)"], ["19:58", "형규", "두돈반에 치이면 딱이겠노"], ["19:58", "정서", "[사진]"], ["19:59", "정서", "집 가고싶다"], ["19:59", "형규", "뭐노"], ["19:59", "형규", "바쁘네"], ["19:59", "진웅", "이야"], ["19:59", "형규", "너네 집 아님?"], ["19:59", "정서", "밥 먹고 약간 쉬는중"], ["19:59", "정서", "노노"], ["19:59", "정서", "조연출집"], ["19:59", "형규", "오"], ["19:59", "", "(생략)"], ["19:59", "진웅", "힘들겠다.. (침대에 누워서 엉덩이 긁는 중)"], ["19:59", "", "ㅋㅋㅋ (정서)"], ["19:59", "진웅", "(아이스 홍시 섭취 중)"], ["20:00", "", "ㅋㅋㅋ (형규)"], ["20:00", "형규", "개얄밉네"], ["20:00", "", "ㅋㅋㅋ (준의)"], ["20:00", "정서", "개새기..."], ["20:00", "정서", "준의 휴가나오면 신나게 놀아야지"], ["20:01", "진웅", "슬슬 얼마 안 남았네"], ["20:01", "진웅", "여행도 바로 다음주야"], ["20:01", "진웅", "시간이 왤케 빨리가지 뒤질라고"], ["20:01", "정서", "제발 좀 빨리가라"], ["20:01", "정서", "내 현재는 지옥이야"], ["20:01", "진웅", "아까 형규한테도 한 이야긴데"], ["20:02", "진웅", "다른 사람의 체감 시간과 내 체감 시간 바꿀 수 있으면 좋겠다"], ["20:02", "진웅", "군대에 있지만 하루하루 허송세월하는 30대 같은 시간 감각"], ["20:02", "정서", "군대에 있는 이준의라면 흔쾌히 오케이할듯"], ["20:02", "정서", "ㄹㅇㅋㅋ"], ["20:02", "준의", "군머에 있으면 시간 안갈줄 알았는데"], ["20:03", "준의", "시간 진짜 개빨리감"], ["20:03", "진웅", "옹"], ["20:03", "진웅", "세민이도 같은 얘기 하던데"], ["20:03", "준의", "하지만 21개월은 조금 힘들지두~"], ["20:03", "준의", "ㅋㅋ 막이래~"], ["20:03", "", "ㅋㅋㅋ (진웅)"], ["20:03", "진웅", "개새기가.."], ["20:03", "", "ㅋㅋㅋ (형규·정서)"]], "from": "19:43", "to": "20:04", "raw": 147}, "민석의 본계 살리기": {"lines": [["14:51", "민석", "[사진]"], ["14:51", "민석", "존~나 비싸네"], ["14:52", "", "ㅋㅋㅋ (진웅)"], ["14:52", "진웅", "한 트랙이 550엔?"], ["14:52", "민석", "웅진"], ["14:52", "민석", "현재 25000쥬얼 돌파"], ["14:52", "", "ㅋㅋㅋ (진웅)"], ["14:52", "", "(생략)"], ["14:52", "민석", "본계 어떻게든 살린다"], ["14:52", "", "ㅋㅋㅋ (민석)"], ["14:53", "민석", "[사진]"], ["14:53", "", "(생략)"], ["14:53", "순겸", "토쇼 풀돌은"], ["14:53", "순겸", "급하게안해도"], ["14:53", "순겸", "알아서됨"], ["14:53", "순겸", "Sr이라"], ["14:53", "민석", "96.0kHz/24bit 있네"], ["14:53", "민석", "오 그치?"], ["14:53", "민석", "친구꺼 풀돌 쓰는데"], ["14:53", "민석", "종나 좋은것 같더라"], ["14:53", "순겸", "ㅇㅇ"], ["14:53", "", "ㅋㅋㅋ (재훈)"], ["14:53", "순겸", "훈련효율이랑"], ["14:53", "진웅", "이벤트로 애교 주는게 존나 꿀이든데"], ["14:54", "순겸", "애교만보면"], ["14:54", "민석", "그니까"], ["14:54", "순겸", "Ssr대부분"], ["14:54", "순겸", "서열정리함"], ["14:54", "순겸", "특히 금딱스킬 좆쓰레기에"], ["14:54", "순겸", "애교원툴인"], ["14:54", "순겸", "플라워쓰알"], ["14:54", "순겸", "상위호환임"], ["14:54", "민석", "아니 슈퍼 크릭 육성마 한정미션 2성 뽑에서 얻었는데"], ["14:54", "민석", "이년 뉴비절단기네"], ["14:54", "", "ㅋㅋㅋ (진웅)"], ["14:54", "순겸", "중간에"], ["14:55", "순겸", "고유이벤트도있고"], ["14:55", "순겸", "같이뛰는 경쟁상대가"], ["14:55", "민석", "이유 모르는 컨디션 저하로 훈련 실패율 증가 ㅋㅋ"], ["14:55", "순겸", "오구리 타마모 이나리같은"], ["14:55", "순겸", "트럭밖에없어서"], ["14:55", "순겸", "좀빡센편이긴함"], ["14:55", "민석", "타즈나 2번째 외출 조져도 안없어지는 엄청난 효-과"], ["14:55", "민석", "무려 체력 100에도 실패율 5퍼 ㅋㅋ"], ["14:55", "진웅", "[사진]"], ["14:55", "순겸", "고유이벤트라"], ["14:55", "", "(생략)"], ["14:56", "민석", "?"], ["14:56", "순겸", "존버해야됨"], ["14:56", "재훈", "5%면 높네"], ["14:56", "민석", "존나 부럽노"], ["14:56", "진웅", "[사진]"], ["14:56", "민석", "하지만 키타산 금딸하고 있는 내 본계가 있으니까..."], ["14:56", "진웅", "부럽노?"], ["14:56", "순겸", "149"], ["14:56", "", "ㅋㅋㅋ (순겸·재훈)"], ["14:56", "순겸", "부르봉은"], ["14:56", "순겸", "어디갔노"], ["14:56", "진웅", "부르봉 시~발련 ㅋㅋ"], ["14:56", "", "ㅋㅋㅋ (민석·재훈)"], ["", "", "(중략 17줄)"], ["14:58", "민석", "?"], ["14:58", "진웅", "주어진대로 사는거야 그냥~"], ["14:58", "", "ㅋㅋㅋ (재훈)"], ["14:58", "민석", "이벤 스페 아니구나"], ["14:58", "민석", "저거 어디서 나오는거임"], ["14:58", "진웅", "확정권"], ["14:58", "민석", "ㅇ...앗..."], ["14:58", "민석", "닥치고 이거나 듣자"], ["14:58", "민석", "[링크 · youtube]"], ["14:58", "진웅", "주어진대로 살아라"], ["14:58", "민석", "기분 좋아질꺼임..."], ["14:58", "진웅", "운명이다"], ["14:58", "민석", "하찌미!!!!!!!!!!!!!!"], ["14:59", "진웅", "화장해라"], ["14:59", "재훈", "[이모티콘]"], ["14:59", "순겸", "왜"], ["14:59", "순겸", "버스막차는"], ["14:59", "민석", "어 뭐야"], ["14:59", "순겸", "10시일까"], ["14:59", "순겸", "씨발"], ["14:59", "재훈", "ㄹㅇㅋㅋ"], ["14:59", "순겸", "심야버스어딨어"], ["14:59", "민석", "레이스 이벤이 있었네"], ["14:59", "", "ㅋㅋㅋ (진웅)"], ["14:59", "진웅", "그거만 잘 뛰어도"], ["14:59", "", "(생략)"], ["14:59", "진웅", "엘은 3성 갈듯"], ["14:59", "순겸", "레레"], ["14:59", "순겸", "나오면"], ["15:00", "순겸", "1,2성들"], ["15:00", "순겸", "승부복 각 볼 수 있음"], ["15:00", "순겸", "고루시도 곧함"], ["15:00", "진웅", "옹"], ["15:00", "민석", "고루시로 간다"], ["15:00", "민석", "내 튼튼 고루시는 다른 우마무스메 다리를 부러뜨리지..."], ["15:01", "민석", "늦은 출발 시벌련"], ["15:01", "", "ㅋㅋㅋ (민석)"], ["15:01", "진웅", "마군에 휩싸여 사망.."], ["15:01", "", "ㅋㅋㅋ (재훈)"], ["15:01", "민석", "[사진]"], ["15:01", "민석", "현실 고증인가?"], ["15:02", "", "ㅋㅋㅋ (진웅)"], ["15:02", "진웅", "국전에 스위치 팔 수도 있을라나"], ["15:02", "진웅", "군대가기전에 팔고가면"], ["15:02", "진웅", "다녀올쯤엔 신형 나와있을거같은데"]], "from": "14:50", "to": "15:03", "raw": 124}, "도쿄의 정서, 냉수의 준의": {"lines": [["19:46", "정서", "좋은 경험이야"], ["19:46", "", "ㅋㅋㅋ (진웅)"], ["19:46", "형규", "스이카 생각보다 쓸모 많더라"], ["19:46", "형규", "자판기에 스이카 그려져있으면"], ["19:46", "진웅", "티머니로 편의점 결제 되는거마낭"], ["19:46", "형규", "일단 암거나 뽑게댐"], ["19:46", "진웅", "이곳저곳 쓰던데"], ["19:46", "형규", "시부야에서 가방에 녹차만 세개 담고 다녔음"], ["19:47", "진웅", "시모키타가 요요기에서 줜내 가깝더라"], ["19:47", "진웅", "걍 심심하면 갈 수 있음"], ["19:47", "진웅", "개좋아"], ["19:47", "정서", "일본여행하면서"], ["19:47", "정서", "가계부 쓰려고 했었는데"], ["19:48", "정서", "단 한번도 성공 못했지"], ["19:48", "진웅", "쉽지 않을거같은데"], ["19:48", "진웅", "ㄹㅇ.."], ["19:48", "정서", "호텔 돌아오고 나면"], ["19:48", "정서", "어느 돈이 오디로 갔는지.."], ["19:48", "형규", "오"], ["19:48", "정서", "지갑만 텅텅 비어있고.."], ["19:48", "", "ㅋㅋㅋ (진웅)"], ["19:48", "진웅", "스태리에서 결속밴드 라이브 보고올게"], ["19:48", "정서", "군적금 진짜 피처럼 애껴써여겠다"], ["19:49", "정서", "나도 닛본.."], ["19:49", "준의", "화장실에서 뜨신물이 안나와 시불탱"], ["19:49", "", "ㅋㅋㅋ (진웅)"], ["19:49", "준의", "씻는데 얼어 뒤질뻔했네"], ["19:49", "", "ㅋㅋㅋ (정서)"], ["19:49", "정서", "우리는 뜨신물 나오려면"], ["19:49", "진웅", "짠하다.."], ["19:49", "준의", "머리감는데 두피가 안느껴져"], ["19:49", "정서", "15분동안 틀어놨어야했는데"], ["19:50", "정서", "세탁기 돌리면 샤워기 안나오고.."], ["19:50", "준의", "갑자기 안나오네"], ["19:50", "준의", "주방은 나오는데"], ["19:50", "준의", "머리감는데 진짜 머리 너무 아프네"], ["19:50", "정서", "건강에는 좋잖아"], ["19:50", "형규", "자취함?"], ["19:50", "정서", "한잔해"], ["19:50", "준의", "차가운거 먹으면 띵하는느낌이 대가리전체에 나네"], ["19:50", "진웅", "두피 동상 당하면 우짬"], ["19:50", "준의", "ㅇㅇ"], ["19:50", "", "ㅋㅋㅋ (정서·형규)"], ["19:52", "정서", "웹툰추천 받습니다"], ["19:52", "진웅", "여고생드래곤"], ["19:52", "순겸", "던전견문록"], ["19:52", "진웅", "뷰티풀군바리"], ["19:52", "정서", "네이버 웹툰 거절하겠습니다~"], ["19:52", "준의", "격3"], ["19:53", "준의", "요즘 폼 좋음"], ["19:53", "순겸", "격3 방학언제끝남"], ["19:53", "진웅", "선천적 얼간이들 투"], ["19:53", "정서", "격3 하차한지 넘 오래됐네"], ["19:53", "정서", "하수구에서 괴물 쥭이는거 까지 봤는대"], ["19:53", "준의", "역광까지는 봤음?"], ["19:53", "준의", "오"], ["19:53", "준의", "문도박사 죽이는거"], ["19:53", "정서", "ㅇㅇ"], ["19:53", "준의", "거기부터 시작인데"], ["19:53", "순겸", "[#던전 견문록 검색]"], ["", "", "(중략 9줄)"], ["19:54", "순겸", "ㄹㅇ"], ["19:54", "정서", "명작이었지"], ["19:54", "진웅", "요즘 원피스 재밌어보이던데"], ["19:54", "준의", "일본만화를 보는 나에겐 너무 심심해.."], ["19:54", "순겸", "원피스"], ["19:54", "순겸", "와노후반부터"], ["19:55", "순겸", "존나재밌음"], ["19:55", "정서", "뇌가 도파민에 절여진.."], ["19:55", "진웅", "여진웅의 원피스는"], ["19:55", "준의", "사실 웹툰도 일본의 망가문화에서 파생된거라서.."], ["19:55", "진웅", "임펠다운 탈옥에서 멈춰있는데.."], ["19:55", "준의", "한께가 명확하달까.."], ["19:55", "순겸", "볼거많겠네"], ["19:55", "순겸", "근데 2부진입하고"], ["19:55", "진웅", "휴머니스트에 그거 올라왔는데 최근에"], ["19:55", "순겸", "함정에피가좀많음"], ["19:55", "진웅", "요즘 한국 웹툰이 일본 만와를 따라잡은거같습니다~ 어쩌구"], ["19:56", "진웅", "뜨거운 키배가 벌어지고 있었음.."], ["19:56", "정서", "둘은 좀 결이 다르긴해"], ["19:56", "정서", "비교하는 것부터가 좀 그렇달까"], ["19:56", "진웅", "아 맞아 그리고"], ["19:56", "순겸", "[#웹툰 3d 검색]"], ["19:56", "순겸", "우선ㅇ"], ["19:56", "진웅", "어떤 육군이 공군 아이디 구했는지"], ["19:56", "순겸", "이것부터"], ["19:56", "순겸", "이미"], ["19:56", "준의", "아직 한참멀었지.."], ["19:56", "순겸", "쓰는애들"], ["19:56", "진웅", "휴머에 계정 훔치고 쌍욕썼다가 걸렸더라"], ["19:56", "순겸", "전부안되긴함"], ["19:57", "형규", "헉"], ["19:57", "순겸", "무슨 말이랑 해골 나오면"], ["19:57", "순겸", "죄다쓰리디임 ㅋㅋ"], ["19:57", "순겸", "배경도그렇고"], ["19:57", "진웅", "저런거 막 텀블벅에서 팔던데"], ["19:57", "진웅", "웹툰등에서 이용할 수 있는 3d 배경 소품"], ["19:57", "준의", "저런거 존내 비싸지않나"], ["19:58", "진웅", "아님 막 폭발효과"], ["19:58", "순겸", "저런거전문제작팀도있고"], ["19:58", "순겸", "웹툰팀에서도"], ["19:58", "순겸", "3d전문으로"], ["19:58", "순겸", "깎아서 삽입하는"], ["19:58", "순겸", "사람들있음"], ["19:58", "준의", "웹툰도 나름 오래됐는데"], ["19:58", "준의", "왜 대명작같은게 없을까"]], "from": "19:46", "to": "19:59", "raw": 115}, "예비군 동원과 블루아카 헌혈 대란": {"lines": [["13:38", "형규", "야급실ㅋㅋ"], ["13:38", "형규", "후회~하고있어요~~~"], ["13:38", "", "ㅋㅋㅋ (형규)"], ["13:39", "진웅", "생활관 안내 받고 그냥 누워만 있다"], ["13:39", "진웅", "요양동 온거같노"], ["13:39", "", "ㅋㅋㅋ (형규)"], ["13:40", "형규", "활동계획표 알려줌?"], ["13:40", "형규", "스플래툰 안하나"], ["13:40", "진웅", "복도에 있던데 뭐 이론만 있는듯"], ["13:40", "형규", "까비"], ["13:40", "진웅", "이럴 줄 알고 새벽 5시에 자고 왔다 ㅋㅋ"], ["13:40", "형규", "총 안 쏨?"], ["13:40", "", "ㅋㅋㅋ (형규)"], ["13:40", "진웅", "낼 쏠라나"], ["13:40", "진웅", "아 총 무서븐데 ㅠㅠ"], ["13:41", "", "ㅋㅋㅋ (형규)"], ["13:41", "진웅", "이대로 잠들 수 있을거같노"], ["13:41", "형규", "케투씨원 쓰다가"], ["13:41", "", "(생략)"], ["13:42", "진웅", "케투도 개짬찌때 함 들어본 적은 있어서"], ["13:42", "진웅", "머 그게 그거 아니노"], ["13:42", "형규", "일반 케투가 약간 더 가벼운듯"], ["13:42", "", "(생략)"], ["13:42", "진웅", "수츠 맷챠 니앗뗀쟈네 아 아리가또고자이마스~!"], ["13:43", "", "ㅋㅋㅋ (형규·정서)"], ["13:43", "형규", "2박3일 재밌겠노"], ["13:43", "형규", "나 병장때 동원했는데"], ["13:43", "정서", "나도 수츠쟝 뭐입었는지 궁금한걸~"], ["13:43", "형규", "내 담당 예비군"], ["13:43", "형규", "생활관 입갤하자마자"], ["13:43", "형규", "무슨 씹덕머그컵 꺼내서 각 맞췄는데"], ["13:44", "", "ㅋㅋㅋ (정서)"], ["13:44", "정서", "어지럽네"], ["13:44", "", "(생략)"], ["13:44", "형규", "후임 하나가"], ["13:44", "형규", "와 윤뱀 좃된거아닙니까? ㅇㅈㄹ하던데"], ["13:44", "형규", "생각보다는 잘 끝났음"], ["13:44", "정서", "말 잘듣는 오타쿠쟝"], ["13:45", "순겸", "씨발"], ["13:45", "순겸", "헌혈왜케어렵노.."], ["13:45", "순겸", "결국"], ["13:45", "순겸", "오늘은"], ["13:45", "", "ㅋㅋㅋ (형규)"], ["13:45", "순겸", "현혈시도도 못한다는데 ㅋㅋ"], ["13:46", "형규", "선지 먹어라"], ["13:46", "순겸", "지금"], ["13:46", "순겸", "이미 5500명넘게"], ["13:46", "순겸", "헌혈끝내서"], ["13:46", "형규", "헉"], ["13:46", "순겸", "내일은가망도없노 ㅋㅋ"], ["13:46", "형규", "한정판임?"], ["13:46", "순겸", "5000명"], ["13:46", "순겸", "응모선착"], ["13:47", "순겸", "5500명중"], ["13:47", "순겸", "블붕이 절반만잡아도"], ["13:47", "순겸", "오후일정끝내면"], ["13:47", "순겸", "사람없겠지"], ["13:47", "", "(생략)"], ["13:47", "정서", "구호기사단.."], ["13:47", "진웅", "아 아는사람 없는게 아숩네"], ["", "", "(중략 16줄)"], ["13:48", "형규", "진짜로"], ["13:48", "진웅", "나쁜새끼 ㅋㅋ"], ["13:48", "정서", "전혈말고 딴건 되려나"], ["13:49", "정서", "혈소판만 기증"], ["13:49", "형규", "몰랐다고 ㅋㅋ"], ["13:49", "진웅", "그렁거 잇지 않나"], ["13:49", "", "ㅋㅋㅋ (진웅)"], ["13:49", "순겸", "전혈이 제일 널널한거아님?"], ["13:49", "순겸", "혈관약해서 전혈이 가능성있다"], ["13:49", "순겸", "이런소리하시던데"], ["13:49", "진웅", "예비군 그런거 잇지 않나"], ["13:49", "정서", "전혈이 내 순수피 100퍼 가져가는거 아님?"], ["13:49", "순겸", "ㅇㅇ"], ["13:49", "진웅", "헌혈하면 조기퇴소 시켜드맂니다"], ["13:49", "순겸", "다른건"], ["13:49", "순겸", "니피뽑았다가"], ["13:49", "순겸", "다시넣는거"], ["13:49", "", "(생략)"], ["13:49", "순겸", "혈관튼튼해야"], ["13:49", "정서", "좋은거만 뽑아가야지"], ["13:49", "순겸", "가능하대"], ["13:49", "", "(생략)"], ["13:50", "진웅", "피가 안튼튼한게 문제구나"], ["13:50", "", "(생략)"], ["13:50", "", "ㅋㅋㅋ (진웅)"], ["13:50", "형규", "ㄹㅇ?"], ["13:50", "형규", "내일부터 당장 간다"], ["13:50", "진웅", "그런거 좀 들어본거같은데"], ["13:50", "진웅", "여기로 헌혈차 끌고와서 머 그런거"], ["13:50", "진웅", "훈련소마냥"], ["13:50", "형규", "아 ㅋㅋ"], ["13:51", "순겸", "암튼"], ["13:51", "순겸", "이름새겨주는거라"], ["13:51", "순겸", "어디서사지도못하고"], ["13:51", "순겸", "아오"], ["13:51", "진웅", "ㄹㅇ 리미티드네"], ["13:51", "순겸", "[이모티콘]"], ["13:51", "순겸", "전국에"], ["13:51", "순겸", "김순겸 동명이인"], ["13:51", "순겸", "10명인가있던데"], ["13:51", "", "ㅋㅋㅋ (순겸)"], ["13:52", "진웅", "여기 와서 생활관 자리표 보는데"], ["13:52", "진웅", "여씨가 나 말고 세명인가 더 있더라"], ["13:52", "진웅", "좀 신기"], ["13:52", "정서", "그런것도 알아볼수있노"]], "from": "13:36", "to": "13:53", "raw": 123}, "만우절이라 믿고 싶었던 완결": {"lines": [["23:25", "희찬", "귀주까지 완결날땐 그지같더고 했는데"], ["23:26", "희찬", "톱 보고나니까 귀주가 양반이다"], ["23:26", "진웅", "주 어땠지"], ["23:26", "진웅", "기억이 난나네"], ["23:26", "희찬", "고죠 더위사냥"], ["23:27", "진웅", "먼가 질질 끈거 말고는"], ["23:28", "진웅", "나름 그냥 봣었던거같기도 하고"], ["23:28", "희찬", "유타 마키 결혼하고 순애는 없었고"], ["23:28", "진웅", "최애의 아이는 잘 기억나는데"], ["23:29", "정서", "주톱 둘다 족같아졌지"], ["23:29", "순겸", "주는"], ["23:29", "순겸", "후속작이"], ["23:29", "순겸", "그럭저럭했음"], ["23:29", "희찬", "ㅇㅇ 나쁘지않음"], ["23:29", "희찬", "주는"], ["23:29", "희찬", "근데 떡밥회수도 다 안하고"], ["23:29", "희찬", "걍 완결때려버려서"], ["23:29", "희찬", "아쉬운거지"], ["23:30", "준의", "톱은 아직 안끝났슴"], ["23:30", "정서", "개그싸움 하던거 밖에 기억 안나는데"], ["23:30", "준의", "내일이 기대되는구만"], ["23:30", "", "ㅋㅋㅋ (진웅)"], ["23:30", "정서", "톱 근데 왜자꾸 엔딩 어쩌고 올라오지"], ["23:30", "진웅", "긍까"], ["23:31", "진웅", "얼마나 죠졋길래 .."], ["23:31", "순겸", "톱근데"], ["23:31", "", "ㅋㅋㅋ (희찬)"], ["23:31", "순겸", "아직2부연재"], ["23:31", "순겸", "시작도안했잖아 ㅋㅋ"], ["23:31", "준의", "작가가 장난치는거임"], ["23:31", "순겸", "1부 지금 끝남 ㅋㅋ"], ["23:31", "진웅", "만신 타츠키는"], ["23:31", "희찬", "작가 만우절에 진심이라"], ["23:31", "정서", "아...."], ["23:31", "준의", "만우절 맞춰서 완결이라고 장난침 ㅋㅋ"], ["23:31", "진웅", "인간의 감정을 조종할 수 있구나.."], ["23:31", "순겸", "이번에"], ["23:31", "순겸", "부산에서"], ["23:31", "순겸", "코믹월드했는데"], ["23:31", "순겸", "타츠키장례식함 ㅋㅋ"], ["23:31", "희찬", "영역전개 필중술식을 기합으로 막아내는게 에바긴해"], ["23:32", "준의", "내일 만우절~ 하면서 3부 들어간대"], ["23:32", "정서", "헤에~"], ["23:32", "희찬", "스쿠나 타천사 떡밥 , 켄자쿠의 과거와 본체 , 이타도리 영역전개 , 텐겐 스쿠나 관계 떡밥도 안풀고"], ["23:33", "준의", "나도 진짜 주술사되고싶다"], ["23:33", "준의", "이번 애니 막화 지렷는데"], ["23:33", "준의", "2쿨은 안나오나"], ["23:33", "진웅", "애니 잘나왔나부네"], ["23:34", "진웅", "최애의 아이는 3기 끝낫나"], ["23:34", "순겸", "2쿨 기대는"], ["23:34", "진웅", "몰아보고싳네"], ["23:34", "순겸", "배가불렀노 ㅋㅋ"], ["23:34", "순겸", "누군 2화 기다리고ㅓ 있는데"], ["23:34", "", "ㅋㅋㅋ (진웅)"], ["23:34", "진웅", "2화 pv 나왔잖아~"], ["23:34", "희찬", "주술회전 막화"], ["23:34", "희찬", "지리더라"], ["23:34", "희찬", "마파가 애니 참 잘만들어"], ["23:35", "희찬", "천여주박 존나 갖고싶음"], ["23:35", "순겸", "[링크 · youtube]"], ["23:35", "순겸", "실시간 레이스인거임.."], ["23:35", "희찬", "난 7월에 나올 무직전생이나 기대할랜다"], ["23:35", "희찬", "pv 나왔던데"], ["23:35", "진웅", "무직전생 완결까지 애니 나오면 지리긴 하겠다"], ["23:35", "희찬", "에리스 나오던데"], ["23:35", "진웅", "웹소설 개재밌게봣는데"], ["23:36", "희찬", "난 실피파긴 한데"], ["23:36", "정서", "지금 되돌아보면"], ["23:36", "진웅", "그럼 난 록시"], ["23:36", "희찬", "하하^^"], ["23:36", "정서", "최애의 아이가 참 잘 되고있는듯"], ["23:37", "진웅", "상대적으로?"], ["23:37", "희찬", "최애의 아이도 완결 이상하다고"], ["23:37", "정서", "엔딩도 돌이켜보면 막 나쁘지 않아"], ["23:37", "희찬", "욕먹지 않음?"], ["23:37", "정서", "근데 약간 사랑해서 욕먹는 느낌이랄까"], ["23:37", "희찬", "1기 1화 여운땜에 2기는 손이 안가던데"], ["23:37", "진웅", "걍 억지 피폐 아니었나"], ["23:37", "정서", "족같아서 욕먹는다기보단"], ["23:37", "정서", "왜 우리 아쿠아쟝 행복하게 안해줘 느낌"], ["23:38", "희찬", "걍 1기 1화 고트애니 아니냐"], ["23:38", "", "ㅋㅋㅋ (순겸)"], ["23:38", "진웅", "그냥 거장병 걸려서 억지로 죽인거같은데"], ["23:38", "순겸", "모르겠다"], ["23:38", "순겸", "걍작가묻던데"], ["23:38", "순겸", "다음작도"], ["23:38", "진웅", "아아 나는 독자의 감정을 지배할 수 있다.."]], "from": "23:25", "to": "23:39", "raw": 87}};
+function chatBlock(lines, opts={}){
+  const wrap=h('div','chat'+(opts.tall?' tall':'')); if(opts.note) wrap.append(h('div','cnote',opts.note));
+  let lastDay=opts.day||null; if(opts.day) wrap.append(h('div','day',opts.day));
+  lines.forEach(([t,w,x])=>{
+    let tm=t||'';
+    if(tm.length>5){ const d=tm.slice(0,10).replace(/-/g,'.'); if(d!==lastDay){ wrap.append(h('div','day',d)); lastDay=d; } tm=tm.slice(11); }
+    const row=h('div','msg'+(w?'':' sys')); row.append(h('span','tm',tm));
+    if(w){ const n=h('span','who',w); n.dataset.name=w; row.append(n); row.dataset.who=w; }
+    const xx=opts.keepK?x:x.replace(/ㅋ{15,}/g,m=>'ㅋ'.repeat(12)+`…(${m.length}개)`); row.append(h('span','tx',xx)); wrap.append(row); });
+  return wrap;
+}
+function excerpt(key, label='대화 보기', opts={}){
+  const ex=EXC[key]; if(!ex) return document.createComment('no '+key);
+  const d=h('details','ex'); d.append(h('summary',null,label));
+  let built=false; d.addEventListener('toggle',()=>{ if(d.open && !built){ d.append(chatBlock(ex.lines,{note:ex.note,...opts})); built=true; markMine(); } });
+  return d;
+}
+function markMine(){ document.querySelectorAll('.msg[data-who]').forEach(r=>r.classList.toggle('mine', !!FOCUS && r.dataset.who===FOCUS)); }
+const O = DATA.order;
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const NS = 'http://www.w3.org/2000/svg';
+function el(tag, attrs, parent){ const e=document.createElementNS(NS,tag); for(const k in attrs) e.setAttribute(k,attrs[k]); if(parent) parent.appendChild(e); return e; }
+function h(tag, cls, text){ const e=document.createElement(tag); if(cls) e.className=cls; if(text!=null) e.textContent=text; return e; }
+function tipFor(box){ const t=h('div','tip'); box.appendChild(t); return {
+  show(html,x,y){ t.innerHTML=html; t.style.opacity=1; const bw=box.clientWidth, tw=t.offsetWidth; let left=x+12; if(left+tw>bw) left=x-tw-12; if(left<0) left=0; t.style.left=left+'px'; t.style.top=Math.max(0,y-t.offsetHeight-8)+'px'; },
+  hide(){ t.style.opacity=0; } }; }
+function niceMax(v){ const p=Math.pow(10,Math.floor(Math.log10(v))); const m=v/p; return (m<=1?1:m<=2?2:m<=2.5?2.5:m<=5?5:10)*p; }
+const dot = s => s.replace(/-/g,'.');
+
+// heat cell coloring: t in [0,1]
+function paint(td, t){ const pct=Math.round(8+t*80); td.style.background=`color-mix(in oklab, var(--s1) ${pct}%, var(--surface))`; td.style.color = pct>52 ? '#fff' : 'var(--t1)'; }
+function heatTable(id, rows, cols, val, {fmt:f=(v=>v), norm='all', colLabel=(c=>c), title=null}={}){
+  const t=document.getElementById(id); t.innerHTML='';
+  const hd=t.createTHead().insertRow(); hd.append(h('th','rh',title||''));
+  cols.forEach(c=>{ const th=h('th',null,colLabel(c)); if(O.includes(c)){ th.dataset.name=c; th.style.cursor='pointer'; } hd.append(th); });
+  const vals=rows.map(r=>cols.map(c=>val(r,c)));
+  const flat=vals.flat().filter(v=>v!=null);
+  const colMax=cols.map((_,j)=>Math.max(...rows.map((_,i)=>vals[i][j]??-Infinity)));
+  const colMin=cols.map((_,j)=>Math.min(...rows.map((_,i)=>vals[i][j]??Infinity)));
+  const rowMax=rows.map((_,i)=>Math.max(...vals[i].filter(v=>v!=null)));
+  const gMax=Math.max(...flat), gMin=Math.min(...flat);
+  const b=t.createTBody();
+  rows.forEach((r,i)=>{ const tr=b.insertRow(); const rh=h('th','rh',r); if(O.includes(r)){ tr.dataset.p=r; rh.dataset.name=r; } tr.append(rh);
+    cols.forEach((c,j)=>{ const v=vals[i][j]; const td=tr.insertCell(); if(O.includes(c)) td.dataset.col=c;
+      if(v==null){ td.className='self'; td.textContent='·'; return; }
+      td.textContent=f(v);
+      let tt; if(norm==='col') tt=(v-colMin[j])/((colMax[j]-colMin[j])||1); else if(norm==='row') tt=v/(rowMax[i]||1); else if(norm==='ratio') tt=Math.max(0,Math.min(1,(Math.log2(Math.max(v,0.05))+1.5)/3.5)); else tt=(v-gMin)/((gMax-gMin)||1);
+      paint(td, Math.max(0,Math.min(1,tt)));
+      td.title=`${r} · ${colLabel(c)}: ${f(v)}`; }); });
+}
+
+// ---------- lede & hero
+const yrs=DATA.years;
+document.getElementById('lede').textContent =
+  `${dot(DATA.first)}부터 ${dot(DATA.last)}까지 ${fmt(DATA.span_days)}일 동안, ${fmt(DATA.days_active)}일은 누군가 말을 했어요. 열 명이 보낸 메시지 ${fmt(DATA.total)}건을 사람, 시간, 주제, 관계, 말버릇별로 뜯어봤어요.`;
+const heroItems=[
+  ['총 메시지', fmt(DATA.total), '봇 제외'],
+  ['대화한 날', fmt(DATA.days_active)+'일', `전체의 ${Math.round(100*DATA.days_active/DATA.span_days)}%`],
+  ['쓴 글자', (DATA.chars_total/10000).toFixed(0)+'만 자', '텍스트 메시지 기준'],
+  ['ㅋ 개수', fmt(DATA.k_total), '메시지당 약 '+(DATA.k_total/DATA.total).toFixed(1)+'개'],
+  ['공유된 사진', fmt(DATA.photo_total)+'장', ''],
+  ['최장 연속 대화', '256일', '2022.06.26 ~ 2023.03.08'],
+];
+const hero=document.getElementById('hero');
+heroItems.forEach(([a,b,c])=>{ const d=h('div','card'); d.append(h('div','lab',a),h('div','num',b),h('div','note',c)); hero.append(d); });
+
+// ---------- military timeline data (confirmed in chat)
+const MIL=[
+  {who:'진웅', in:'2022-09-26', out:'2024-06-24'},
+  {who:'민석', in:'2022-11-29', out:null},
+  {who:'정서', in:'2023-05-01', out:'2024-10-31'},
+  {who:'형규', in:'2023-05-22', out:'2024-11-21'},
+  {who:'희마', in:'2023-05-30', out:'2024-11-22'},
+  {who:'희찬', in:'2023-09-12', out:null},
+  {who:'교한', in:null, out:'2023-09-15', outLabel:'2023.09'},
+  {who:'준의', in:null, out:'2023-10-10'},
+];
+function drawMonthly(){
+  const box=document.getElementById('monthly'); box.innerHTML='';
+  const W=Math.max(320,box.clientWidth); const chartH=Math.round(Math.min(280,Math.max(190,W*0.3)));
+  const laneH=16, lanes=MIL.length; const m={l:44,r:12,t:12,b:24};
+  const H=m.t+chartH+m.b+lanes*laneH+8; const iw=W-m.l-m.r, ih=chartH;
+  const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'월별 메시지 수와 입대 전역 타임라인'},box);
+  const months=DATA.months, n=months.length; const max=niceMax(Math.max(...DATA.month_total));
+  const t0=new Date(months[0]+'-01'), t1=new Date(months[n-1]+'-01'); t1.setMonth(t1.getMonth()+1);
+  const xd=d=>m.l+iw*(d-t0)/(t1-t0); const xm=i=>{const d=new Date(months[i]+'-15'); return xd(d);};
+  const y=v=>m.t+ih*(1-v/max);
+  for(let k=0;k<=4;k++){ const v=max*k/4; el('line',{x1:m.l,x2:W-m.r,y1:y(v),y2:y(v),class:'gridline'},svg); const t=el('text',{x:m.l-6,y:y(v)+4,'text-anchor':'end',class:'lbl'},svg); t.textContent=v>=1000?(v/1000)+'천':v; }
+  months.forEach((mm,i)=>{ if(mm.endsWith('-01')){ const xx=xd(new Date(mm+'-01')); const t=el('text',{x:xx,y:m.t+ih+16,'text-anchor':'middle',class:'lbl'},svg); t.textContent=mm.slice(0,4); el('line',{x1:xx,x2:xx,y1:m.t,y2:H-4,stroke:css('--grid')},svg);} });
+  const pts=DATA.month_total.map((v,i)=>[xm(i),y(v)]);
+  el('path',{d:'M'+pts.map(p=>p.join(',')).join('L')+`L${pts[n-1][0]},${y(0)}L${pts[0][0]},${y(0)}Z`,fill:css('--s1'),opacity:.12},svg);
+  el('path',{d:'M'+pts.map(p=>p.join(',')).join('L'),fill:'none',stroke:css('--s1'),'stroke-width':2,'stroke-linejoin':'round'},svg);
+  if(FOCUS){ const fp=DATA.month_per[FOCUS].map((v,i)=>[xm(i),y(v)]); el('path',{d:'M'+fp.map(p=>p.join(',')).join('L'),fill:'none',stroke:css('--s2'),'stroke-width':2,'stroke-linejoin':'round'},svg);
+    const lx=fp[0][0]+4, ly=Math.min(fp[0][1], y(DATA.month_total[0]))-6; }
+  // lanes
+  const ly0=m.t+ih+m.b+4; const tip=tipFor(box);
+  MIL.forEach((r,i)=>{ const yy=ly0+i*laneH+laneH/2; const g=el('g',{'data-p':r.who},svg); const lt=el('text',{x:m.l-6,y:yy+4,'text-anchor':'end',class:'lbl','data-name':r.who},g); lt.textContent=r.who;
+    const a=r.in?new Date(r.in):null, b=r.out?new Date(r.out):null; const c=css('--s3');
+    if(a&&b){ el('rect',{x:xd(a),y:yy-4,width:Math.max(2,xd(b)-xd(a)),height:8,rx:4,fill:c},g); }
+    else if(a){ el('rect',{x:xd(a),y:yy-4,width:Math.min(60,W-m.r-xd(a)),height:8,rx:4,fill:c,opacity:.35},g); el('circle',{cx:xd(a),cy:yy,r:4,fill:c},g); }
+    else if(b){ el('circle',{cx:xd(b),cy:yy,r:4,fill:css('--surface'),stroke:c,'stroke-width':2},g); }
+    const hit=el('rect',{x:m.l,y:yy-laneH/2,width:iw,height:laneH,fill:'transparent','data-name':r.who},g);
+    hit.addEventListener('pointermove',ev=>{const bx=box.getBoundingClientRect(); tip.show(`<b>${r.who}</b><br>${r.in?'입대 '+dot(r.in):''}${r.in&&r.out?'<br>':''}${r.out?'전역 '+(r.outLabel||dot(r.out)):''}${r.in&&!r.out?'<br>(전역일은 대화에서 확인 안 됨)':''}`, ev.clientX-bx.left, ev.clientY-bx.top);});
+    hit.addEventListener('pointerleave',()=>tip.hide()); });
+  // hover for line
+  const cross=el('line',{y1:m.t,y2:m.t+ih,stroke:css('--t3'),opacity:0},svg);
+  const dt=el('circle',{r:5,fill:css('--s1'),stroke:css('--surface'),'stroke-width':2,opacity:0},svg);
+  const hit=el('rect',{x:m.l,y:m.t,width:iw,height:ih,fill:'transparent'},svg);
+  hit.addEventListener('pointermove',ev=>{ const r=svg.getBoundingClientRect(); const px=(ev.clientX-r.left)*W/r.width; let i=0,best=1e9; for(let k=0;k<n;k++){const dd=Math.abs(xm(k)-px); if(dd<best){best=dd;i=k;}}
+    cross.setAttribute('x1',xm(i));cross.setAttribute('x2',xm(i));cross.setAttribute('opacity',.5); dt.setAttribute('cx',xm(i));dt.setAttribute('cy',y(DATA.month_total[i]));dt.setAttribute('opacity',1);
+    const [yy,mo]=months[i].split('-'); tip.show(`<b>${yy}년 ${+mo}월</b><br>전체 ${fmt(DATA.month_total[i])}건${FOCUS?`<br>${FOCUS} ${fmt(DATA.month_per[FOCUS][i])}건 (${(100*DATA.month_per[FOCUS][i]/DATA.month_total[i]).toFixed(1)}%)`:''}`, xm(i)*r.width/W, y(DATA.month_total[i])*r.width/W); });
+  hit.addEventListener('pointerleave',()=>{tip.hide();cross.setAttribute('opacity',0);dt.setAttribute('opacity',0);});
+}
+function drawMilLegend(){ const lg=document.getElementById('milLegend'); lg.innerHTML=''; const items=[['--s1','방 전체 월별 메시지'],['--s3','복무 기간 (입대~전역)']]; if(FOCUS) items.splice(1,0,['--s2',FOCUS+'의 월별 메시지']);
+  items.forEach(([v,t])=>{const s=h('span'); const i=h('i'); i.style.background=css(v); s.append(i,document.createTextNode(t)); lg.append(s);});
+  const s=h('span',null,'○ 전역만 확인됨 · 입대만 확인되면 흐린 막대'); lg.append(s); }
+
+// ---------- chapters
+const CH=[
+  {yr:2022,title:'전성기',text:'하루 평균 345건. 우마무스메와 대학 과제, 마라탕 얘기로 시끄럽던 여름이에요. 9월에 진웅이, 11월에 민석이 입대하면서 단톡방이 군대 소식통이 되기 시작해요.',kw:['우마무스메','키타산','교수','과제','마라탕','체인소맨','유루캠','탑건']},
+  {yr:2023,title:'군대 시즌',text:'5월에 정서·형규·희마가 줄줄이 입대하면서, 정서 입대 직후 방 역사상 가장 긴 7.8일의 침묵이 왔어요. 정서가 훈련소 3주차에 다쳐 유급되는 사건도 있었고요. 가을엔 준의와 교한이 전역하고 희찬이 입대했어요.',kw:['훈련소','일병','뜀걸음','선임','취사','화생방','스즈메','후반기']},
+  {yr:2024,title:'하나둘 민간인',text:'2월에 고등학교 시절 대화를 발굴해 다 같이 뒤집어졌어요. 6월에 진웅, 10월 말에 정서, 11월에 형규와 희마가 연달아 전역해서 "다 전역하는구만". 말출·분대장 얘기가 엔화·도쿄 여행 얘기로 바뀌어요.',kw:['말출','분대장','엔화','도쿄','여행','글카','닌텐도']},
+  {yr:2025,title:'예비군과 일상',text:'이제 군대 얘기는 예비군 얘기예요. 운전, 알바, 동네 소시지집, 공연 얘기에 AI로 정서 사진 바꾸기 놀이, 밸런스 게임까지. 365일 중 335일 대화했어요.',kw:['예비군','운전','알바','라이브','AI','밸런스게임']},
+  {yr:2026,title:'느슨하지만 끊기지 않게',text:'월 800건 안팎으로 조용해졌지만, 11월 1일까지 305일 중 249일은 누군가 말을 했어요. 형규와 진웅이 아침 약속을 "날씨 탓"으로 미루고, 쇼츠 노래가 AI였다는 얘기로 지금까지 와 있어요.',kw:['예비군','일본','날씨','영화','vs']},
+];
+(function(){ const g=document.getElementById('chapters');
+  CH.forEach(c=>{ const i=DATA.years.indexOf(c.yr); const card=h('div','card chapter'); card.append(h('div','yr',c.yr+'년'),h('h4',null,c.title));
+    const lead=O.slice().sort((a,b)=>DATA.year_share[b][i]-DATA.year_share[a][i])[0];
+    card.append(h('div','meta',`${fmt(DATA.year_total[i])}건 · 대화한 날 ${DATA.year_active_days[i]}일 · 1위 ${lead}`), h('p',null,c.text));
+    const ch=h('div','chips'); c.kw.forEach(k=>ch.append(h('span','chip t',k))); card.append(ch); card.append(excerpt('chap-'+c.yr,'그해 대화 한 장면')); g.append(card); }); })();
+
+// ---------- people bars
+function drawPeople(){
+  const box=document.getElementById('people'); box.innerHTML='';
+  const W=Math.max(280,box.clientWidth); const rowH=30, m={l:44,r:58,t:4,b:4}; const H=m.t+m.b+rowH*O.length; const iw=W-m.l-m.r;
+  const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'사람별 메시지 수'},box);
+  const max=P[O[0]].msgs; const tip=tipFor(box);
+  O.forEach((name,i)=>{ const p=P[name]; const yy=m.t+i*rowH; const bw=Math.max(2,iw*p.msgs/max); const g=el('g',{'data-p':name},svg);
+    const t=el('text',{x:m.l-8,y:yy+rowH/2+4,'text-anchor':'end',class:'lbl',style:`fill:${css('--t2')};font-size:13px`},g); t.textContent=name;
+    el('rect',{x:m.l,y:yy+7,width:bw,height:rowH-14,rx:4,fill:css(FOCUS===name?'--s2':'--s1')},g);
+    const v=el('text',{x:m.l+bw+6,y:yy+rowH/2+4,class:'lbl',style:'font-size:12px'},g); v.textContent=fmt(p.msgs);
+    const hit=el('rect',{x:0,y:yy,width:W,height:rowH,fill:'transparent','data-name':name},g);
+    hit.addEventListener('pointermove',ev=>{const r=box.getBoundingClientRect(); tip.show(`<b>${name}</b><br>${fmt(p.msgs)}건 · 전체의 ${(100*p.msgs/DATA.total).toFixed(1)}%<br>글자 ${fmt(p.chars)}자`, ev.clientX-r.left, ev.clientY-r.top);});
+    hit.addEventListener('pointerleave',()=>tip.hide()); });
+}
+heatTable('yearShare', O, DATA.years.map((_,i)=>i), (r,i)=>DATA.year_share[r][i], {fmt:v=>v.toFixed(1)+'%', colLabel:i=>DATA.years[i], norm:'all', title:''});
+
+// ---------- awards
+(function(){
+  const A=[
+    ['수다왕','형규',`${fmt(P['형규'].msgs)}건. 방 전체의 ${(100*P['형규'].msgs/DATA.total).toFixed(1)}%`],
+    ['ㅋ 생산왕','형규',`ㅋ ${fmt(P['형규'].k)}개. 방 전체 ㅋ의 ${Math.round(100*P['형규'].k/DATA.k_total)}%를 혼자`],
+    ['마지막 말 담당','형규',`대화가 3시간 넘게 끊기기 직전 마지막 메시지 ${fmt(P['형규'].ends)}번`],
+    ['글자수왕','정서',`${fmt(P['정서'].chars)}자. 한 번 말하면 길게`],
+    ['대화 개시왕','정서',`조용한 방을 ${fmt(P['정서'].starts)}번 깨움`],
+    ['사진작가','정서',`사진 ${fmt(P['정서'].photos)}장`],
+    ['최장 ㅋ','정서',`한 번에 ㅋ ${P['정서'].max_k}개 연속`],
+    ['즉답왕','진웅',`남의 말에 같은 분 안에 답한 비율 ${P['진웅'].instant_pct}%`],
+    ['개그 지수 1위','진웅',`텍스트의 ${P['진웅'].laugh_pct}%가 2분 안에 누군가의 ㅋㅋㅋ를 받아냄`],
+    ['링크 배달부','진웅',`링크 ${fmt(P['진웅'].link)}개. 대부분 유튜브, 디시 링크도 124개`],
+    ['연타왕','순겸','평균 2.7연타, 최대 22연타. 평균 메시지 길이 7.3자'],
+    ['어휘력 1위','순겸','쓰는 단어 종류가 가장 다양해요 (400단어마다 안 겹치는 단어 비율 92.6%)'],
+    ['이모티콘·샵검색 1위','순겸',`이모티콘 ${P['순겸'].emoticon}번, #샵검색 ${P['순겸'].sharp}번, 동영상 ${P['순겸'].video}개`],
+    ['우마무스메 홍보대사','민석','우마무스메 얘기를 방 평균의 6.1배 꺼냄'],
+    ['욕 밀도 1위','민석',`메시지 1,000건당 ${P['민석'].swear_per_1k}회`],
+    ['생일 축하 담당','준의',`생일 축하 메시지 ${P['준의'].bday}번`],
+    ['정자체','준의',`ㅋ는 메시지 100개당 ${Math.round(P['준의'].k_per_msg*100)}개, 평균 ${P['준의'].avg_len}자로 가장 길게`],
+    ['리액션 장인','재훈',`메시지의 ${DATA.tic['재훈']['ㅋ']}%에 ㅋ가 들어감. 방 1위`],
+    ['불씨왕','희마',`대화를 열면 ${P['희마'].start_hit_pct}%가 불붙고 무응답은 ${P['희마'].start_dud_pct}%뿐`],
+    ['올빼미','희마',`메시지의 ${P['희마'].night_pct}%가 자정~새벽 6시, 피크는 밤 11시`],
+    ['질문왕','희찬',`텍스트의 ${DATA.tic['희찬']['?']}%가 물음표`],
+    ['아침형 인간','교한',`피크 오전 11시, 새벽 메시지는 ${P['교한'].night_pct}%`],
+    ['ㄷㄷ 비율 1위','교한',`메시지의 ${DATA.tic['교한']['ㄷㄷ']}%가 ㄷㄷ`],
+  ];
+  window.AWARDS=A; const g=document.getElementById('awardGrid'); A.forEach(([t,w,d])=>{ const c=h('div','card award'); c.dataset.p=w; const wn=h('div','w',w); wn.dataset.name=w; c.append(h('div','t',t),wn,h('div','d',d),excerpt('aw-'+t,'증거 대화',{keepK:t==='최장 ㅋ'})); g.append(c); });
+})();
+
+// ---------- members
+const PROFILE={
+  '형규':{role:'방의 엔진',text:'말도 웃음도 제일 많아요. 메시지의 7%가 "~노"로 끝나서 방 말투를 만든 사람이기도 해요. 2022·2023·2025년 연간 1위. 대화를 끝내는 마지막 말이 압도적으로 많아서, 형규가 조용해지면 방도 조용해져요. 희마·재훈과 유독 잘 맞아요.'},
+  '정서':{role:'이야기꾼이자 요즘 방장',text:'건수는 2위, 글자 수는 1위. 조용한 방을 제일 많이 깨웠고 사진도 제일 많이 올렸어요. 영상·촬영 얘기가 방 평균의 2.2배라 촬영 현장 소식은 다 정서한테서 나와요. 2024년과 2026년 연간 1위. 준의와 궁합 지수 1.72.'},
+  '진웅':{role:'리액션 엔진',text:'남의 말에 가장 빨리 답하고, 자기 말에 웃음이 가장 많이 터지는 사람. 이름도 방에서 가장 많이 불렸어요(821회). 링크 450개 중 디시 링크가 124개. 블루아카 얘기를 방 평균의 1.5배 해요.'},
+  '순겸':{role:'연타형 정보통',text:'평균 7자짜리 메시지를 끊어서 연달아 보내요. 그런데 쓰는 단어 종류는 방에서 가장 다양해요. 이모티콘·샵검색·동영상 모두 1위. 다들 저녁 8시가 피크인데 혼자 오후 2시가 피크예요.'},
+  '민석':{role:'우마무스메 담당',text:'예전 계정까지 합치면 8,171건으로 5위. 2022년엔 방 대화의 8.6%를 차지했어요. 우마무스메 얘기를 방 평균의 6배 하고, "ㅋㅋㅋㅋㄱㄱ"로 웃어요. 욕 밀도 1위. 자기를 초대해 준 재훈과 궁합 지수 1위(1.84).'},
+  '준의':{role:'정자체 대화러',text:'ㅋ를 거의 안 쓰고 평균 12.1자로 가장 또박또박 써요. "진짜"가 들어간 메시지 비율 1위, 물음표도 많은 편. 생일 축하를 제일 많이 챙겨요. 정서가 이름을 162번 불렀어요. 운동·애니·연애·AI 얘기를 많이 해요.'},
+  '재훈':{role:'리액션 장인',text:'평균 6.3자로 짧고 굵게. 메시지 셋 중 하나에 ㅋ가 들어가고 "ㄹㅇㅋㅋ"가 시그니처예요. 2022년엔 4,200건을 말했지만 2026년엔 68건이라 요즘은 눈팅 모드. 민석·형규와 궁합이 좋아요.'},
+  '희마':{role:'불씨왕 올빼미',text:'대화를 여는 횟수는 적지만, 열었다 하면 절반이 불붙어요. 밤 11시가 피크인 유일한 사람이고, 음악 얘기를 방 평균의 1.8배 해요. 형규가 희마 말을 41%나 받아줘요.'},
+  '희찬':{role:'질문왕',text:'물음표 비율 1위. 2023년 3월에 나갔다가 42분 만에 정서 손에 다시 돌아왔어요. 연애·운동 얘기 비중이 높고, 2026년엔 점유율이 5.2%로 오히려 늘었어요.'},
+  '교한':{role:'유일한 아침형 인간',text:'메시지는 542건으로 가장 적지만, 오전 11시가 피크이고 새벽엔 거의 말이 없어요. 답장도 가장 느긋해요. 대신 한 번 말하면 ㄷㄷ. 진웅 말을 가장 많이 받아요.'},
+};
+(function(){ const g=document.getElementById('memberGrid');
+  O.forEach(name=>{ const p=P[name], pr=PROFILE[name]; const c=h('div','card member'); c.dataset.p=name; c.id='m-'+O.indexOf(name);
+    const h3=h('h3'); const nm=h('span','nm',name); nm.dataset.name=name; h3.append(nm); h3.append(h('small',null,`${fmt(p.msgs)}건 · ${p.first.slice(0,4)}~${p.last.slice(0,4)}`)); c.append(h3,h('div','role',pr.role));
+    const st=h('div','stats'); [['평균 길이',p.avg_len+'자'],['ㅋ/메시지',p.k_per_msg],['피크',p.peak_hour+'시'],['개그 지수',p.laugh_pct+'%']].forEach(([a,b])=>{const d=h('div',null,a); d.prepend(h('b',null,String(b))); st.append(d);}); c.append(st);
+    c.append(h('p',null,pr.text));
+    c.append(h('div','row','말버릇')); const ch=h('div','chips'); p.sig.forEach(s=>ch.append(h('span','chip',s))); c.append(ch);
+    c.append(h('div','row','관심 주제')); const ft=h('div','chips'); (p.fav.length?p.fav:['고루고루']).forEach(s=>ft.append(h('span','chip t',s))); c.append(ft);
+    c.append(h('div','row',`가장 많이 받아주는 사람: ${p.answered_by[0]} (${p.answered_by[1]}%)`));
+    c.append(excerpt('mem-'+name, name+' 말투 예시'));
+    g.append(c); }); })();
+
+// ---------- tics
+heatTable('ticTable', O, DATA.tics, (r,c)=>DATA.tic[r][c], {fmt:v=>v.toFixed(1), norm:'col'});
+document.getElementById('ticNote').textContent='형규는 "오"와 "~노"를 1위로 쓰고, 재훈은 ㅋ가 압도적이고 ㄹㅇ도 형규 다음이에요. 준의는 "진짜"와 "근데"로 말을 시작하고, 민석은 시발 계열 1위, 희찬은 물음표 1위예요. 교한은 메시지는 적어도 ㄷㄷ 비율이 가장 높아요.';
+
+// ---------- relations
+heatTable('replyTable', O, O, (a,b)=>DATA.reply_pct[a][b], {fmt:v=>Math.round(v), norm:'row', title:'말한 사람 ↓ / 받은 사람 →'});
+(function(){ const t=document.getElementById('affTable'); const hr=t.createTHead().insertRow(); ['두 사람','주고받음','궁합'].forEach((s,i)=>hr.append(h('th',i?'n':null,s)));
+  const b=t.createTBody(); DATA.aff.slice(0,5).forEach(x=>{ const r=b.insertRow(); r.dataset.p=x.a+' '+x.b; r.insertCell().textContent=`${x.a} · ${x.b}`; const c1=r.insertCell(); c1.className='n'; c1.textContent=fmt(x.n); const c2=r.insertCell(); c2.className='n'; c2.textContent=x.aff.toFixed(2); });
+  const affBox=h('div','affex'); DATA.aff.slice(0,5).forEach(x=>{ const e=excerpt(`aff-${x.a}-${x.b}`,`${x.a} · ${x.b} 대화 예시`); if(e.nodeType===1){ e.dataset.p=x.a+' '+x.b; affBox.append(e);} }); t.after(affBox);
+  const t2=document.getElementById('callTable'); const h2=t2.createTHead().insertRow(); ['부른 사람','→ 불린 사람','횟수'].forEach((s,i)=>h2.append(h('th',i===2?'n':null,s)));
+  const b2=t2.createTBody(); DATA.calls.forEach(x=>{ const r=b2.insertRow(); r.dataset.p=x.from+' '+x.to; r.insertCell().textContent=x.from; r.insertCell().textContent=x.to; const c=r.insertCell(); c.className='n'; c.textContent=fmt(x.n); });
+  const tops=O.slice().sort((a,b)=>P[b].called-P[a].called); const r=b2.insertRow(); const c=r.insertCell(); c.colSpan=3; c.style.color='var(--t2)'; c.style.fontSize='13px'; c.textContent=`가장 많이 불린 이름: ${tops[0]} ${fmt(P[tops[0]].called)}회, ${tops[1]} ${fmt(P[tops[1]].called)}회, ${tops[2]} ${fmt(P[tops[2]].called)}회`;
+})();
+(function(){ const t=document.getElementById('startTable'); const cols=[['name','이름'],['starts','대화 연 횟수'],['start_hit_pct','불붙음 %'],['start_dud_pct','무응답 %'],['ends','마지막 말 횟수']];
+  const hr=t.createTHead().insertRow(); cols.forEach(([k,l],i)=>hr.append(h('th',i?'n':null,l)));
+  const b=t.createTBody(); O.slice().sort((a,b)=>P[b].starts-P[a].starts).forEach(n=>{ const r=b.insertRow(); r.dataset.p=n; cols.forEach(([k],i)=>{ const c=r.insertCell(); if(!i){c.className='nm'; c.dataset.name=n;} const v=k==='name'?n:P[n][k]; c.textContent=typeof v==='number'?(k.endsWith('pct')?v.toFixed(1):fmt(v)):v; if(i) c.className='n'; }); });
+})();
+
+// ---------- time
+function drawHeat(){
+  const box=document.getElementById('heat'); box.innerHTML='';
+  const days=['월','화','수','목','금','토','일']; const hw=DATA.hour_weekday;
+  const W=Math.max(300,box.clientWidth); const m={l:24,r:4,t:4,b:22}; const cw=(W-m.l-m.r)/24; const ch=Math.max(16,Math.min(28,cw*1.05)); const H=m.t+m.b+ch*7;
+  const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'요일 시간대별 메시지 수'},box);
+  const max=Math.max(...hw.flat()); const tip=tipFor(box);
+  hw.forEach((row,d)=>{ const t=el('text',{x:m.l-6,y:m.t+d*ch+ch/2+4,'text-anchor':'end',class:'lbl'},svg); t.textContent=days[d];
+    row.forEach((v,hr)=>{ const pct=Math.round(8+80*Math.sqrt(v/max)); const r=el('rect',{x:m.l+hr*cw+1,y:m.t+d*ch+1,width:cw-2,height:ch-2,rx:3,style:`fill:color-mix(in oklab, var(--s1) ${pct}%, var(--surface))`},svg);
+      r.addEventListener('pointermove',ev=>{const b=box.getBoundingClientRect(); tip.show(`<b>${days[d]}요일 ${hr}시대</b><br>${fmt(v)}건`, ev.clientX-b.left, ev.clientY-b.top);}); r.addEventListener('pointerleave',()=>tip.hide()); }); });
+  for(let hr=0;hr<24;hr+=3){ const t=el('text',{x:m.l+hr*cw+cw/2,y:H-6,'text-anchor':'middle',class:'lbl'},svg); t.textContent=hr+'시'; }
+}
+(function(){ const hw=DATA.hour_weekday; const byH=Array.from({length:24},(_,i)=>hw.reduce((s,r)=>s+r[i],0)); const byD=hw.map(r=>r.reduce((a,b)=>a+b,0)); const days=['월','화','수','목','금','토','일'];
+  const pk=byH.indexOf(Math.max(...byH)), lo=byH.indexOf(Math.min(...byH)), pd=byD.indexOf(Math.max(...byD)), ld=byD.indexOf(Math.min(...byD));
+  document.getElementById('heatNote').textContent=`가장 시끄러운 건 저녁 ${pk-12}~9시대(${pk-12}시대 ${fmt(byH[pk])}건)이고, 가장 조용한 건 새벽 ${lo}시대(${fmt(byH[lo])}건)예요. 요일로는 ${days[pd]}요일이 가장 많고 ${days[ld]}요일이 가장 적지만 차이가 ${Math.round(100*(byD[pd]-byD[ld])/byD[ld])}% 정도라, 요일 상관없이 매일 떠드는 방이에요.`; })();
+heatTable('hourTable', O, Array.from({length:24},(_,i)=>i), (r,c)=>DATA.hour_share[r][c], {fmt:v=>'', norm:'row', colLabel:c=>c%3===0?c:''});
+
+// ---------- topics
+heatTable('topicTable', O, DATA.topic_order, (r,c)=>DATA.topics[c].idx[r], {fmt:v=>v.toFixed(1), norm:'ratio'});
+function drawTopicSmalls(){
+  const box=document.getElementById('topicSmalls');
+  const show=['군대','학교·과제','게임','우마무스메','블루아카','일본·여행','돈','AI']; const halves=DATA.halves;
+  if(window.TOPIC_CARDS){ window.TOPIC_CARDS.forEach(c=>{ c.ch.innerHTML=''; }); }
+  const cards=window.TOPIC_CARDS || (window.TOPIC_CARDS=show.map(k=>{ const v=DATA.topics[k].half; const pk=v.indexOf(Math.max(...v)); const c=h('div','card'); const [yy,hh]=halves[pk].split('-');
+    c.append(h('h4',null,k),h('div','meta',`총 ${fmt(DATA.topics[k].total)}회 · 정점 ${yy} ${hh==='1'?'상':'하'}반기`)); box.append(c); const ch=h('div','chart'); c.append(ch); c.append(excerpt('top-'+k,'예시 대화')); return {k,v,pk,ch}; }));
+  cards.forEach(({k,v,pk,ch})=>{ const W=Math.max(170,ch.clientWidth), H=86, m={l:2,r:2,t:8,b:16}; const n=v.length, bw=(W-m.l-m.r)/n; const svg=el('svg',{viewBox:`0 0 ${W} ${H}`},ch); const max=Math.max(...v,0.1); const tip=tipFor(ch);
+    v.forEach((x,i)=>{ const bh=(H-m.t-m.b)*x/max; el('rect',{x:m.l+i*bw+1,y:H-m.b-bh,width:bw-2,height:Math.max(1,bh),rx:3,fill:css('--s1'),opacity:i===pk?1:.5},svg);
+      const hit=el('rect',{x:m.l+i*bw,y:0,width:bw,height:H,fill:'transparent'},svg); const [yy,hh]=halves[i].split('-');
+      hit.addEventListener('pointermove',ev=>{const b=ch.getBoundingClientRect(); tip.show(`<b>${yy} ${hh==='1'?'상':'하'}반기</b><br>1,000건당 ${x.toFixed(1)}회`, ev.clientX-b.left, ev.clientY-b.top);}); hit.addEventListener('pointerleave',()=>tip.hide()); });
+    const a=el('text',{x:m.l,y:H-3,class:'lbl',style:'font-size:10px'},svg); a.textContent='22하'; const z=el('text',{x:W-m.r,y:H-3,'text-anchor':'end',class:'lbl',style:'font-size:10px'},svg); z.textContent='26하'; });
+}
+
+// ---------- scenes
+const SCENE_TEXT={
+  '순겸의 챔미 대참사':{p:'우마무스메 대회(챔피언스 미팅) 결과에 순겸이 폭발했어요. 10분 동안 혼자 74개를 보냈고, 민석·재훈이 거들면서 7명이 몰려들었어요. 분당 16.7개로 방 역사상 가장 빠른 10분이에요.',q:'무슨 일인지는 모르겠지만 힘내라 씹덕들아',qw:'정서'},
+  '병장 월급 자랑 대회':{p:'다들 군복을 입고 있던 2023년 가을, 희찬이 병장 월급을 꺼내자 질투가 폭발했어요. 형규는 대놓고 약 올리는 쪽에 섰어요.',q:'송희찬 병장월급 205만원 이거 좀 히트일지도',qw:'희찬'},
+  '순겸·재훈 생존 확인':{p:'새벽 1시, 마지막으로 실물을 본 게 언제냐는 얘기가 나왔어요. 민석은 "순겸이는 초딩 때 이후로 기억 없음", 진웅은 "가끔 ㅋㅋㅋ랑 부르라미 콘 올리면 됨".',q:'어떤 살인마가 죽여서 카톡 대신하고 있다해도 진짜인지 모를거 같아',qw:'정서'},
+  '정서네 바퀴벌레 습격':{p:'날아든 바퀴를 신발로 처치하고도 무서워서 현관에 서 있던 정서. 민석과 순겸이 곱등이냐 여치냐 귀뚜라미냐 곤충 감별 토론을 벌였어요.',q:'나 지금 너무 무서워서 5분째 현관에 서 있어 애들아',qw:'정서'},
+  '전역일 계산의 공포':{p:'준의가 공군 전역일을 계산하다 "오우 쒯"을 외친 순간부터 단체 전역일 계산 시간. 다 같이 모이는 날이 몇 년 뒤인지 깨닫고 다들 웃었어요.',q:'우리가 다 제대하고 모일라면 대체 앞으로 몇년이냐',qw:'정서'},
+  '입대 전날의 삭발':{p:'6mm로 민 진웅 머리 사진이 올라오자 평가가 쏟아졌어요. "전쟁영화에서 15분 만에 죽는 친구처럼 생김"(정서)에 이어 순겸의 마무리.',q:'머리 싹 밀었는데 달라진 게 없네 그냥 여진웅인데?',qw:'순겸'},
+  '통영의 아들':{p:'입대를 사흘 앞둔 진웅을 두고 재훈이 부고(?)를 띄웠어요. 형규가 족보를 정정하고, 희마가 자기 고향으로 숟가락을 얹었어요.',q:'여진웅 현 통영의 아들 사망...',qw:'재훈'},
+  '새벽의 길냥이':{p:'밤 12시 직전, 희찬이 만난 길고양이 한 마리에 8명이 모였어요. 레전드 장면 중 참가자가 가장 많아요. 형규는 시종일관 "납치 ㄱㄱ".',q:'코가 짧아서 귀엽네요',qw:'형규'},
+  '펜타포트 라인업 회의':{p:'희마가 락페 라인업을 공유하자 7명이 한마디씩 했어요. 다는 모르겠지만 아는 이름 하나씩은 다 있었던 날.',q:'메탈리카 하나만 와도 전석 매진이다 맨이야',qw:'민석'},
+  '훈련소 3주차 유급':{p:'훈련소 3주차 아침점호 중에 넘어져 다친 정서가 국군병원에 실려 오고 유급까지 됐다는 비보. 3명뿐인데 ㅋ가 353개 나왔어요. 형규는 "졸라친함(유급)".',q:'아니 말이 돼?',qw:'정서'},
+  '중2병 고해성사':{p:'준의가 추천한 애니 때문에 인생이 꼬였다는 정서의 책임론에서 시작해 옛날 애니 대사 성대모사 대회로 번졌어요. 이 장면 근처 10분 동안 ㅋ가 최대 553개 쏟아져서, 웃음량만 보면 역대 1위예요.',q:'내가 메이저한 길로 인도한거야',qw:'준의'},
+  '민석의 본계 살리기':{p:'우마무스메 쥬얼 25,000개를 모으고 월정액까지 지른 민석. 순겸이 옆에서 공략 강의를 이어 갔어요.',q:'본계 어떻게든 살린다',qw:'민석'},
+  '도쿄의 정서, 냉수의 준의':{p:'일본 여행 중인 정서는 지갑이 텅텅 비고, 준의는 온수가 끊긴 화장실에서 머리를 감았어요. 그러다 웹툰 추천 대회로. 2024년 화력 1위예요.',q:'머리감는데 두피가 안느껴져',qw:'준의'},
+  '예비군 동원과 블루아카 헌혈 대란':{p:'동원훈련에 간 진웅이 생활관 실황을 전하자 형규의 병장 시절 예비군 썰이 이어졌어요. 그 사이 순겸은 블루아카 헌혈 이벤트 선착순에 밀려 헌혈조차 못 했다는 비보를 전해요. 2025년 화력 2위예요.',q:'선지 먹어라',qw:'형규 (헌혈 못 한 순겸에게)'},
+  '만우절이라 믿고 싶었던 완결':{p:'주술회전에 이어 체인소맨(톱)까지 결말이 최악이었다는 성토 대회. 준의가 "톱은 아직 안 끝났다, 내일 만우절이니 작가가 장난친 것"이라고 우기자 다들 그 말에 기대 봤어요. 순겸은 부산 코믹월드에서 \'타츠키 장례식\'까지 열렸다는 소식을 전했어요. 2026년 화력 2위.',q:'만우절 맞춰서 완결이라고 장난침 ㅋㅋ',qw:'준의'},
+};
+(function(){ const g=document.getElementById('sceneGrid'); const sc=DATA.scenes;
+  const maxK=Math.max(...sc.map(s=>s.kk)), maxM=Math.max(...sc.map(s=>s.mpm));
+  sc.forEach((s,idx)=>{ const tx=SCENE_TEXT[s.title]; const c=h('div','card scene'); c.dataset.p=s.who.join(' ');
+    const d=new Date(s.start.replace(' ','T')); const hh=d.getHours();
+    const when=`${s.start.slice(0,10).replace(/-/g,'.')} ${hh<6?'새벽':hh<12?'오전':hh<18?'오후':'저녁'} ${hh}시`;
+    const top=h('div','top'); top.append(h('span','date',`#${idx+1} · ${when}`), h('span','rank',`${s.start.slice(0,4)}년 ${s.year_rank}위`)); c.append(top);
+    c.append(h('h4',null,s.title));
+    const f=h('div','fire',String(s.fire)); f.append(h('small',null,'화력')); c.append(f);
+    const mt=h('div','meters');
+    [['ㅋ',s.kk,maxK,fmt(s.kk)+'개'],['참가자',s.ppl,10,s.ppl+'명'],['분당',s.mpm,maxM,s.mpm+'개']].forEach(([l,v,mx,txt])=>{ mt.append(h('span',null,l)); const b=h('div','bar'); const i=h('i'); i.style.width=(100*v/mx).toFixed(0)+'%'; b.append(i); mt.append(b); mt.append(h('b',null,txt)); });
+    c.append(mt, h('p',null,tx.p));
+    const bq=h('blockquote',null,'"'+tx.q+'" '); bq.append(h('small',null,'— '+tx.qw)); c.append(bq);
+    const cast=h('div','chips cast'); s.who.slice().sort((a,b)=>(s.stars.includes(b)-s.stars.includes(a))||O.indexOf(a)-O.indexOf(b)).forEach(n=>{ const ch=h('span','chip'+(s.stars.includes(n)?' star':''),n); ch.dataset.name=n; cast.append(ch); }); c.append(cast);
+    const st=STX[s.title]; if(st){ const det=h('details','ex'); det.append(h('summary',null,`당시 대화 전체 보기 (${st.from}~${st.to}, ${st.raw}개)`)); let built=false;
+      det.addEventListener('toggle',()=>{ if(det.open&&!built){ det.append(chatBlock(st.lines,{tall:true,day:s.start.slice(0,10).replace(/-/g,'.'),note:'ㅋ만 있는 메시지는 한 줄로 묶었고, 수위가 높은 줄은 (생략)으로 표시했어요.'})); built=true; markMine(); } }); c.append(det); }
+    g.append(c); }); })();
+
+// ---------- records
+(function(){ const R=[
+  ['하루 최다','1,497건','2022.09.13 · 진웅 입대 2주 전, 추석 연휴 끝',''],
+  ['월 최다','14,276건','2022년 7월 · 하루 평균 460건',''],
+  ['최장 연속 대화','256일','2022.06.26 ~ 2023.03.08',''],
+  ['최장 침묵','7.8일','2023.05.01 ~ 05.09 · 정서 입대 당일부터. 순겸이 깼어요','정서 순겸'],
+  ['두 번째로 긴 침묵','6.0일','2023.05.11 ~ 05.17 · 준의가 깼어요','준의'],
+  ['최다 연타','22연타','순겸 · 2분 안에 혼자 연속으로','순겸'],
+  ['분당 최다 메시지','16.7개','2022.08.22 · 순겸의 챔미 대참사 10분','순겸'],
+  ['최장 ㅋ','59개','정서 · 한 메시지 안에서 연속으로','정서'],
+  ['삭제 최다','42개','형규 · 순겸이 39개로 2위 · 방 전체 158개','형규 순겸'],
+  ['가장 조용한 시간','새벽 5시대','4년 동안 888건',''],
+  ['개근상','형규 · 정서','저장된 첫날과 마지막 날 모두 말한 사람','형규 정서'],
+]; const RX={'최장 침묵':'rec-최장 침묵','하루 최다':'rec-하루 최다','가장 조용한 시간':'rec-새벽 5시','개근상':'rec-개근상','최다 연타':'aw-연타왕','최장 ㅋ':'aw-최장 ㅋ'};
+  const g=document.getElementById('recordGrid'); R.forEach(([a,b,c,p])=>{ const d=h('div','card'); if(p) d.dataset.p=p; d.append(h('div','lab',a),h('div','num',b),h('div','note',c)); if(RX[a]) d.append(excerpt(RX[a],'대화 보기',{keepK:a==='최장 ㅋ'})); g.append(d); }); })();
+
+// ---------- big table
+(function(){
+  const cols=[['name','이름'],['msgs','메시지'],['chars','글자'],['avg_len','평균 길이'],['k','ㅋ'],['photos','사진'],['link','링크'],['emoticon','이모티콘'],['starts','대화 시작'],['instant_pct','즉답 %'],['laugh_pct','개그 %'],['night_pct','새벽 %'],['swear_per_1k','욕/1000'],['called','이름 불림']];
+  const t=document.getElementById('bigtable'); const hr=t.createTHead().insertRow(); cols.forEach(([k,l],i)=>hr.append(h('th',i?'n':null,l)));
+  const F=['avg_len','instant_pct','laugh_pct','night_pct','swear_per_1k'];
+  const b=t.createTBody(); O.forEach(n=>{ const p=P[n]; const r=b.insertRow(); r.dataset.p=n; cols.forEach(([k],i)=>{ const c=r.insertCell(); if(!i){c.className='nm'; c.dataset.name=n;} const v=p[k]; c.textContent=F.includes(k)?Number(v).toFixed(1):(typeof v==='number'?fmt(v):v); if(i) c.className='n'; }); });
+})();
+
+// ---------- trend table (long-form report)
+(function(){ const T=DATA.trend; const yrs=Object.keys(T);
+  const cols=[['msgs','메시지',v=>fmt(v)],['active_days','대화한 날',v=>v+'일'],['per_active_day','하루 평균',v=>fmt(Math.round(v))],['sessions','대화 덩어리',v=>fmt(v)],['msgs_per_session','덩어리당',v=>v.toFixed(1)],['instant_pct','즉답 %',v=>v.toFixed(1)],['k_per_msg','ㅋ/메시지',v=>v.toFixed(2)],['avg_len','평균 길이',v=>v.toFixed(1)],['top3_share','상위 3명 %',v=>v.toFixed(1)],['night_pct','새벽 %',v=>v.toFixed(1)],['weekend_pct','주말 %',v=>v.toFixed(1)],['swear_per_1k','욕/1000',v=>v.toFixed(1)]];
+  const t=document.getElementById('trendTable'); const hr=t.createTHead().insertRow(); hr.append(h('th',null,'연도')); cols.forEach(([,l])=>hr.append(h('th','n',l)));
+  const b=t.createTBody(); yrs.forEach(y=>{ const r=b.insertRow(); r.insertCell().textContent=y; cols.forEach(([k,,f])=>{ const c=r.insertCell(); c.className='n'; c.textContent=f(T[y][k]); }); }); })();
+
+// ---------- focus
+const NARROW = () => window.innerWidth < 700;
+let PANEL_OPEN = !NARROW();
+(function(){ const box=document.getElementById('pbtns'); O.forEach(n=>{ const b=h('button','pbtn',n); b.type='button'; b.dataset.name=n; box.append(b); }); const c=h('button','pbtn clear','전체 보기'); c.type='button'; c.dataset.clear='1'; box.append(c); })();
+function bestPartner(n){ const a=DATA.aff.filter(x=>x.a===n||x.b===n).sort((x,y)=>y.aff-x.aff)[0]; return a?[a.a===n?a.b:a.a,a.aff]:null; }
+function renderPanel(){
+  const panel=document.getElementById('panel'); panel.innerHTML='';
+  if(!FOCUS){ panel.classList.remove('open'); return; }
+  const x=P[FOCUS], rank=O.indexOf(FOCUS)+1;
+  const tog=h('button','pbtn clear',PANEL_OPEN?'요약 접기':'요약 펼치기'); tog.type='button'; tog.onclick=(e)=>{ e.stopPropagation(); PANEL_OPEN=!PANEL_OPEN; renderPanel(); };
+  panel.classList.add('open');
+  if(!PANEL_OPEN){ const c=h('div','pc'); c.style.flex='1 1 100%'; c.append(h('b',null,FOCUS+' '),document.createTextNode(`· ${PROFILE[FOCUS].role} · ${fmt(x.msgs)}건 `),tog); panel.append(c); return; }
+  const c1=h('div','pc'); c1.append(h('div','big',FOCUS),h('div',null,PROFILE[FOCUS].role),h('div','k',`${fmt(x.msgs)}건 · 전체의 ${(100*x.msgs/DATA.total).toFixed(1)}% · ${rank}위 · ${x.first.slice(0,7).replace('-','.')}~${x.last.slice(0,7).replace('-','.')}`));
+  const aw=(window.AWARDS||[]).filter(a=>a[1]===FOCUS).map(a=>a[0]);
+  const c2=h('div','pc'); c2.append(h('div','k','수상'),h('div',null,aw.length?aw.join(' · '):'—'),h('div','k','관심 주제'),h('div',null,(x.fav.length?x.fav:['고루고루']).join(' · ')));
+  const bp=bestPartner(FOCUS); const sc=DATA.scenes.filter(s=>s.who.includes(FOCUS)), st=DATA.scenes.filter(s=>s.stars.includes(FOCUS));
+  const c3=h('div','pc'); c3.append(h('div','k','가장 많이 받아주는 사람'),h('div',null,`${x.answered_by[0]} (${x.answered_by[1]}%)`),h('div','k','궁합 최고'),h('div',null,bp?`${bp[0]} (${bp[1].toFixed(2)})`:'—'),h('div','k','레전드 장면'),h('div',null,`출연 ${sc.length}회 · 주연 ${st.length}회`));
+  const c4=h('div','pc spark'); const mp=DATA.month_per[FOCUS]; const pk=mp.indexOf(Math.max(...mp)); const [py,pm]=DATA.months[pk].split('-');
+  c4.append(h('div','k',`월별 메시지 · 최다 ${py}년 ${+pm}월 ${fmt(mp[pk])}건`));
+  const W=320,H=56; const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,preserveAspectRatio:'none'},c4); const mx=Math.max(...mp); const n=mp.length;
+  const pts=mp.map((v,i)=>[(W*i/(n-1)).toFixed(1),(H-4-(H-8)*v/mx).toFixed(1)]);
+  el('path',{d:'M'+pts.map(p=>p.join(',')).join('L')+`L${W},${H}L0,${H}Z`,fill:css('--s2'),opacity:.15},svg);
+  el('path',{d:'M'+pts.map(p=>p.join(',')).join('L'),fill:'none',stroke:css('--s2'),'stroke-width':1.5,'vector-effect':'non-scaling-stroke'},svg);
+  const c5=h('div'); c5.style.flex='0 0 auto'; c5.style.alignSelf='flex-start'; c5.append(tog);
+  panel.append(c1,c2,c3,c4,c5);
+}
+function applyFocus(){
+  document.body.classList.toggle('focusing', !!FOCUS);
+  document.querySelectorAll('.pbtn[data-name]').forEach(b=>b.classList.toggle('on', b.dataset.name===FOCUS));
+  document.querySelectorAll('[data-p]').forEach(e=>{ const on=!!FOCUS && e.dataset.p.split(' ').includes(FOCUS); e.classList.toggle('hit',on); e.classList.toggle('dim',!!FOCUS && !on); });
+  // matrix tables: highlight the person's row and column instead of dimming rows
+  document.querySelectorAll('#replyTable tbody tr').forEach(tr=>{ tr.classList.remove('dim'); });
+  document.querySelectorAll('td.hitcell').forEach(td=>td.classList.remove('hitcell'));
+  if(FOCUS) document.querySelectorAll('#replyTable td').forEach(td=>{ if(td.dataset.col===FOCUS || td.parentElement.dataset.p===FOCUS) td.classList.add('hitcell'); });
+}
+function refresh(){ drawAll(); renderPanel(); }
+document.addEventListener('click', e=>{
+  const t=e.target.closest('[data-name],[data-clear]'); if(!t) return;
+  if(t.dataset.clear){ FOCUS=null; } else { FOCUS = (FOCUS===t.dataset.name) ? null : t.dataset.name; }
+  refresh();
+});
+document.addEventListener('keydown', e=>{ if(e.key==='Escape' && FOCUS){ FOCUS=null; refresh(); } });
+
+(function(){ const rep=document.querySelector('.report'); const hs=[...rep.querySelectorAll(':scope > h3')];
+  hs.forEach((h3,i)=>{ const d=document.createElement('details'); d.className='rs'; if(i===0) d.open=true; const s=document.createElement('summary'); h3.before(d); s.append(h3); d.append(s);
+    let n=d.nextSibling; while(n && !(n.nodeType===1 && n.tagName==='H3')){ const nx=n.nextSibling; d.append(n); n=nx; } }); })();
+function drawAll(){ drawMonthly(); drawMilLegend(); drawPeople(); drawHeat(); drawTopicSmalls(); applyFocus(); markMine(); }
+drawAll();
+let rt; addEventListener('resize',()=>{clearTimeout(rt); rt=setTimeout(drawAll,120);});
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change',drawAll);
+</script>
+</body>
+</html>
